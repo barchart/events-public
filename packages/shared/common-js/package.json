@@ -1,0 +1,7 @@
+{
+  "name": "@barchart/events-public-common-js",
+  "version": "1.0.0",
+  "dependencies": {
+    "@barchart/common-js": "^3.15.0"
+  }
+}

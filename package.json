@@ -1,0 +1,15 @@
+{
+  "name": "@barchart/events-public",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/**/*"
+  ],
+  "scripts": {
+    "bump": "lerna version -m 'Release. Bump version number'",
+    "clean": "lerna clean --yes && rm -rf node_modules"
+  },
+  "devDependencies": {
+    "lerna": "^3.22.1"
+  }
+}
