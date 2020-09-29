@@ -9,7 +9,8 @@
     "version": {
       "ignoreChanges": [
         "**/.releases/*.md"
-      ]
+      ],
+      "message": "Release. Bump version number %v"
     }
   }
 }
