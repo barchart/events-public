@@ -2,13 +2,15 @@
   "name": "@barchart/events-public",
   "private": true,
   "workspaces": [
-    "packages/**/*"
+    "packages/**"
   ],
   "scripts": {
-    "bump": "lerna version --force-publish",
-    "clean": "lerna clean --yes && rm -rf node_modules"
+    "bump": "lerna version -m 'Release. Bump version number %v' --tag-version-prefix='' --force-publish",
+    "clean": "lerna clean --yes && rm -rf node_modules",
+    "lint": "lerna run lint --stream"
   },
   "devDependencies": {
+    "jshint": "^2.10.3",
     "lerna": "^3.22.1"
   }
 }
