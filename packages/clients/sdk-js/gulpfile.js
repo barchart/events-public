@@ -76,5 +76,5 @@ gulp.task('upload-example-to-S3', () => {
 gulp.task('deploy-examples', gulp.series('upload-example-to-S3'));
 
 gulp.task('watch', () => {
-	gulp.watch('./lib/**/*.js', gulp.series('build-example-bundles'));
+	gulp.watch(['./lib/**/*.js', './example/browser/js/*.js'], gulp.series('build-example-bundles'));
 });
