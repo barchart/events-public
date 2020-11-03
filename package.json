@@ -8,7 +8,7 @@
     "bump": "lerna version -m 'Release. Bump version number %v' --tag-version-prefix='' --force-publish",
     "clean": "lerna clean --yes && rm -rf node_modules",
     "lint": "lerna run lint --stream",
-    "version": "./packages/clients/sdk-js/gulp embed-version"
+    "version": "gulp embed-version --gulpfile ./packages/clients/sdk-js/gulpfile.js"
   },
   "devDependencies": {
     "jshint": "^2.10.3",
