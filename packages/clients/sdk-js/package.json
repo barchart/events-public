@@ -15,7 +15,9 @@
   ],
   "scripts": {
     "lint": "jshint ./ --exclude 'node_modules,example/browser/example*.js,docs'",
-    "watch": "gulp watch"
+    "watch": "gulp watch",
+
+    "version": "gulp embed-version"
   },
   "dependencies": {
     "@barchart/common-js": "^3.15.0",
