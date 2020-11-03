@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Barchart Event Reporting API</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="example.report.css" type="text/css">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div class="wrapper" v-cloak>
+	<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLongTitle">Create report</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="form-wrap">
+						<div class="btn-group">
+							<select class="custom-select" v-model="selectedCustomer">
+								<option disabled value="">Customer</option>
+								<option v-for="customer in config.customers" v-bind:value="customer.code" >
+									{{ customer.description }}
+								</option>
+							</select>
+						</div>
+
+						<div class="btn-group">
+							<select class="custom-select" v-model="selectedProduct">
+								<option value="">Product - None</option>
+								<option v-for="product in config.products" v-bind:value="product.code" >
+									{{ product.description }}
+								</option>
+							</select>
+						</div>
+
+						<div class="btn-group">
+							<input class="form-control" type="text" v-model="startTime" placeholder="StartTime - optional">
+						</div>
+
+						<div class="btn-group">
+							<input class="form-control" type="text" v-model="endTime" placeholder="EndTime - optional">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-start" data-dismiss="modal" v-on:click="start">Start</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div>
+		<div class="header">
+			<div class="float-left">
+				<h4 class="float-left barchart-logo"><span>[Event Reporting API]</span></h4>
+
+				<div v-if="!showAuth" class="float-left btn-wrap">
+					<div class="btn-group">
+						<button class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
+							New Report
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<div v-if="!showAuth" class="float-right">
+				<div class="btn-wrap">
+					<div class="btn-group">
+						<button v-on:click="disconnect" class="btn btn-outline-light">
+							Logout
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div v-if="showAuth" class="main">
+			<div class="container-center-outer">
+				<div class="container-center-inner">
+					<div class="login">
+						<form v-on:submit.prevent="connect" class="form-horizontal login">
+							<div class="form-group">
+								<label for="stage">Host</label>
+								<select id="stage" class="custom-select" v-model="stage">
+									<option v-for="stage in config.stages" v-bind:value="stage">
+										{{ stage }}
+									</option>
+								</select>
+							</div>
+							<div class="form-group">
+								<label for="username">Username<span class="asterisk-required">*</span></label>
+								<input id="username" class="form-control" type="text" v-model="username">
+							</div>
+							<div class="form-group">
+								<label for="password">Password<span class="asterisk-required">*</span></label>
+								<input id="password" class="form-control" type="password" v-model="password">
+							</div>
+							<div class="form-group buttons">
+								<input type="submit" value="Connect" class="form-control btn btn-primary btn-connect" />
+								<img class="loader" v-show="connecting" src="https://d1l7hzv7igdihb.cloudfront.net/img/throbber.gif" alt="Please wait..." />
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div v-if="!showAuth" class="main">
+			<div class="events-column col-md-6">
+				<h4>Message</h4>
+
+				<div class="response">
+					<div>
+						{{ message }}
+					</div>
+				</div>
+			</div>
+			<div class="reports-column col-md-6">
+				<h4>Reports</h4>
+
+				<div class="stack report-stack">
+					<div class="stack-item stack-report-item" v-for="(report, index) in reports">
+						<a v-bind:href="report.link" v-if="!!report.link">[ {{ index + 1 }} ] {{ report.filter }} - {{ report.status.description }}</a>
+						<div v-on:click="get(report)" v-else>[ {{ index + 1 }} ] {{ report.filter }} - {{ report.status.description }}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="footer fixed-bottom">
+			<h5 class="float-left">
+				<a href="https://github.com/barchart/events-client-js" target="_blank">[events-client-js]</a>
+			</h5>
+			<h5 class="float-right">
+				Client Version: <span>{{ config.version }}</span>
+			</h5>
+		</div>
+	</div>
+</div>
+
+<script src="./example.report.js"></script>
+</body>
+</html>

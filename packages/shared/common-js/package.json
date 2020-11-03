@@ -1,0 +1,24 @@
+{
+  "name": "@barchart/events-api-common",
+  "version": "1.10.2",
+  "description": "Common classes used by the Barchart Event Tracking System",
+  "author": {
+    "name": "Bryan Ingle",
+    "email": "bryan.ingle@barchart.com",
+    "url": "http://www.barchart.com"
+  },
+  "contributors": [
+    {
+      "name": "Igor Losev",
+      "email": "igor.losev.it@gmail.com"
+    }
+  ],
+  "scripts": {
+    "lint": "jshint ./ --exclude './node_modules'"
+  },
+  "dependencies": {
+    "@barchart/common-js": "^3.8.0",
+    "uuid": "^3.4.0"
+  },
+  "license": "MIT"
+}

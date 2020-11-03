@@ -1,6 +1,7 @@
+.awspublish-barchart-examples
 .idea
-.webpack
 .serverless
+.webpack
 
 yarn-debug.log*
 yarn-error.log*

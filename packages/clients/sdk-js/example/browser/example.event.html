@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Barchart Event Transmission API</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link rel="stylesheet" href="example.event.css" type="text/css">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div class="wrapper" v-cloak>
+	<div class="header">
+		<div class="float-left">
+			<h4 class="float-left barchart-logo"><span>[Event Transmission API]</span></h4>
+
+			<span v-if="!showAuth">
+				<div class="float-left select-wrap">
+					<div class="btn-group">
+						<select class="custom-select" v-model="selectedCustomer">
+							<option disabled value="">Customer</option>
+							<option v-for="customer in config.customers" v-bind:value="customer.code" >
+								{{ customer.description }}
+							</option>
+						</select>
+					</div>
+
+					<div class="btn-group">
+						<select class="custom-select" v-model="selectedProduct">
+							<option disabled value="">Product</option>
+							<option v-for="product in config.products" v-bind:value="product.code" >
+								{{ product.description }}
+							</option>
+						</select>
+					</div>
+
+					<div class="btn-group">
+						<select class="custom-select type-select" v-model="selectedType">
+							<option disabled value="">Type</option>
+							<option v-for="type in config.types[selectedProduct]" v-bind:value="type.code" >
+								{{ type.description }}
+							</option>
+						</select>
+					</div>
+
+					<div class="btn-group">
+						<input class="form-control" type="text" v-model="inputContext" placeholder="context_1,context_2">
+					</div>
+
+				</div>
+
+				<div class="float-left btn-wrap">
+					<div class="btn-group">
+						<button v-on:click="generate" class="btn btn-light">
+							Generate
+						</button>
+					</div>
+
+					<div class="btn-group">
+						<button v-on:click="send" class="btn btn-light">
+							Send
+						</button>
+					</div>
+
+					<div class="btn-group">
+						<button v-on:click="clear" class="btn btn-light">
+							Clear
+						</button>
+					</div>
+				</div>
+
+				<div class="float-left checkbox-wrap">
+					<input v-on:change="switchMode" type="checkbox" id="checkbox" class="checkbox-inline" v-model="auto">
+					<label for="checkbox">Auto mode</label>
+				</div>
+			</span>
+		</div>
+	</div>
+
+	<div v-if="showAuth" class="main">
+		<div class="container-center-outer">
+			<div class="container-center-inner">
+				<div class="login">
+					<form v-on:submit.prevent="connect" class="form-horizontal login">
+						<div class="form-group">
+							<label for="stage">Host</label>
+							<select id="stage" class="custom-select" v-model="stage">
+								<option v-for="stage in config.stages" v-bind:value="stage">
+									{{ stage }}
+								</option>
+							</select>
+						</div>
+						<div class="form-group buttons">
+							<input type="submit" value="Start" class="form-control btn btn-primary btn-connect" />
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div v-if="!showAuth" class="main">
+		<div class="response-column col-md-6">
+			<h4>Server Response</h4>
+
+			<div class="response">
+				<div>
+					{{ message }}
+				</div>
+			</div>
+		</div>
+		<div class="pending-column col-md-6">
+			<h4>Pending Messages</h4>
+
+			<div class="stack event-stack">
+				<div class="event-item" v-for="(event, index) in events">
+					{{ index + 1 }}. {{ event }}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer fixed-bottom">
+		<h5 class="float-left">
+			<a href="https://github.com/barchart/events-client-js" target="_blank">[events-client-js]</a>
+		</h5>
+		<h5 class="float-right">
+			Client Version: <span>{{ config.version }}</span>
+		</h5>
+	</div>
+</div>
+
+<script src="./example.event.js"></script>
+</body>
+</html>
