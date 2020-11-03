@@ -23,7 +23,7 @@ gulp.task('embed-version', () => {
 		.pipe(gulp.dest('./lib/'));
 
 	const coverpage = gulp.src(['./docs/_coverpage.md'])
-		.pipe(replace(/(>)[0-9]+\.[0-9]+\.[0-9]+.*(<)/g, '$1' + version + '$3'))
+		.pipe(replace(/(>)([0-9]+\.[0-9]+\.[0-9]+.*)(<)/g, '$1' + version + '$3'))
 		.pipe(gulp.dest('./docs/'));
 
 	return merge(index, coverpage);
