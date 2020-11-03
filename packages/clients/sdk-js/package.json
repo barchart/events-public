@@ -1,6 +1,6 @@
 {
   "name": "@barchart/events-client-js",
-  "version": "2.2.0-rc.0",
+  "version": "2.2.0-rc.1",
   "description": "JavaScript SDK for Barchart's Event Tracking Service",
   "author": {
     "name": "Bryan Ingle",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@barchart/common-js": "^3.15.0",
-    "@barchart/events-api-common": "^2.2.0-rc.0"
+    "@barchart/events-api-common": "^2.2.0-rc.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
