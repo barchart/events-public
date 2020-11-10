@@ -4,16 +4,16 @@
 
 ### Packages
 
-...
+* [events-client-js](https://github.com/barchart/events-public/tree/master/packages/clients/sdk-js) - JavaScript SDK for Barchart's Event Tracking System.
+* [events-api-common](https://github.com/barchart/events-public/tree/master/packages/shared/common-js) - A library of shared JavaScript code used by the Barchart Event Tracking System and client SDK.
 
 ### Tools
 
 * [Yarn](https://classic.yarnpkg.com/en/) and [Lerna](https://lerna.js.org/) are used for dependency management.
-* [Serverless](https://serverless.com/) is used for testing and deployment.
 
 ### Related Repositories
 
-* [@barchart/events-private](https://github.com/barchart/events-private) - 
+* [@barchart/events-private](https://github.com/barchart/events-private) - Private services for the events system.
 
 ### License
 
