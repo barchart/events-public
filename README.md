@@ -11,6 +11,14 @@
 
 * [Yarn](https://classic.yarnpkg.com/en/) and [Lerna](https://lerna.js.org/) are used for dependency management.
 
+### Publishing
+
+```shell
+yarn install
+yarn run bump
+lerna publish from-package
+```
+
 ### Related Repositories
 
 * [@barchart/events-private](https://github.com/barchart/events-private) - Private services for the events system.
