@@ -1,4 +1,4 @@
-# @barchart/events-client-js <small>3.0.0-rc.0</small>
+# @barchart/events-client-js <small>3.0.0-rc.1</small>
 
 > JavaScript SDK for Barchart&#x27;s Event Tracking Service
 
