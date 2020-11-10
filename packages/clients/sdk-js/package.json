@@ -14,9 +14,10 @@
     }
   ],
   "scripts": {
+    "deploy:examples": "gulp deploy-examples",
     "lint": "jshint ./ --exclude 'node_modules,example/browser/example*.js,docs'",
-    "watch": "gulp watch",
-    "version": "gulp build && gulp embed-version"
+    "version": "gulp build && gulp embed-version",
+    "watch": "gulp watch"
   },
   "dependencies": {
     "@barchart/common-js": "^3.15.0",
