@@ -1,6 +1,7 @@
 const gulp = require('gulp');
 
-const fs = require('fs');
+const fs = require('fs'),
+	path = require('path');
 
 const AWS = require('aws-sdk'),
 	awspublish = require('gulp-awspublish'),
@@ -73,7 +74,29 @@ gulp.task('upload-example-to-S3', () => {
 		.pipe(awspublish.reporter());
 });
 
+gulp.task('upload-documentation-site-to-S3', () => {
+	let publisher = awspublish.create({
+		region: 'us-east-1',
+		params: {
+			Bucket: 'docs.barchart.com'
+		},
+		credentials: new AWS.SharedIniFileCredentials({profile: 'default'})
+	});
+
+	let headers = {'Cache-Control': 'no-cache'};
+	let options = {};
+
+	return gulp.src(['./docs/**'])
+		.pipe(rename((filePath) => {
+			filePath.dirname = path.join('events-public/clients/sdk-js', filePath.dirname);
+		}))
+		.pipe(publisher.publish(headers, options))
+		.pipe(publisher.cache())
+		.pipe(awspublish.reporter());
+});
+
 gulp.task('deploy-examples', gulp.series('upload-example-to-S3'));
+gulp.task('deploy-documentation', gulp.series('upload-documentation-site-to-S3'));
 
 gulp.task('watch', () => {
 	gulp.watch(['./lib/**/*.js', './example/browser/js/*.js'], gulp.series('build-example-bundles'));
