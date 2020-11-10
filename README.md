@@ -2,6 +2,8 @@
 
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
+Public services for interaction with the events system.
+
 ### Packages
 
 * [events-client-js](https://github.com/barchart/events-public/tree/master/packages/clients/sdk-js) - JavaScript SDK for Barchart's Event Tracking System.
