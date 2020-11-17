@@ -7,8 +7,8 @@ Public packages for the Barchart Usage Tracking System.
 
 ### Packages
 
-* [events-client-js](./master/packages/sdk-js) - JavaScript SDK for Barchart's Event Tracking System.
-* [events-api-common](./master/packages/common-js) - A library of shared JavaScript code used by the Barchart Event Tracking System and client SDK.
+* [events-client-js](./packages/sdk-js) - JavaScript SDK for Barchart's Event Tracking System.
+* [events-api-common](./packages/common-js) - A library of shared JavaScript code used by the Barchart Event Tracking System and client SDK.
 
 ### Tools
 
