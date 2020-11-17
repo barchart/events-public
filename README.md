@@ -18,7 +18,7 @@ If you are working on packages within this repository, use the following procedu
 * Scan the code for lint.
 * Create a new file in the ```.releases``` folder and commit it.
 * Bump the software version across all ```package.json``` files and tag the repository.
-* Use the release notes and tag to create a [GitHub Release](https://github.com/barchart/events-public/releases).
+* Create a [GitHub Release](https://github.com/barchart/events-public/releases) based on the tag and add the release notes.
 * Finally, publish the packages to NPM.
 
 In other words, execute the following:
