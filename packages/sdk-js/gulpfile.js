@@ -88,7 +88,7 @@ gulp.task('upload-documentation-site-to-S3', () => {
 
 	return gulp.src(['./docs/**'])
 		.pipe(rename((filePath) => {
-			filePath.dirname = path.join('events-public/clients/sdk-js', filePath.dirname);
+			filePath.dirname = path.join('events-public/sdk-js', filePath.dirname);
 		}))
 		.pipe(publisher.publish(headers, options))
 		.pipe(publisher.cache())
