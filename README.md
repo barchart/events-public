@@ -10,9 +10,9 @@ Public packages for the _Barchart Usage Tracking System_.
 * [events-client-js](./packages/sdk-js) - JavaScript SDK. Simplifies interaction with backend.
 * [events-api-common](./packages/common-js) - Shared JavaScript code, used by the SDK and backend.
 
-### Development
+### Releases
 
-If you are working on packages within this repository, please follow these procedures for release:
+If you are working on packages within this repository, use the following procedures for releasing changes:
 
 * Ensure dependencies are up-to-date.
 * Scan the code for lint.
