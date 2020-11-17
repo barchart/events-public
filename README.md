@@ -7,8 +7,8 @@ Public packages for the Barchart Usage Tracking System.
 
 ### Packages
 
-* [events-client-js](./packages/sdk-js) - JavaScript SDK for Barchart's Event Tracking System.
-* [events-api-common](./packages/common-js) - A library of shared JavaScript code used by the Barchart Event Tracking System and client SDK.
+* [events-client-js](./packages/sdk-js) - JavaScript SDK. Simplifies interaction with backend.
+* [events-api-common](./packages/common-js) - Shared JavaScript package, used by the SDK and backend.
 
 ### Tools
 
@@ -24,7 +24,7 @@ lerna publish from-package
 
 ### Related Repositories
 
-* [@barchart/events-private](https://github.com/barchart/events-private) - Private services for the events system.
+* [@barchart/events-private](https://github.com/barchart/events-private) - Private packages for the usage-tracking system, including [Serverless](https://www.serverless.com/) applications.
 
 ### License
 
