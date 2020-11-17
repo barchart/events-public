@@ -7,8 +7,8 @@ Public services for interaction with the events system.
 
 ### Packages
 
-* [events-client-js](https://github.com/barchart/events-public/tree/master/packages/clients/sdk-js) - JavaScript SDK for Barchart's Event Tracking System.
-* [events-api-common](https://github.com/barchart/events-public/tree/master/packages/shared/common-js) - A library of shared JavaScript code used by the Barchart Event Tracking System and client SDK.
+* [events-client-js](https://github.com/barchart/events-public/tree/master/packages/sdk-js) - JavaScript SDK for Barchart's Event Tracking System.
+* [events-api-common](https://github.com/barchart/events-public/tree/master/packages/common-js) - A library of shared JavaScript code used by the Barchart Event Tracking System and client SDK.
 
 ### Tools
 

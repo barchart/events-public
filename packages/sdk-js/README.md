@@ -4,7 +4,7 @@ This **JavaScript SDK** connects your software to Barchart's Event Tracking Syst
 
 ### Documentation
 
-Complete documentation for this SDK can be accessed [here](https://barchart.github.io/events-client-js/).
+Complete documentation for this SDK can be accessed [here](https://docs.barchart.com/events-public/sdk-js/#/).
 
 ### Package Managers
 
