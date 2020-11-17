@@ -1,8 +1,7 @@
 const ReportGateway = require('./../../../lib/gateway/ReportGateway');
 
 const CustomerType = require('@barchart/events-api-common/lib/data/CustomerType'),
-	ProductType = require('@barchart/events-api-common/lib/data/ProductType'),
-	EventType = require('@barchart/events-api-common/lib/data/EventType');
+	ProductType = require('@barchart/events-api-common/lib/data/ProductType');
 
 const EventJobStatus = require('@barchart/events-api-common/lib/data/EventJobStatus');
 

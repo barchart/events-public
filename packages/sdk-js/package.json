@@ -17,7 +17,7 @@
     "deploy:examples": "gulp deploy-examples",
     "deploy:documentation": "gulp deploy-documentation",
     "lint": "jshint ./ --exclude 'node_modules,example/browser/example*.js,docs'",
-    "version": "gulp build && gulp embed-version",
+    "version": "gulp embed-version && gulp build",
     "watch": "gulp watch"
   },
   "dependencies": {

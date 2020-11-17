@@ -21533,530 +21533,6 @@ process.umask = function() { return 0; };
 },{}],79:[function(require,module,exports){
 const Enum = require('@barchart/common-js/lang/Enum');
 
-const CustomerType = require('@barchart/events-api-common/lib/data/CustomerType'),
-      EventType = require('@barchart/events-api-common/lib/data/EventType'),
-      ProductType = require('@barchart/events-api-common/lib/data/ProductType');
-
-const version = require('../../../lib/index').version;
-
-module.exports = (() => {
-  'use strict';
-
-  return {
-    version: version,
-    stages: ['staging', 'production'],
-    customers: [CustomerType.BARCHART, CustomerType.TGAM],
-    products: [ProductType.PORTFOLIO, ProductType.WATCHLIST],
-    types: {
-      [ProductType.PORTFOLIO.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.PORTFOLIO),
-      [ProductType.WATCHLIST.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.WATCHLIST)
-    }
-  };
-})();
-
-},{"../../../lib/index":84,"@barchart/common-js/lang/Enum":29,"@barchart/events-api-common/lib/data/CustomerType":85,"@barchart/events-api-common/lib/data/EventType":86,"@barchart/events-api-common/lib/data/ProductType":87}],80:[function(require,module,exports){
-const EventBatcher = require('./../../../lib/engine/EventBatcher'),
-      EventGateway = require('./../../../lib/gateway/EventGateway');
-
-const CustomerType = require('@barchart/events-api-common/lib/data/CustomerType'),
-      ProductType = require('@barchart/events-api-common/lib/data/ProductType'),
-      EventType = require('@barchart/events-api-common/lib/data/EventType');
-
-const Timestamp = require('@barchart/common-js/lang/Timestamp');
-
-const Config = require('./example.config');
-
-module.exports = (() => {
-  'use strict';
-
-  const app = new Vue({
-    el: '.wrapper',
-    data: {
-      selectedCustomer: '',
-      selectedProduct: '',
-      selectedType: '',
-      inputContext: '',
-      message: '',
-      events: [],
-      auto: false,
-      eventBatcher: null,
-      eventGateway: null,
-      showAuth: true,
-      stage: 'production',
-      config: Config
-    },
-    methods: {
-      connect() {
-        return EventGateway.for(this.stage).then(gateway => {
-          this.eventGateway = gateway;
-          this.eventBatcher = new EventBatcher(gateway, callback.bind(this));
-          this.showAuth = false;
-        });
-      },
-
-      disconnect() {
-        this.clear();
-        this.eventGateway = null;
-        this.eventBatcher = null;
-        this.showAuth = true;
-      },
-
-      generate() {
-        if (!validateFields.call(this)) {
-          this.message = 'Fill all fields';
-          return;
-        }
-
-        const event = {
-          customer: CustomerType.parse(this.selectedCustomer),
-          product: ProductType.parse(this.selectedProduct),
-          type: EventType.parse(this.selectedType),
-          timestamp: Timestamp.now(),
-          context: this.inputContext.replace(' ', '').split(',')
-        };
-        this.events.push(event);
-
-        if (this.auto) {
-          this.eventBatcher.push(event);
-        }
-      },
-
-      send() {
-        if (!validateFields.call(this)) {
-          this.message = 'Fill all fields';
-          return;
-        }
-
-        if (this.events.length === 0) {
-          this.message = 'Event stack is empty';
-          return;
-        }
-
-        this.message = 'Sending...';
-        this.eventGateway.createEvents(this.events).then(response => {
-          clear.call(this);
-          this.message = response;
-        }).catch(err => {
-          clear.call(this);
-          this.message = err;
-        });
-      },
-
-      clear() {
-        clear.call(this);
-      },
-
-      switchMode() {
-        if (this.auto) {
-          this.events.forEach(event => this.eventBatcher.push(event));
-          this.eventBatcher.start();
-          this.message = 'Auto mode enabled';
-        } else {
-          this.eventBatcher.stop();
-          this.eventBatcher.clear();
-          this.message = 'Auto mode disabled';
-        }
-      }
-
-    }
-  });
-
-  function callback(response) {
-    clear.call(this);
-    this.message = response;
-  }
-
-  function clear() {
-    this.events = [];
-    this.message = '';
-  }
-
-  function validateFields() {
-    if (!this.selectedCustomer || !this.selectedProduct || !this.selectedType || !this.inputContext) {
-      return false;
-    }
-
-    return true;
-  }
-})();
-
-},{"./../../../lib/engine/EventBatcher":82,"./../../../lib/gateway/EventGateway":83,"./example.config":79,"@barchart/common-js/lang/Timestamp":31,"@barchart/events-api-common/lib/data/CustomerType":85,"@barchart/events-api-common/lib/data/EventType":86,"@barchart/events-api-common/lib/data/ProductType":87}],81:[function(require,module,exports){
-module.exports = (() => {
-  'use strict';
-  /**
-   * Static configuration data.
-   *
-   * @public
-   * @ignore
-   */
-
-  class Configuration {
-    constructor() {}
-    /**
-     * The host of the development system.
-     *
-     * @public
-     * @static
-     * @returns {String}
-     */
-
-
-    static get developmentHost() {
-      return 'events-stage.aws.barchart.com';
-    }
-    /**
-     * The host of the staging system.
-     *
-     * @public
-     * @static
-     * @returns {String}
-     */
-
-
-    static get stagingHost() {
-      return 'events-stage.aws.barchart.com';
-    }
-    /**
-     * The host of the production system.
-     *
-     * @public
-     * @static
-     * @returns {String}
-     */
-
-
-    static get productionHost() {
-      return 'events.aws.barchart.com';
-    }
-
-    toString() {
-      return '[Configuration]';
-    }
-
-  }
-
-  return Configuration;
-})();
-
-},{}],82:[function(require,module,exports){
-const assert = require('@barchart/common-js/lang/assert'),
-      Scheduler = require('@barchart/common-js/timing/Scheduler');
-
-const EventGateway = require('../gateway/EventGateway');
-
-module.exports = (() => {
-  'use strict';
-  /**
-   * A utility which buffers {@link Schema.Event} objects and periodically
-   * transmits them to backend in batches.
-   *
-   * @public
-   * @exported
-   * @param {EventGateway}
-   * @param {Function=} callback
-   */
-
-  class EventBatcher {
-    constructor(eventGateway, callback) {
-      assert.argumentIsRequired(eventGateway, 'eventGateway', EventGateway, 'EventGateway');
-      assert.argumentIsOptional(callback, 'callback', Function, 'Function');
-      this._eventGateway = eventGateway;
-      this._callback = callback;
-      this._scheduler = new Scheduler();
-      this._buffer = [];
-      this._running = false;
-    }
-    /**
-     * Begins queue processing. Items in the buffer will begin to be transmitted
-     * to the remote service.
-     *
-     * @public
-     */
-
-
-    start() {
-      if (this._running) {
-        return;
-      }
-
-      this._scheduler = new Scheduler();
-      this._running = true;
-      processBuffer.call(this);
-    }
-    /**
-     * Stops the queue processing. Items in the buffer accumulate without being
-     * transmitted to the remote service.
-     * 
-     * @public
-     */
-
-
-    stop() {
-      this._running = false;
-
-      if (this._scheduler !== null) {
-        this._scheduler.dispose();
-
-        this._scheduler = null;
-      }
-    }
-    /**
-     * Clears the internal buffer.
-     *
-     * @public
-     */
-
-
-    clear() {
-      this._buffer = [];
-    }
-    /**
-     * Adds a new event to the buffer.
-     *
-     * @public
-     * @param {Schema.Event} event
-     */
-
-
-    push(event) {
-      this._buffer.push(event);
-    }
-
-    toString() {
-      return '[EventBatcher]';
-    }
-
-  }
-
-  function processBuffer() {
-    if (!this._running) {
-      return;
-    }
-
-    if (this._buffer.length === 0) {
-      return this._scheduler.schedule(processBuffer.bind(this), 5000, 'processBuffer');
-    }
-
-    const batch = this._buffer;
-    this._buffer = [];
-    return this._eventGateway.createEvents(batch).then(response => {
-      if (this._callback) {
-        this._callback(response);
-      }
-
-      return response;
-    }).catch(e => {
-      console.error('Failed to transmit events to Barchart Usage Tracking Service', e);
-      return null;
-    }).then(() => {
-      if (this._running) {
-        this._scheduler.schedule(processBuffer.bind(this), 5000, 'processBuffer');
-      }
-    });
-  }
-
-  return EventBatcher;
-})();
-
-},{"../gateway/EventGateway":83,"@barchart/common-js/lang/assert":33,"@barchart/common-js/timing/Scheduler":45}],83:[function(require,module,exports){
-const assert = require('@barchart/common-js/lang/assert'),
-      Disposable = require('@barchart/common-js/lang/Disposable'),
-      Enum = require('@barchart/common-js/lang/Enum');
-
-const EndpointBuilder = require('@barchart/common-js/api/http/builders/EndpointBuilder'),
-      ErrorInterceptor = require('@barchart/common-js/api/http/interceptors/ErrorInterceptor'),
-      Gateway = require('@barchart/common-js/api/http/Gateway'),
-      FailureReason = require('@barchart/common-js/api/failures/FailureReason'),
-      ProtocolType = require('@barchart/common-js/api/http/definitions/ProtocolType'),
-      RequestInterceptor = require('@barchart/common-js/api/http/interceptors/RequestInterceptor'),
-      ResponseInterceptor = require('@barchart/common-js/api/http/interceptors/ResponseInterceptor'),
-      VerbType = require('@barchart/common-js/api/http/definitions/VerbType');
-
-const EventSchema = require('@barchart/events-api-common/lib/data/serialization/EventSchema');
-
-const Configuration = require('../common/Configuration');
-
-module.exports = (() => {
-  'use strict';
-  /**
-   * A **central component of the SDK** which is responsible for sending events (i.e. usage
-   * statistics to the backend).
-   *
-   * @public
-   * @exported
-   * @extends {Disposable}
-   * @param {String} protocol - The protocol to use (either HTTP or HTTPS).
-   * @param {String} host - The host name of the Events web service.
-   * @param {Number} port - The TCP port number of the Events web service.
-   */
-
-  class EventGateway extends Disposable {
-    constructor(protocol, host, port) {
-      super();
-      this._started = false;
-      this._startPromise = null;
-      const protocolType = Enum.fromCode(ProtocolType, protocol.toUpperCase());
-      this._createEventEndpoint = EndpointBuilder.for('create-events', 'create events').withVerb(VerbType.POST).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
-        pb.withLiteralParameter('events', 'events');
-      }).withBody('events').withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withRequestInterceptor(RequestInterceptor.fromDelegate(createEventRequestInterceptor)).withResponseInterceptor(responseInterceptorForEventDeserialization).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
-    }
-    /**
-     * Initializes the connection to the remote server and returns a promise
-     * containing the current instance.
-     *
-     * @public
-     * @returns {Promise<EventGateway>}
-     */
-
-
-    start() {
-      return Promise.resolve().then(() => {
-        if (this._startPromise === null) {
-          this._startPromise = Promise.resolve().then(() => {
-            this._started = true;
-            return this;
-          }).catch(e => {
-            this._startPromise = null;
-            throw e;
-          });
-        }
-
-        return this._startPromise;
-      });
-    }
-    /**
-     * Saves one (or many) events.
-     *
-     * @public
-     * @param {Schema.Event[]} events
-     * @returns {Promise<Schema.Event[]>}
-     */
-
-
-    createEvents(events) {
-      return Promise.resolve().then(() => {
-        checkStart.call(this);
-        assert.argumentIsArray(events, 'events');
-        return Gateway.invoke(this._createEventEndpoint, {
-          events: events.map(event => EventSchema.CLIENT.schema.format(event))
-        });
-      });
-    }
-    /**
-     * Creates and starts a new {@link EventGateway} for an environment.
-     *
-     * @public
-     * @param {String} stage
-     * @returns {Promise<EventGateway>|Promise<null>}
-     */
-
-
-    static for(stage) {
-      let gatewayPromise;
-
-      if (stage === 'staging') {
-        gatewayPromise = EventGateway.forStaging();
-      } else if (stage === 'production') {
-        gatewayPromise = EventGateway.forProduction();
-      } else {
-        gatewayPromise = Promise.resolve(null);
-      }
-
-      return gatewayPromise;
-    }
-    /**
-     * Creates and starts a new {@link EventGateway} for the development environment.
-     *
-     * @public
-     * @static
-     * @returns {Promise<EventGateway>}
-     */
-
-
-    static forDevelopment() {
-      return Promise.resolve().then(() => {
-        return start(new EventGateway('https', Configuration.developmentHost, 443));
-      });
-    }
-    /**
-     * Creates and starts a new {@link EventGateway} for the staging environment.
-     *
-     * @public
-     * @static
-     * @returns {Promise<EventGateway>}
-     */
-
-
-    static forStaging() {
-      return Promise.resolve().then(() => {
-        return start(new EventGateway('https', Configuration.stagingHost, 443));
-      });
-    }
-    /**
-     * Creates and starts a new {@link EventGateway} for the production environment.
-     *
-     * @public
-     * @static
-     * @returns {Promise<EventGateway>}
-     */
-
-
-    static forProduction() {
-      return Promise.resolve().then(() => {
-        return start(new EventGateway('https', Configuration.productionHost, 443));
-      });
-    }
-
-    toString() {
-      return '[EventGateway]';
-    }
-
-  }
-
-  function start(gateway) {
-    return gateway.start().then(() => {
-      return gateway;
-    });
-  }
-
-  const createEventRequestInterceptor = request => {
-    return Promise.all(request.data.events.map(event => FailureReason.validateSchema(EventSchema.CLIENT, event))).then(() => {
-      return Promise.resolve(request);
-    }).catch(e => {
-      console.error('Error serializing data for event creation (using EventSchema.CLIENT schema)', e);
-      return Promise.reject();
-    });
-  };
-
-  const responseInterceptorForEventDeserialization = ResponseInterceptor.fromDelegate((response, ignored) => {
-    return JSON.parse(response.data);
-  });
-
-  function checkStart() {
-    if (this.getIsDisposed()) {
-      throw new Error('Unable to use gateway, the gateway has been disposed.');
-    }
-
-    if (!this._started) {
-      throw new Error('Unable to use gateway, the gateway has not started.');
-    }
-  }
-
-  return EventGateway;
-})();
-
-},{"../common/Configuration":81,"@barchart/common-js/api/failures/FailureReason":1,"@barchart/common-js/api/http/Gateway":4,"@barchart/common-js/api/http/builders/EndpointBuilder":6,"@barchart/common-js/api/http/definitions/ProtocolType":12,"@barchart/common-js/api/http/definitions/VerbType":13,"@barchart/common-js/api/http/interceptors/ErrorInterceptor":17,"@barchart/common-js/api/http/interceptors/RequestInterceptor":18,"@barchart/common-js/api/http/interceptors/ResponseInterceptor":19,"@barchart/common-js/lang/Disposable":28,"@barchart/common-js/lang/Enum":29,"@barchart/common-js/lang/assert":33,"@barchart/events-api-common/lib/data/serialization/EventSchema":88}],84:[function(require,module,exports){
-module.exports = (() => {
-  'use strict';
-
-  return {
-    version: '3.0.0-rc.1'
-  };
-})();
-
-},{}],85:[function(require,module,exports){
-const Enum = require('@barchart/common-js/lang/Enum');
-
 module.exports = (() => {
 	'use strict';
 
@@ -22118,7 +21594,7 @@ module.exports = (() => {
 	return CustomerType;
 })();
 
-},{"@barchart/common-js/lang/Enum":29}],86:[function(require,module,exports){
+},{"@barchart/common-js/lang/Enum":29}],80:[function(require,module,exports){
 const assert = require('@barchart/common-js/lang/assert'),
 	array = require('@barchart/common-js/lang/array'),
 	Enum = require('@barchart/common-js/lang/Enum');
@@ -22448,7 +21924,7 @@ module.exports = (() => {
 	return EventType;
 })();
 
-},{"./ProductType":87,"@barchart/common-js/lang/Enum":29,"@barchart/common-js/lang/array":32,"@barchart/common-js/lang/assert":33}],87:[function(require,module,exports){
+},{"./ProductType":81,"@barchart/common-js/lang/Enum":29,"@barchart/common-js/lang/array":32,"@barchart/common-js/lang/assert":33}],81:[function(require,module,exports){
 const Enum = require('@barchart/common-js/lang/Enum');
 
 module.exports = (() => {
@@ -22536,7 +22012,7 @@ module.exports = (() => {
 	return ProductType;
 })();
 
-},{"@barchart/common-js/lang/Enum":29}],88:[function(require,module,exports){
+},{"@barchart/common-js/lang/Enum":29}],82:[function(require,module,exports){
 const assert = require('@barchart/common-js/lang/assert'),
 	DataType = require('@barchart/common-js/serialization/json/DataType'),
 	Enum = require('@barchart/common-js/lang/Enum'),
@@ -22627,4 +22103,529 @@ module.exports = (() => {
 	return EventSchema;
 })();
 
-},{"@barchart/common-js/lang/Enum":29,"@barchart/common-js/lang/assert":33,"@barchart/common-js/serialization/json/DataType":40,"@barchart/common-js/serialization/json/Schema":42,"@barchart/common-js/serialization/json/builders/SchemaBuilder":44,"@barchart/events-api-common/lib/data/CustomerType":85,"@barchart/events-api-common/lib/data/EventType":86,"@barchart/events-api-common/lib/data/ProductType":87}]},{},[80]);
+},{"@barchart/common-js/lang/Enum":29,"@barchart/common-js/lang/assert":33,"@barchart/common-js/serialization/json/DataType":40,"@barchart/common-js/serialization/json/Schema":42,"@barchart/common-js/serialization/json/builders/SchemaBuilder":44,"@barchart/events-api-common/lib/data/CustomerType":79,"@barchart/events-api-common/lib/data/EventType":80,"@barchart/events-api-common/lib/data/ProductType":81}],83:[function(require,module,exports){
+const Enum = require('@barchart/common-js/lang/Enum');
+
+const CustomerType = require('@barchart/events-api-common/lib/data/CustomerType'),
+      EventType = require('@barchart/events-api-common/lib/data/EventType'),
+      ProductType = require('@barchart/events-api-common/lib/data/ProductType');
+
+const version = require('../../../lib/index').version;
+
+module.exports = (() => {
+  'use strict';
+
+  return {
+    version: version,
+    stages: ['staging', 'production'],
+    customers: [CustomerType.BARCHART, CustomerType.TGAM],
+    products: [ProductType.PORTFOLIO, ProductType.WATCHLIST, ProductType.ENTITLEMENTS],
+    types: {
+      [ProductType.PORTFOLIO.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.PORTFOLIO),
+      [ProductType.WATCHLIST.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.WATCHLIST),
+      [ProductType.ENTITLEMENTS.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ENTITLEMENTS)
+    }
+  };
+})();
+
+},{"../../../lib/index":88,"@barchart/common-js/lang/Enum":29,"@barchart/events-api-common/lib/data/CustomerType":79,"@barchart/events-api-common/lib/data/EventType":80,"@barchart/events-api-common/lib/data/ProductType":81}],84:[function(require,module,exports){
+const EventBatcher = require('./../../../lib/engine/EventBatcher'),
+      EventGateway = require('./../../../lib/gateway/EventGateway');
+
+const CustomerType = require('@barchart/events-api-common/lib/data/CustomerType'),
+      ProductType = require('@barchart/events-api-common/lib/data/ProductType'),
+      EventType = require('@barchart/events-api-common/lib/data/EventType');
+
+const Timestamp = require('@barchart/common-js/lang/Timestamp');
+
+const Config = require('./example.config');
+
+module.exports = (() => {
+  'use strict';
+
+  const app = new Vue({
+    el: '.wrapper',
+    data: {
+      selectedCustomer: '',
+      selectedProduct: '',
+      selectedType: '',
+      inputContext: '',
+      message: '',
+      events: [],
+      auto: false,
+      eventBatcher: null,
+      eventGateway: null,
+      showAuth: true,
+      stage: 'production',
+      config: Config
+    },
+    methods: {
+      connect() {
+        return EventGateway.for(this.stage).then(gateway => {
+          this.eventGateway = gateway;
+          this.eventBatcher = new EventBatcher(gateway, callback.bind(this));
+          this.showAuth = false;
+        });
+      },
+
+      disconnect() {
+        this.clear();
+        this.eventGateway = null;
+        this.eventBatcher = null;
+        this.showAuth = true;
+      },
+
+      generate() {
+        if (!validateFields.call(this)) {
+          this.message = 'Fill all fields';
+          return;
+        }
+
+        const event = {
+          customer: CustomerType.parse(this.selectedCustomer),
+          product: ProductType.parse(this.selectedProduct),
+          type: EventType.parse(this.selectedType),
+          timestamp: Timestamp.now(),
+          context: this.inputContext.replace(' ', '').split(',')
+        };
+        this.events.push(event);
+
+        if (this.auto) {
+          this.eventBatcher.push(event);
+        }
+      },
+
+      send() {
+        if (!validateFields.call(this)) {
+          this.message = 'Fill all fields';
+          return;
+        }
+
+        if (this.events.length === 0) {
+          this.message = 'Event stack is empty';
+          return;
+        }
+
+        this.message = 'Sending...';
+        this.eventGateway.createEvents(this.events).then(response => {
+          clear.call(this);
+          this.message = response;
+        }).catch(err => {
+          clear.call(this);
+          this.message = err;
+        });
+      },
+
+      clear() {
+        clear.call(this);
+      },
+
+      switchMode() {
+        if (this.auto) {
+          this.events.forEach(event => this.eventBatcher.push(event));
+          this.eventBatcher.start();
+          this.message = 'Auto mode enabled';
+        } else {
+          this.eventBatcher.stop();
+          this.eventBatcher.clear();
+          this.message = 'Auto mode disabled';
+        }
+      }
+
+    }
+  });
+
+  function callback(response) {
+    clear.call(this);
+    this.message = response;
+  }
+
+  function clear() {
+    this.events = [];
+    this.message = '';
+  }
+
+  function validateFields() {
+    if (!this.selectedCustomer || !this.selectedProduct || !this.selectedType || !this.inputContext) {
+      return false;
+    }
+
+    return true;
+  }
+})();
+
+},{"./../../../lib/engine/EventBatcher":86,"./../../../lib/gateway/EventGateway":87,"./example.config":83,"@barchart/common-js/lang/Timestamp":31,"@barchart/events-api-common/lib/data/CustomerType":79,"@barchart/events-api-common/lib/data/EventType":80,"@barchart/events-api-common/lib/data/ProductType":81}],85:[function(require,module,exports){
+module.exports = (() => {
+  'use strict';
+  /**
+   * Static configuration data.
+   *
+   * @public
+   * @ignore
+   */
+
+  class Configuration {
+    constructor() {}
+    /**
+     * The host of the development system.
+     *
+     * @public
+     * @static
+     * @returns {String}
+     */
+
+
+    static get developmentHost() {
+      return 'events-stage.aws.barchart.com';
+    }
+    /**
+     * The host of the staging system.
+     *
+     * @public
+     * @static
+     * @returns {String}
+     */
+
+
+    static get stagingHost() {
+      return 'events-stage.aws.barchart.com';
+    }
+    /**
+     * The host of the production system.
+     *
+     * @public
+     * @static
+     * @returns {String}
+     */
+
+
+    static get productionHost() {
+      return 'events.aws.barchart.com';
+    }
+
+    toString() {
+      return '[Configuration]';
+    }
+
+  }
+
+  return Configuration;
+})();
+
+},{}],86:[function(require,module,exports){
+const assert = require('@barchart/common-js/lang/assert'),
+      Scheduler = require('@barchart/common-js/timing/Scheduler');
+
+const EventGateway = require('../gateway/EventGateway');
+
+module.exports = (() => {
+  'use strict';
+  /**
+   * A utility which buffers {@link Schema.Event} objects and periodically
+   * transmits them to backend in batches.
+   *
+   * @public
+   * @exported
+   * @param {EventGateway}
+   * @param {Function=} callback
+   */
+
+  class EventBatcher {
+    constructor(eventGateway, callback) {
+      assert.argumentIsRequired(eventGateway, 'eventGateway', EventGateway, 'EventGateway');
+      assert.argumentIsOptional(callback, 'callback', Function, 'Function');
+      this._eventGateway = eventGateway;
+      this._callback = callback;
+      this._scheduler = new Scheduler();
+      this._buffer = [];
+      this._running = false;
+    }
+    /**
+     * Begins queue processing. Items in the buffer will begin to be transmitted
+     * to the remote service.
+     *
+     * @public
+     */
+
+
+    start() {
+      if (this._running) {
+        return;
+      }
+
+      this._scheduler = new Scheduler();
+      this._running = true;
+      processBuffer.call(this);
+    }
+    /**
+     * Stops the queue processing. Items in the buffer accumulate without being
+     * transmitted to the remote service.
+     * 
+     * @public
+     */
+
+
+    stop() {
+      this._running = false;
+
+      if (this._scheduler !== null) {
+        this._scheduler.dispose();
+
+        this._scheduler = null;
+      }
+    }
+    /**
+     * Clears the internal buffer.
+     *
+     * @public
+     */
+
+
+    clear() {
+      this._buffer = [];
+    }
+    /**
+     * Adds a new event to the buffer.
+     *
+     * @public
+     * @param {Schema.Event} event
+     */
+
+
+    push(event) {
+      this._buffer.push(event);
+    }
+
+    toString() {
+      return '[EventBatcher]';
+    }
+
+  }
+
+  function processBuffer() {
+    if (!this._running) {
+      return;
+    }
+
+    if (this._buffer.length === 0) {
+      return this._scheduler.schedule(processBuffer.bind(this), 5000, 'processBuffer');
+    }
+
+    const batch = this._buffer;
+    this._buffer = [];
+    return this._eventGateway.createEvents(batch).then(response => {
+      if (this._callback) {
+        this._callback(response);
+      }
+
+      return response;
+    }).catch(e => {
+      console.error('Failed to transmit events to Barchart Usage Tracking Service', e);
+      return null;
+    }).then(() => {
+      if (this._running) {
+        this._scheduler.schedule(processBuffer.bind(this), 5000, 'processBuffer');
+      }
+    });
+  }
+
+  return EventBatcher;
+})();
+
+},{"../gateway/EventGateway":87,"@barchart/common-js/lang/assert":33,"@barchart/common-js/timing/Scheduler":45}],87:[function(require,module,exports){
+const assert = require('@barchart/common-js/lang/assert'),
+      Disposable = require('@barchart/common-js/lang/Disposable'),
+      Enum = require('@barchart/common-js/lang/Enum');
+
+const EndpointBuilder = require('@barchart/common-js/api/http/builders/EndpointBuilder'),
+      ErrorInterceptor = require('@barchart/common-js/api/http/interceptors/ErrorInterceptor'),
+      Gateway = require('@barchart/common-js/api/http/Gateway'),
+      FailureReason = require('@barchart/common-js/api/failures/FailureReason'),
+      ProtocolType = require('@barchart/common-js/api/http/definitions/ProtocolType'),
+      RequestInterceptor = require('@barchart/common-js/api/http/interceptors/RequestInterceptor'),
+      ResponseInterceptor = require('@barchart/common-js/api/http/interceptors/ResponseInterceptor'),
+      VerbType = require('@barchart/common-js/api/http/definitions/VerbType');
+
+const EventSchema = require('@barchart/events-api-common/lib/data/serialization/EventSchema');
+
+const Configuration = require('../common/Configuration');
+
+module.exports = (() => {
+  'use strict';
+  /**
+   * A **central component of the SDK** which is responsible for sending events (i.e. usage
+   * statistics to the backend).
+   *
+   * @public
+   * @exported
+   * @extends {Disposable}
+   * @param {String} protocol - The protocol to use (either HTTP or HTTPS).
+   * @param {String} host - The host name of the Events web service.
+   * @param {Number} port - The TCP port number of the Events web service.
+   */
+
+  class EventGateway extends Disposable {
+    constructor(protocol, host, port) {
+      super();
+      this._started = false;
+      this._startPromise = null;
+      const protocolType = Enum.fromCode(ProtocolType, protocol.toUpperCase());
+      this._createEventEndpoint = EndpointBuilder.for('create-events', 'create events').withVerb(VerbType.POST).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
+        pb.withLiteralParameter('events', 'events');
+      }).withBody('events').withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withRequestInterceptor(RequestInterceptor.fromDelegate(createEventRequestInterceptor)).withResponseInterceptor(responseInterceptorForEventDeserialization).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
+    }
+    /**
+     * Initializes the connection to the remote server and returns a promise
+     * containing the current instance.
+     *
+     * @public
+     * @returns {Promise<EventGateway>}
+     */
+
+
+    start() {
+      return Promise.resolve().then(() => {
+        if (this._startPromise === null) {
+          this._startPromise = Promise.resolve().then(() => {
+            this._started = true;
+            return this;
+          }).catch(e => {
+            this._startPromise = null;
+            throw e;
+          });
+        }
+
+        return this._startPromise;
+      });
+    }
+    /**
+     * Saves one (or many) events.
+     *
+     * @public
+     * @param {Schema.Event[]} events
+     * @returns {Promise<Schema.Event[]>}
+     */
+
+
+    createEvents(events) {
+      return Promise.resolve().then(() => {
+        checkStart.call(this);
+        assert.argumentIsArray(events, 'events');
+        return Gateway.invoke(this._createEventEndpoint, {
+          events: events.map(event => EventSchema.CLIENT.schema.format(event))
+        });
+      });
+    }
+    /**
+     * Creates and starts a new {@link EventGateway} for an environment.
+     *
+     * @public
+     * @param {String} stage
+     * @returns {Promise<EventGateway>|Promise<null>}
+     */
+
+
+    static for(stage) {
+      let gatewayPromise;
+
+      if (stage === 'staging') {
+        gatewayPromise = EventGateway.forStaging();
+      } else if (stage === 'production') {
+        gatewayPromise = EventGateway.forProduction();
+      } else {
+        gatewayPromise = Promise.resolve(null);
+      }
+
+      return gatewayPromise;
+    }
+    /**
+     * Creates and starts a new {@link EventGateway} for the development environment.
+     *
+     * @public
+     * @static
+     * @returns {Promise<EventGateway>}
+     */
+
+
+    static forDevelopment() {
+      return Promise.resolve().then(() => {
+        return start(new EventGateway('https', Configuration.developmentHost, 443));
+      });
+    }
+    /**
+     * Creates and starts a new {@link EventGateway} for the staging environment.
+     *
+     * @public
+     * @static
+     * @returns {Promise<EventGateway>}
+     */
+
+
+    static forStaging() {
+      return Promise.resolve().then(() => {
+        return start(new EventGateway('https', Configuration.stagingHost, 443));
+      });
+    }
+    /**
+     * Creates and starts a new {@link EventGateway} for the production environment.
+     *
+     * @public
+     * @static
+     * @returns {Promise<EventGateway>}
+     */
+
+
+    static forProduction() {
+      return Promise.resolve().then(() => {
+        return start(new EventGateway('https', Configuration.productionHost, 443));
+      });
+    }
+
+    toString() {
+      return '[EventGateway]';
+    }
+
+  }
+
+  function start(gateway) {
+    return gateway.start().then(() => {
+      return gateway;
+    });
+  }
+
+  const createEventRequestInterceptor = request => {
+    return Promise.all(request.data.events.map(event => FailureReason.validateSchema(EventSchema.CLIENT, event))).then(() => {
+      return Promise.resolve(request);
+    }).catch(e => {
+      console.error('Error serializing data for event creation (using EventSchema.CLIENT schema)', e);
+      return Promise.reject();
+    });
+  };
+
+  const responseInterceptorForEventDeserialization = ResponseInterceptor.fromDelegate((response, ignored) => {
+    return JSON.parse(response.data);
+  });
+
+  function checkStart() {
+    if (this.getIsDisposed()) {
+      throw new Error('Unable to use gateway, the gateway has been disposed.');
+    }
+
+    if (!this._started) {
+      throw new Error('Unable to use gateway, the gateway has not started.');
+    }
+  }
+
+  return EventGateway;
+})();
+
+},{"../common/Configuration":85,"@barchart/common-js/api/failures/FailureReason":1,"@barchart/common-js/api/http/Gateway":4,"@barchart/common-js/api/http/builders/EndpointBuilder":6,"@barchart/common-js/api/http/definitions/ProtocolType":12,"@barchart/common-js/api/http/definitions/VerbType":13,"@barchart/common-js/api/http/interceptors/ErrorInterceptor":17,"@barchart/common-js/api/http/interceptors/RequestInterceptor":18,"@barchart/common-js/api/http/interceptors/ResponseInterceptor":19,"@barchart/common-js/lang/Disposable":28,"@barchart/common-js/lang/Enum":29,"@barchart/common-js/lang/assert":33,"@barchart/events-api-common/lib/data/serialization/EventSchema":82}],88:[function(require,module,exports){
+module.exports = (() => {
+  'use strict';
+
+  return {
+    version: '3.0.0-rc.2'
+  };
+})();
+
+},{}]},{},[84]);
