@@ -3,7 +3,7 @@
 [![AWS CodeBuild](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiK2ZWQjNjVVlmMXFQOEJDUjd3SDcxRDI3QUV6NjdFNndoZDRPTjJSa040TDhOMFNpUzdyUXoxVHdha2k0RVlGMW54NjVTVHNhaHNsbzBPdVFhL0h5dFkwPSIsIml2UGFyYW1ldGVyU3BlYyI6IlVGdVpuckREUlRXSVY4LzYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)](https://github.com/barchart/events-public)
 [![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-Public services for interaction with the events system.
+Public packages for the Barchart Usage Tracking System.
 
 ### Packages
 
