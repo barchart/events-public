@@ -10,21 +10,25 @@ Public packages for the Barchart Usage Tracking System.
 * [events-client-js](./packages/sdk-js) - JavaScript SDK. Simplifies interaction with backend.
 * [events-api-common](./packages/common-js) - Shared JavaScript code, used by the SDK and backend.
 
-### Tools
+### Development
 
-* [Yarn](https://classic.yarnpkg.com/en/) and [Lerna](https://lerna.js.org/) are used for dependency management.
+If you are working on packages within this repository, please follow these procedures for release:
 
-### Publishing
+* Ensure dependencies are up-to-date.
+* Scan the code for lint.
+* Create a new file in the ```.releases``` folder and commit it.
+* Bump the software version across all ```package.json``` files and tag the repository.
+* Use the release notes and tag to create a [GitHub Release](https://github.com/barchart/events-public/releases).
+* Finally, publish the packages to NPM.
+
+In other words, execute the following:
 
 ```shell
 yarn install
+yarn run lint
 yarn run bump
 lerna publish from-package
 ```
-
-### Related Repositories
-
-* [@barchart/events-private](https://github.com/barchart/events-private) - Private packages for the usage-tracking system, including [Serverless](https://www.serverless.com/) applications.
 
 ### License
 
