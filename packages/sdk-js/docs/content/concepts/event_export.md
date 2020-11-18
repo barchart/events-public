@@ -1,4 +1,4 @@
-Events can be exported for analysis by external tools (e.g. [Tableau](https://www.tableau.com/) or [Grafana](https://grafana.com/).
+Events can be exported for analysis by external tools (e.g. [Tableau](https://www.tableau.com/) or [Grafana](https://grafana.com/)).
 
 It can take the remote service several minutes to generate an export file. So, report generation is broken into three steps:
 

@@ -1,7 +1,13 @@
 # Release Notes
 
+## 3.0.0
+**Other**
+
+* Moved library to the new repository.
+
+
 ## 2.1.0
-**New Feature**
+**New Features**
 
 * Added support for `ENTITLEMENTS` product.
 
