@@ -5,10 +5,11 @@
     "packages/**"
   ],
   "scripts": {
-    "bump": "lerna version -m 'Release. Bump version number %v' --tag-version-prefix='' --force-publish --no-granular-pathspec",
+    "release": "lerna version -m 'Release. Bump version number %v' --tag-version-prefix='' --force-publish --no-granular-pathspec",
     "clean": "lerna clean --yes && rm -rf node_modules",
     "lint": "lerna run lint --stream",
     "preversion": "git diff --exit-code"
+    "postversion": "lerna publish from-package"
   },
   "devDependencies": {
     "jshint": "^2.10.3",

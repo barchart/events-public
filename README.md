@@ -26,8 +26,7 @@ In other words, execute the following:
 ```shell
 yarn install
 yarn run lint
-yarn run bump
-lerna publish from-package
+yarn run release
 ```
 
 ### License
