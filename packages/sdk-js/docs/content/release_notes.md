@@ -1,9 +1,14 @@
 # Release Notes
 
+## 3.0.3
+**Other**
+
+* Minor updates to documentation. No functional changes. No breaking changes.
+
 ## 3.0.0
 **Other**
 
-* Moved library to the new repository.
+* Bumped major version because GitHub repository moved. No functional changes. No breaking changes.
 
 
 ## 2.1.0
