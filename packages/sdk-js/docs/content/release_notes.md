@@ -24,8 +24,8 @@
 ## 2.0.1
 **Other**
 
-* Added ```openapi.yaml``` file, defining the remote web service. Updated documentation to include [API Reference](https://barchart.github.io/events-client-js/#/content/api_reference) section.
-* Completed [Key Concepts: Event Export](https://barchart.github.io/events-client-js/#/content/concepts/event_export) section of documentation.
+* Added ```openapi.yaml``` file, defining the remote web service. Updated documentation to include [API Reference](https://docs.barchart.com/events-client-js/#/content/api_reference) section.
+* Completed [Key Concepts: Event Export](https://docs.barchart.com/events-client-js/#/content/concepts/event_export) section of documentation.
 * Updated SDK documentation for ```EventGateway``` and ```ReportGateway``` classes, adding documentation for data structures.
 * General improvements to documentation wording and format.
 
