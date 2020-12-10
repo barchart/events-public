@@ -1,5 +1,7 @@
 # @barchart/events-api-common
 
+[![NPM](https://img.shields.io/npm/v/@barchart/events-api-common)](https://www.npmjs.com/package/@barchart/events-api-common)
+
 A *public* library of shared JavaScript code used by the [Barchart Event Tracking System](https://github.com/barchart/events-private) and client SDK.
 
 ### Overview

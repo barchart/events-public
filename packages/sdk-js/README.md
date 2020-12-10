@@ -1,5 +1,7 @@
 # @barchart/events-client-js
 
+[![NPM](https://img.shields.io/npm/v/@barchart/events-client-js)](https://www.npmjs.com/package/@barchart/events-client-js)
+
 This **JavaScript SDK** connects your software to Barchart's Event Tracking System — a simple tool for collecting usage statistics.
 
 ### Documentation
