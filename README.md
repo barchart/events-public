@@ -12,7 +12,7 @@ Public packages for the _Barchart Usage Tracking System_.
 
 ### Releases
 
-If you are working on packages within this repository, use the following procedures for releasing changes:
+If you are working on packages within this repository, use the following procedure to release changes:
 
 * Ensure dependencies are up-to-date.
 * Scan the code for lint.
