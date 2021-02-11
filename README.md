@@ -10,9 +10,14 @@ Public packages for the _Barchart Usage Tracking Service_ — a simple tool for 
 * [common-js](./packages/common-js) - Shared JavaScript package, used by the SDK and backend — published to [NPM](https://www.npmjs.com/package/@barchart/events-api-common).
 * [sdk-js](./packages/sdk-js) - JavaScript SDK which simplifies interaction with the backend — published to [NPM](https://www.npmjs.com/package/@barchart/events-client-js).
 
+### Tools
+
+* [Yarn](https://classic.yarnpkg.com/en/) and [Lerna](https://lerna.js.org/) are used for dependency management.
+* [Serverless](https://serverless.com/) is used for testing and deployment.
+
 ### Release Process
 
-If you are working on packages within this repository, use the following procedure to release changes:
+Use the following procedure to release changes:
 
 * Ensure dependencies are up-to-date.
 * Scan the code for lint.
@@ -24,6 +29,7 @@ If you are working on packages within this repository, use the following procedu
 In other words, execute the following:
 
 ```shell
+yarn run clean
 yarn install
 yarn run lint
 yarn run release
