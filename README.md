@@ -3,12 +3,12 @@
 [![AWS CodeBuild](https://codebuild.us-east-1.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiK2ZWQjNjVVlmMXFQOEJDUjd3SDcxRDI3QUV6NjdFNndoZDRPTjJSa040TDhOMFNpUzdyUXoxVHdha2k0RVlGMW54NjVTVHNhaHNsbzBPdVFhL0h5dFkwPSIsIml2UGFyYW1ldGVyU3BlYyI6IlVGdVpuckREUlRXSVY4LzYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)](https://github.com/barchart/events-public)
 [![Lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 
-Public packages for the _Barchart Usage Tracking System_.
+Public packages for the _Barchart Usage Tracking Service_ — a simple tool for collecting and reporting usage statistics.
 
 ### Packages
 
-* [events-client-js](./packages/sdk-js) - JavaScript SDK. Simplifies interaction with backend.
-* [events-api-common](./packages/common-js) - Shared JavaScript code, used by the SDK and backend.
+* [common-js](./packages/common-js) - Shared JavaScript code, used by the SDK and backend.
+* [sdk-js](./packages/sdk-js) - JavaScript SDK which simplifies interaction with the backend.
 
 ### Releases
 
