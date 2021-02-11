@@ -7,8 +7,8 @@ Public packages for the _Barchart Usage Tracking Service_ — a simple tool for 
 
 ### Packages
 
-* [common-js](./packages/common-js) - Shared JavaScript package, used by the SDK and backend — published to [NPM](https://www.npmjs.com/package/@barchart/events-api-common).
-* [sdk-js](./packages/sdk-js) - JavaScript SDK which simplifies interaction with the backend — published to [NPM](https://www.npmjs.com/package/@barchart/events-client-js).
+* [common-js](./packages/common-js) - Shared JavaScript package, used by the SDK and the backend — published to [NPM](https://www.npmjs.com/package/@barchart/events-api-common).
+* [sdk-js](./packages/sdk-js) - JavaScript SDK that simplifies interaction with the backend — published to [NPM](https://www.npmjs.com/package/@barchart/events-client-js).
 
 ### Tools
 
