@@ -50,7 +50,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
-		 * @returns {EventsJobStatus}
+		 * @returns {EventJobStatus}
 		 */
 		static get RUNNING() {
 			return running;
@@ -61,7 +61,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
-		 * @returns {EventsJobStatus}
+		 * @returns {EventJobStatus}
 		 */
 		static get COMPLETE() {
 			return complete;
@@ -72,7 +72,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
-		 * @returns {EventsJobStatus}
+		 * @returns {EventJobStatus}
 		 */
 		static get TIMEOUT() {
 			return timeout;
@@ -83,14 +83,14 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
-		 * @returns {EventsJobStatus}
+		 * @returns {EventJobStatus}
 		 */
 		static get FAILED() {
 			return failed;
 		}
 
 		toString() {
-			return `[EventsJobStatus (code=${this.code})]`;
+			return `[EventJobStatus (code=${this.code})]`;
 		}
 	}
 
