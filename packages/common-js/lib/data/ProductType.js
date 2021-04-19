@@ -35,6 +35,17 @@ module.exports = (() => {
 		 * @static
 		 * @returns {ProductType}
 		 */
+		static get ALERT() {
+			return alert;
+		}
+
+		/**
+		 * The portfolio service.
+		 *
+		 * @public
+		 * @static
+		 * @returns {ProductType}
+		 */
 		static get PORTFOLIO() {
 			return portfolio;
 		}
@@ -77,6 +88,7 @@ module.exports = (() => {
 		}
 	}
 
+	const alert = new ProductType('ALERT', 'ALERT');
 	const portfolio = new ProductType('PORTFOLIO', 'PORTFOLIO');
 	const watchlist = new ProductType('WATCHLIST', 'WATCHLIST');
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
