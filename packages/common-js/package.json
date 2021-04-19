@@ -18,8 +18,8 @@
     "postversion": "lerna publish from-package"
   },
   "dependencies": {
-    "@barchart/common-js": "^3.8.0",
-    "uuid": "^3.4.0"
+    "@barchart/common-js": "^4.8.0",
+    "uuid": "^8.3.2"
   },
   "license": "MIT"
 }
