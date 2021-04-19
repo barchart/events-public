@@ -21657,6 +21657,38 @@ module.exports = (() => {
 			return Enum.fromCode(EventType, code);
 		}
 
+		static get ALERT_APPLICATION_LOADED() {
+			return alertApplicationLoaded;
+		}
+
+		static get ALERT_CREATED() {
+			return alertCreated;
+		}
+
+		static get ALERT_STARTED() {
+			return alertStarted;
+		}
+
+		static get ALERT_STARTED_ALL() {
+			return alertStartedAll;
+		}
+
+		static get ALERT_STOPPED() {
+			return alertStopped;
+		}
+
+		static get ALERT_STOPPED_ALL() {
+			return alertStoppedAll;
+		}
+
+		static get ALERT_NOTES_EDITED() {
+			return alertNotesEdited;
+		}
+
+		static get ALERT_DELETED() {
+			return alertDeleted;
+		}
+
 		static get WATCHLIST_APPLICATION_LOADED() {
 			return watchlistApplicationLoaded;
 		}
@@ -21837,6 +21869,10 @@ module.exports = (() => {
 			return cmdtyViewLogout;
 		}
 
+		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
+			return entitlementsAuthorizationFailed;
+		}
+
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
@@ -21862,6 +21898,17 @@ module.exports = (() => {
 			return `[EventType (code=${this.code})]`;
 		}
 	}
+
+	// Alerts
+
+	const alertApplicationLoaded = new EventType('ALERT-APPLICATION-LOADED', 'Application Loaded', ProductType.ALERT, ['userId']);
+	const alertCreated = new EventType('ALERT-CREATED', 'Alert Created', ProductType.ALERT, ['userId', 'alertId']);
+	const alertStarted = new EventType('ALERT-STARTED', 'Alert Started', ProductType.ALERT, ['userId', 'alertId']);
+	const alertStartedAll = new EventType('ALERT-STARTED-ALL', 'Alert Started', ProductType.ALERT, ['userId']);
+	const alertStopped = new EventType('ALERT-STOPPED', 'Alert Stopped', ProductType.ALERT, ['userId', 'alertId']);
+	const alertStoppedAll = new EventType('ALERT-STOPPED-ALL', 'Alert Stopped', ProductType.ALERT, ['userId']);
+	const alertNotesEdited = new EventType('ALERT-NOTES-EDITED', 'Alert Notes Edited', ProductType.ALERT, ['userId', 'alertId']);
+	const alertDeleted = new EventType('ALERT-DELETED', 'Alert Deleted', ProductType.ALERT, ['userId', 'alertId']);
 
 	// Watchlist
 
@@ -21962,6 +22009,17 @@ module.exports = (() => {
 		 * @static
 		 * @returns {ProductType}
 		 */
+		static get ALERT() {
+			return alert;
+		}
+
+		/**
+		 * The portfolio service.
+		 *
+		 * @public
+		 * @static
+		 * @returns {ProductType}
+		 */
 		static get PORTFOLIO() {
 			return portfolio;
 		}
@@ -22004,6 +22062,7 @@ module.exports = (() => {
 		}
 	}
 
+	const alert = new ProductType('ALERT', 'ALERT');
 	const portfolio = new ProductType('PORTFOLIO', 'PORTFOLIO');
 	const watchlist = new ProductType('WATCHLIST', 'WATCHLIST');
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
@@ -22624,7 +22683,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '3.0.4'
+    version: '3.1.0'
   };
 })();
 
