@@ -8,7 +8,7 @@ Depending on your environment, you will either work with JavaScript objects or J
 
 ## Customers
 
-Each event must be associated with a known customer. Known customers are enumerated in an external library. Refer to the the [CustomerType](https://github.com/barchart/events-api-common/blob/master/lib/data/CustomerType.js) enumeration for an exact listing.
+Each event must be associated with a known customer. Known customers are enumerated in an external library. Refer to the the [CustomerType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/CustomerType.js) enumeration for an exact listing.
 
 When constructing a JavaScript object use an enumeration item for the ```customer``` property, as follows:
 
@@ -27,7 +27,7 @@ When constructing a JSON string, use the enumeration item's code, as follows:
 
 ## Products
 
-Each event must be associated with a known product. Known products are enumerated in an external library. Refer to the the [ProductType](https://github.com/barchart/events-api-common/blob/master/lib/data/ProductType.js) enumeration for an exact listing.
+Each event must be associated with a known product. Known products are enumerated in an external library. Refer to the the [ProductType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/ProductType.js) enumeration for an exact listing.
 
 When constructing a JavaScript object use an enumeration item for the ```product``` property, as follows:
 
@@ -54,7 +54,7 @@ Each event must be categorized. For example:
 * Broker Acknowledged Trade,
 * etc...
 
-Ad hoc categories are not permitted. Refer to the the [EventType](https://github.com/barchart/events-api-common/blob/master/lib/data/EventType.js) enumeration for an exact listing of categories.
+Ad hoc categories are not permitted. Refer to the the [EventType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/EventType.js) enumeration for an exact listing of categories.
 
 When constructing a JavaScript object use an enumeration item for the ```type``` property, as follows:
 

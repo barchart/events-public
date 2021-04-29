@@ -78,8 +78,8 @@ The begin a new export, provide the following filter criteria:
 
 **REQUIRED:**
 
-* The **customer** -- see the [CustomerType](https://github.com/barchart/events-api-common/blob/master/lib/data/CustomerType.js) enumeration
-* The **product** -- see the [ProductType](https://github.com/barchart/events-api-common/blob/master/lib/data/ProductType.js) enumeration
+* The **customer** -- see the [CustomerType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/CustomerType.js) enumeration
+* The **product** -- see the [ProductType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/ProductType.js) enumeration
 
 **OPTIONAL:**
 
@@ -187,7 +187,7 @@ curl 'https://events-stage.aws.barchart.com/reports/JOB-cb08e3f5-2669-46e9-93e9-
 
 ## Report Format
 
-Export files are pipe-delimited, plain text files which have "csv" file extensions. Inside the file, every row represents a discrete event. Columns used for different product types are slightly different (see the [ProductType](https://github.com/barchart/events-api-common/blob/master/lib/data/ProductType.js) enumeration).
+Export files are pipe-delimited, plain text files which have "csv" file extensions. Inside the file, every row represents a discrete event. Columns used for different product types are slightly different (see the [ProductType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/ProductType.js) enumeration).
 
 **COMMON COLUMNS:**
 
