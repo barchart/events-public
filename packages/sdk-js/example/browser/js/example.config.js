@@ -22,12 +22,14 @@ module.exports = (() => {
 		products: [
 			ProductType.PORTFOLIO,
 			ProductType.WATCHLIST,
-			ProductType.ENTITLEMENTS
+			ProductType.ENTITLEMENTS,
+			ProductType.ALERT
 		],
 		types: {
 			[ProductType.PORTFOLIO.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.PORTFOLIO),
 			[ProductType.WATCHLIST.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.WATCHLIST),
-			[ProductType.ENTITLEMENTS.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ENTITLEMENTS)
+			[ProductType.ENTITLEMENTS.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ENTITLEMENTS),
+			[ProductType.ALERT.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ALERT)
 		}
 	};
 })();
