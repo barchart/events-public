@@ -22084,11 +22084,12 @@ module.exports = (() => {
     version: version,
     stages: ['staging', 'production'],
     customers: [CustomerType.BARCHART, CustomerType.TGAM],
-    products: [ProductType.PORTFOLIO, ProductType.WATCHLIST, ProductType.ENTITLEMENTS],
+    products: [ProductType.PORTFOLIO, ProductType.WATCHLIST, ProductType.ENTITLEMENTS, ProductType.ALERT],
     types: {
       [ProductType.PORTFOLIO.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.PORTFOLIO),
       [ProductType.WATCHLIST.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.WATCHLIST),
-      [ProductType.ENTITLEMENTS.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ENTITLEMENTS)
+      [ProductType.ENTITLEMENTS.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ENTITLEMENTS),
+      [ProductType.ALERT.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ALERT)
     }
   };
 })();
@@ -22567,7 +22568,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '3.1.1'
+    version: '3.2.0'
   };
 })();
 
