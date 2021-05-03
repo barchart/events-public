@@ -17,13 +17,13 @@
     "deploy:examples": "gulp deploy-examples",
     "deploy:documentation": "gulp deploy-documentation",
     "lint": "jshint ./ --exclude 'node_modules,example/browser/example*.js,docs'",
-    "postversion": "gulp deploy-examples && gulp deploy-documentation",
+    "postversion": "lerna publish from-package && gulp deploy-examples && gulp deploy-documentation",
     "version": "gulp embed-version && gulp build",
     "watch": "gulp watch"
   },
   "dependencies": {
     "@barchart/common-js": "^4.8.0",
-    "@barchart/events-api-common": "^3.3.2"
+    "@barchart/events-api-common": "^3.3.1"
   },
   "devDependencies": {
     "@babel/core": "^7.11.6",
