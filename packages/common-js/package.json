@@ -14,8 +14,7 @@
     }
   ],
   "scripts": {
-    "lint": "jshint ./ --exclude './node_modules'",
-    "postversion": "lerna publish from-package"
+    "lint": "jshint ./ --exclude './node_modules'"
   },
   "dependencies": {
     "@barchart/common-js": "^4.8.0",
