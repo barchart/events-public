@@ -1,6 +1,6 @@
 # API Reference
 
-## Event API 1.3.0 {docsify-ignore}
+## Event API 3.3.5 {docsify-ignore}
     
 > The Barchart Event Tracking System collects usage statistics from various software systems.
 
@@ -13,7 +13,6 @@
 * [Servers](#Servers)
 * [Components](#Components)
 * [Paths](#Paths)
-* [Try Me](#tryme)
 
 ## Servers {docsify-ignore}
 
@@ -38,6 +37,7 @@
 
 * [Basic](/content/api/components?id=securityBasic)
 
+
 ## Paths {docsify-ignore}
 
 * [POST /events](/content/api/paths?id=post-events)
@@ -45,9 +45,3 @@
 * [GET /reports/{source}/availability](/content/api/paths?id=get-reportssourceavailability)
 * [GET /reports/{source}](/content/api/paths?id=get-reportssource)
 * [GET /system/version](/content/api/paths?id=get-systemversion)
-
-## Try Me :id=tryme {docsify-ignore}
-
-**Try Me** page allows anyone to interact with the API’s resources without having any of the implementation logic in place. It’s automatically generated from a OpenAPI Specification, with the visual documentation making it easy for back end implementation and client side consumption.
-
-> You can test the API by following link: [Try Me](content/api/try)

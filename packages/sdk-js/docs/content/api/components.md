@@ -1,6 +1,6 @@
 # Components
 
-## Responses 
+## Responses
 
 ### ServerError :id=responsesservererror
 > Server Error
@@ -53,7 +53,7 @@
 
 * * *
 
-## Schemas 
+## Schemas
 
 ### Event :id=schemasevent
 **Type**: <code>Object</code>
@@ -166,7 +166,7 @@
     "end": 1571115600000
   },
   "timing": {
-    "day": "2020-10-01T19:47:39.288Z",
+    "day": "2021-05-05T02:43:41.566Z",
     "start": 1571073977278,
     "end": 1571073977279
   }
@@ -175,7 +175,7 @@
 
 * * *
 
-## Security 
+## Security
 
 ### Basic :id=securitybasic
 
@@ -189,4 +189,5 @@
 | Authorization | Authorization: Basic <code>&lt;Token&gt;</code> |
 
 * * *
+
 
