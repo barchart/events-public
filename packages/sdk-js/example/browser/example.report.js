@@ -22147,7 +22147,7 @@ module.exports = (() => {
           username: this.username,
           password: this.password
         }).then(gateway => {
-          return gateway.getVersion().catch(errors => {
+          return gateway.checkAuthentication().catch(errors => {
             const valid = !errors.some(error => FailureType.fromCode(FailureType, error.value.code) === FailureType.REQUEST_AUTHORIZATION_FAILURE);
             return valid;
           }).then(valid => {
@@ -22363,9 +22363,12 @@ module.exports = (() => {
       this._getReportEndpoint = EndpointBuilder.for('get-report', 'get report').withVerb(VerbType.GET).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
         pb.withLiteralParameter('reports', 'reports').withVariableParameter('source', 'source', 'source', false);
       }).withBasicAuthentication(credentials.username, credentials.password).withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withResponseInterceptor(responseInterceptorForGetReport).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
-      this._getVersionEndpoint = EndpointBuilder.for('get-api-version', 'get API version').withVerb(VerbType.GET).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
+      this._checkAuthenticationEndpoint = EndpointBuilder.for('check-authentication', 'get user authentication').withVerb(VerbType.GET).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
+        pb.withLiteralParameter('service', 'service').withLiteralParameter('authenticate', 'authenticate');
+      }).withBasicAuthentication(credentials.username, credentials.password).withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withResponseInterceptor(responseInterceptorForCheckAuthentication).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
+      this._getVersion = EndpointBuilder.for('get-service-version', 'get service version').withVerb(VerbType.GET).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
         pb.withLiteralParameter('system', 'system').withLiteralParameter('version', 'version');
-      }).withBasicAuthentication(credentials.username, credentials.password).withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withResponseInterceptor(responseInterceptorForGetVersion).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
+      }).withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withResponseInterceptor(responseInterceptorForGetVersion).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
     }
     /**
      * Initializes the connection to the remote server and returns a promise
@@ -22447,7 +22450,22 @@ module.exports = (() => {
       });
     }
     /**
-     * Returns the version of the remote service.
+     * Authenticates the current user and returns information regarding the current
+     * user and metadata regarding the remote service.
+     *
+     * @public
+     * @return {Promise<AuthenticationMetadata>}
+     */
+
+
+    checkAuthentication() {
+      return Promise.resolve().then(() => {
+        checkStart.call(this);
+        return Gateway.invoke(this._checkAuthenticationEndpoint, {});
+      });
+    }
+    /**
+     * Returns metadata regarding the remote service.
      *
      * @public
      * @return {Promise<ServiceMetadata>}
@@ -22539,6 +22557,13 @@ module.exports = (() => {
       return JSON.parse(response.data);
     } catch (e) {
       console.log('Error deserializing report', e);
+    }
+  });
+  const responseInterceptorForCheckAuthentication = ResponseInterceptor.fromDelegate(response => {
+    try {
+      return JSON.parse(response.data);
+    } catch (e) {
+      console.log('Error deserializing report authentication response', e);
     }
   });
   const responseInterceptorForGetVersion = ResponseInterceptor.fromDelegate(response => {

@@ -325,25 +325,3 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/ServerError'
-
-  /system/version:
-    get:
-      summary: Gets Version
-      description: Gets version of remote service.
-      tags:
-        - System
-      security:
-        - Basic: []
-      responses:
-        '200':
-          description: Version of the API.
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  version:
-                    type: string
-                    example: '1.3.0'
-        '401':
-          $ref: '#/components/responses/Unauthorized'

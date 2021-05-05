@@ -92,7 +92,22 @@ module.exports = (() => {
 				.withErrorInterceptor(ErrorInterceptor.GENERAL)
 				.endpoint;
 
-			this._getVersionEndpoint = EndpointBuilder.for('get-api-version', 'get API version')
+			this._checkAuthenticationEndpoint = EndpointBuilder.for('check-authentication', 'get user authentication')
+				.withVerb(VerbType.GET)
+				.withProtocol(protocolType)
+				.withHost(host)
+				.withPort(port)
+				.withPathBuilder((pb) => {
+					pb.withLiteralParameter('service', 'service')
+						.withLiteralParameter('authenticate', 'authenticate');
+				})
+				.withBasicAuthentication(credentials.username, credentials.password)
+				.withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE)
+				.withResponseInterceptor(responseInterceptorForCheckAuthentication)
+				.withErrorInterceptor(ErrorInterceptor.GENERAL)
+				.endpoint;
+
+			this._getVersion = EndpointBuilder.for('get-service-version', 'get service version')
 				.withVerb(VerbType.GET)
 				.withProtocol(protocolType)
 				.withHost(host)
@@ -101,7 +116,6 @@ module.exports = (() => {
 					pb.withLiteralParameter('system', 'system')
 						.withLiteralParameter('version', 'version');
 				})
-				.withBasicAuthentication(credentials.username, credentials.password)
 				.withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE)
 				.withResponseInterceptor(responseInterceptorForGetVersion)
 				.withErrorInterceptor(ErrorInterceptor.GENERAL)
@@ -191,7 +205,23 @@ module.exports = (() => {
 		}
 
 		/**
-		 * Returns the version of the remote service.
+		 * Authenticates the current user and returns information regarding the current
+		 * user and metadata regarding the remote service.
+		 *
+		 * @public
+		 * @return {Promise<AuthenticationMetadata>}
+		 */
+		checkAuthentication() {
+			return Promise.resolve()
+				.then(() => {
+					checkStart.call(this);
+
+					return Gateway.invoke(this._checkAuthenticationEndpoint, { });
+				});
+		}
+
+		/**
+		 * Returns metadata regarding the remote service.
 		 *
 		 * @public
 		 * @return {Promise<ServiceMetadata>}
@@ -283,6 +313,14 @@ module.exports = (() => {
 			return JSON.parse(response.data);
 		} catch (e) {
 			console.log('Error deserializing report', e);
+		}
+	});
+
+	const responseInterceptorForCheckAuthentication = ResponseInterceptor.fromDelegate((response) => {
+		try {
+			return JSON.parse(response.data);
+		} catch (e) {
+			console.log('Error deserializing report authentication response', e);
 		}
 	});
 

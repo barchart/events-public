@@ -51,7 +51,7 @@ module.exports = (() => {
 
 				return ReportGateway.for(this.stage, { username: this.username, password: this.password })
 					.then((gateway) => {
-						return gateway.getVersion()
+						return gateway.checkAuthentication()
 							.catch((errors) => {
 								const valid = !errors.some(error => FailureType.fromCode(FailureType, error.value.code) === FailureType.REQUEST_AUTHORIZATION_FAILURE);
 

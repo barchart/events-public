@@ -70,5 +70,21 @@
  * @typedef ServiceMetadata
  * @type {Object}
  * @memberOf Schema
- * @property {String} version - The version of the remote service ([semver](https://semver.org/)).
+ * @property {String} service.name - Name of the remote service.
+ * @property {String} service.description - Description of the remote service.
+ * @property {String} service.version - The version of the remote service ([semver](https://semver.org/)).
+ */
+
+/**
+ * Information regarding the authenticated user (and remote service).
+ *
+ * @typedef AuthenticationMetadata
+ * @type {Object}
+ * @memberOf Schema
+ * @property {String} service.name - Name of the remote service.
+ * @property {String} service.description - Description of the remote service.
+ * @property {String} service.version - The version of the remote service ([semver](https://semver.org/)).
+ * @property {String} user.id - The user identifier.
+ * @property {String} user.context- The user's context (i.e. customer identifier).
+ * @property {String} user.permissions - Not used.
  */
