@@ -1,0 +1,349 @@
+openapi: 3.0.0
+
+info:
+  title: Event API
+  description: The Barchart Event Tracking System collects usage statistics from various software systems.
+  version: 3.3.5
+
+servers:
+  - url: https://events-stage.aws.barchart.com
+    description: Hostname for stage environment.
+  - url: https://events.aws.barchart.com
+    description: Hostname for production environment.
+
+components:
+  securitySchemes:
+    Basic:
+      type: http
+      scheme: basic
+
+  schemas:
+    Event:
+      type: object
+      properties:
+        customer:
+          type: string
+          description: Code for customer using the software which generated the event.
+          example: BARCHART
+        product:
+          type: string
+          description: Code for software system which generated the event.
+          example: PORTFOLIO
+        type:
+          type: string
+          description: Code for event type.
+          example: PORTFOLIO-APPLICATION-LOADED
+        timestamp:
+          type: number
+          description: The time of the event's occurrence — milliseconds since epoch.
+          example: 1568381886060
+        context:
+          type: array
+          description: An array data which qualifies the event (differnt items are required based on event's type).
+          items:
+            type: string
+      required:
+        - customer
+        - product
+        - type
+        - timestamp
+        - context
+
+    EventFull:
+      type: object
+      properties:
+        customer:
+          type: string
+          description: Code for customer using the software which generated the event.
+          example: BARCHART
+        product:
+          type: string
+          description: Code for software system which generated the event.
+          example: PORTFOLIO
+        type:
+          type: string
+          description: Code for event type.
+          example: PORTFOLIO-APPLICATION-LOADED
+        timestamp:
+          type: number
+          description: The time of the event's occurrence — milliseconds since epoch.
+          example: 1568381886060
+        context:
+          type: array
+          description: An of additional data which qualifies the event's type.
+          items:
+            type: string
+        sequence:
+          type: number
+          description: The event's order within the batch. Irrelevant to most consumers.
+          example: 1
+        batch:
+          type: string
+          description: The identifier for the batch this event was inserted with. Irrelevant to most consumers.
+          format: uuid
+      required:
+        - customer
+        - product
+        - type
+        - timestamp
+        - context
+        - batch
+        - sequence
+
+    ReportFilter:
+      type: object
+      properties:
+        customer:
+          type: string
+          description: The customer code to extract events for.
+          example: BARCHART
+        product:
+          type: string
+          description: The code of the software system to extract events for.
+          example: PORTFOLIO
+        start:
+          type: string
+          description: The time of the first event to extract — milliseconds since epoch.
+          example: 1571029200000
+        end:
+          type: string
+          description: The time of the final event to extract — milliseconds since epoch.
+          example: 1571115600000
+      required:
+        - customer
+        - product
+
+    ReportStatus:
+      type: object
+      properties:
+        job:
+          type: string
+          description: Short identifier for job. Irrelevant to most consumers.
+          format: uuid
+          example: 0527e342-c92c-45ec-a3cf-fd93f87cb068
+        source:
+          type: string
+          description: Identifier for job. Used in other API calls to refer to job.
+          example: JOB-0527e342-c92c-45ec-a3cf-fd93f87cb068
+        status:
+          type: string
+          description: Current status of report generation job.
+          example: "RUNNING"
+        filter:
+          $ref: '#/components/schemas/ReportFilter'
+        timing:
+          type: object
+          properties:
+            day:
+              type: string
+              description: The day the report was started.
+              example: 2019-10-14
+            start:
+              type: number
+              description: The moment the report was started — milliseconds since epoch.
+              example: 1571073977278
+            end:
+              type: number
+              description: The moment the report was finished — milliseconds since epoch.
+              example: 1571073977279
+      required: 
+        - job
+        - filter
+        - source
+        - status
+        - timing
+
+  responses:
+    ServerError:
+      description: Server Error
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: object
+              properties:
+                value:
+                  type: object
+                  properties:
+                    code:
+                      type: string
+                      description: An error code.
+                      example: REQUEST_GENERAL_FAILURE
+                    message:
+                      type: string
+                      description: An error message.
+                      example: An attempt to accept new events failed for unspecified reason(s).
+                children:
+                  type: array
+                  example: [ ]
+                  items: { }
+              required:
+                - children
+                - value
+    Unauthorized:
+      description: Authorization failure.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              message:
+                type: string
+                description: An error message.
+                example: Unauthorized
+            required:
+              - message
+
+tags:
+  - name: Events
+  - name: Reports
+  - name: System
+
+paths:
+  /events:
+    post:
+      summary: Create Events
+      description: Accepts and saves new events.
+      tags:
+        - Events
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                events:
+                  type: array
+                  description: An array of Events.
+                  items:
+                    $ref: "#/components/schemas/Event"
+            
+      responses:
+        '200':
+          description: The array of newly created events.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/EventFull'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /reports:
+    post:
+      summary: Start New Report
+      description: Notifies the system to begin generation of a new export file. This processing happens asynchronously. In other words, once you make the request, report processing will begin. You will receive an immediate response with the job identifier. You will need to check back periodically to determine if the job has completed.
+      tags:
+        - Reports
+      security:
+        - Basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                filter:
+                  $ref: '#/components/schemas/ReportFilter'
+      responses:
+        '200':
+          description: A JSON object of the job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /reports/{source}/availability:
+    get:
+      summary: Check Report Progress
+      description: Once you have started an export, you will need to check its status (before attempting a download).
+      tags:
+        - Reports
+      security:
+        - Basic: []
+      parameters:
+        - name: source
+          in: path
+          description: The identifier of the export job (see source property of ReportStatus).
+          required: true
+          schema:
+            type: string
+            example: JOB-0527e342-c92c-45ec-a3cf-fd93f87cb068
+      responses:
+        '200':
+          description: Job object.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReportStatus'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /reports/{source}:
+    get:
+      summary: Get Report Download Link.
+      description: Gets a temporary link which can be used to download the report.
+      tags:
+        - Reports
+      security:
+        - Basic: []
+      parameters:
+        - name: source
+          in: path
+          description: The identifier of the export job (see source property of ReportStatus).
+          required: true
+          schema:
+            type: string
+            example: JOB-0527e342-c92c-45ec-a3cf-fd93f87cb068
+        - name: Accept
+          in: header
+          description: The Accept request-header field can be used to specify certain media types which are acceptable for the response.
+          schema:
+            type: string
+            example: application/json
+      responses:
+        '200':
+          description: Link to the report.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  link:
+                    type: string
+                    description: A link which can be used to used to download the report (good for 15 minutes only).
+                    example: https://.../file.csv
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '500':
+          $ref: '#/components/responses/ServerError'
+
+  /system/version:
+    get:
+      summary: Gets Version
+      description: Gets version of remote service.
+      tags:
+        - System
+      security:
+        - Basic: []
+      responses:
+        '200':
+          description: Version of the API.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  version:
+                    type: string
+                    example: '1.3.0'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
