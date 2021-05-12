@@ -128,7 +128,7 @@ components:
         status:
           type: string
           description: Current status of report generation job.
-          example: "RUNNING"
+          example: 'RUNNING'
         filter:
           $ref: '#/components/schemas/ReportFilter'
         timing:
@@ -152,6 +152,32 @@ components:
         - source
         - status
         - timing
+          
+    Service:
+      type: object
+      properties:
+        service:
+          type: object
+          properties:
+            version:
+              type: string
+              description: The version of the service.
+              example: 2.0.0
+            name:
+              type: string
+              description: The name of the service.
+              example: '@barchart/events-private-main'
+            description:
+              type: string
+              example: 'System for collecting and reporting usage statistics'
+            environment:
+              type: string
+              description: The environment of the service.
+              example: 'prod'
+          required: 
+            - version
+            - name
+            - description
 
   responses:
     ServerError:
@@ -199,6 +225,7 @@ tags:
   - name: Events
   - name: Reports
   - name: System
+  - name: Service
 
 paths:
   /events:
@@ -217,7 +244,7 @@ paths:
                   type: array
                   description: An array of Events.
                   items:
-                    $ref: "#/components/schemas/Event"
+                    $ref: '#/components/schemas/Event'
             
       responses:
         '200':
@@ -325,3 +352,52 @@ paths:
           $ref: '#/components/responses/Unauthorized'
         '500':
           $ref: '#/components/responses/ServerError'
+          
+  /service/version:
+    get:
+      summary: Get Service Version
+      description: Gets service version and descrioption.
+      tags:
+        - Service
+      responses:
+        '200':
+          description: A JSON object represents version of the service.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Service'
+                
+  /service/authenticate:
+    get:
+      summary: Get service version and user
+      description: Gets service version and user.
+      tags:
+        - Service
+      security:
+        - Basic: [ ]
+      responses:
+        '200':
+          description: A JSON object represents version of the service and user.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: 
+                  service: 
+                    $ref: '#/components/schemas/Service'
+                  user: 
+                    type: object
+                    properties: 
+                      id:
+                        type: string
+                        description: The user's unique identifier.
+                        example: 01234567
+                      context:
+                        type: string
+                        description: The user's context
+                        example: 'barchart.com'
+                      permissions:
+                        type: string
+                        description: The user's permissions.
+                        nullable: true
+                    
