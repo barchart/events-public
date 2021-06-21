@@ -7,9 +7,9 @@ info:
 
 servers:
   - url: https://events-stage.aws.barchart.com
-    description: Hostname for stage environment.
+    description: Hostname for the staging (test) environment.
   - url: https://events.aws.barchart.com
-    description: Hostname for production environment.
+    description: Hostname for the production environment.
 
 components:
   securitySchemes:

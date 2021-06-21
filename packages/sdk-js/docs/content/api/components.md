@@ -166,9 +166,35 @@
     "end": 1571115600000
   },
   "timing": {
-    "day": "2021-05-05T14:31:55.235Z",
+    "day": "2021-06-21T18:16:49.084Z",
     "start": 1571073977278,
     "end": 1571073977279
+  }
+}
+```
+
+* * *
+
+### Service :id=schemasservice
+**Type**: <code>Object</code>
+    
+| Name | Type | Required | Nullable | Description |
+| ---- | ---- | -------- | -------- | ----------- |
+| service | <code>Object</code> |  | false |  |
+| service.version | <code>String</code> | true | false | The version of the service. |
+| service.name | <code>String</code> | true | false | The name of the service. |
+| service.description | <code>String</code> | true | false |  |
+| service.environment | <code>String</code> | false | false | The environment of the service. |
+
+**Example**:
+
+```json
+{
+  "service": {
+    "version": "2.0.0",
+    "name": "@barchart/events-private-main",
+    "description": "System for collecting and reporting usage statistics",
+    "environment": "prod"
   }
 }
 ```

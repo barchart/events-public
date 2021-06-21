@@ -1,6 +1,6 @@
 # API Reference
 
-## Event API 3.3.6 {docsify-ignore}
+## Event API 4.0.0 {docsify-ignore}
     
 > The Barchart Event Tracking System collects usage statistics from various software systems.
 
@@ -16,8 +16,8 @@
 
 ## Servers {docsify-ignore}
 
-* [https://events-stage.aws.barchart.com](https://events-stage.aws.barchart.com)  - Hostname for stage environment.
-* [https://events.aws.barchart.com](https://events.aws.barchart.com)  - Hostname for production environment.
+* [https://events-stage.aws.barchart.com](https://events-stage.aws.barchart.com)  - Hostname for the staging (test) environment.
+* [https://events.aws.barchart.com](https://events.aws.barchart.com)  - Hostname for the production environment.
 
 ## Components {docsify-ignore}
 
@@ -32,6 +32,7 @@
 * [EventFull](/content/api/components?id=schemasEventFull)
 * [ReportFilter](/content/api/components?id=schemasReportFilter)
 * [ReportStatus](/content/api/components?id=schemasReportStatus)
+* [Service](/content/api/components?id=schemasService)
 
 ### Security 
 
@@ -44,4 +45,5 @@
 * [POST /reports](/content/api/paths?id=post-reports)
 * [GET /reports/{source}/availability](/content/api/paths?id=get-reportssourceavailability)
 * [GET /reports/{source}](/content/api/paths?id=get-reportssource)
-* [GET /system/version](/content/api/paths?id=get-systemversion)
+* [GET /service/version](/content/api/paths?id=get-serviceversion)
+* [GET /service/authenticate](/content/api/paths?id=get-serviceauthenticate)

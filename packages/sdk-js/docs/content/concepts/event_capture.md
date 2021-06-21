@@ -1,8 +1,15 @@
 As events occur, they are transmitted to the backend.
 
+## Environments
+
+Two environments exist. Here are the hostnames:
+
+* **staging** — used for testing purposes @ events-stage.aws.barchart.com
+* **production** — used to store "real" data @ events.aws.barchart.com
+
 ## Event Gateway
 
-If you are using the SDK, the ```EventGateway``` class handles communication with the remote service on your behalf, obtain an instance as follows:
+If you are using the SDK, the ```EventGateway``` class handles communication with the remote service on your behalf. Connect to the appropriate environment, as follows:
 
 ```js
 const EventGateway = require('@barchart/events-client-js/lib/gateway/EventGateway');

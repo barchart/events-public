@@ -126,6 +126,7 @@
         * [.startReport(filter)](#ReportGatewaystartReport) ⇒ [<code>Promise.&lt;Schema.ReportStatus&gt;</code>](/content/sdk/lib-data?id=schemareportstatus)
         * [.getReportAvailability(source)](#ReportGatewaygetReportAvailability) ⇒ [<code>Promise.&lt;Schema.ReportStatus&gt;</code>](/content/sdk/lib-data?id=schemareportstatus)
         * [.getReport(source)](#ReportGatewaygetReport) ⇒ <code>Promise.&lt;ReportDownloadLink&gt;</code>
+        * [.checkAuthentication()](#ReportGatewaycheckAuthentication) ⇒ <code>Promise.&lt;AuthenticationMetadata&gt;</code>
         * [.getVersion()](#ReportGatewaygetVersion) ⇒ <code>Promise.&lt;ServiceMetadata&gt;</code>
     * _static_
         * [.for(stage, credentials)](#ReportGatewayfor) ⇒ <code>Promise.&lt;(ReportGateway\|null)&gt;</code>
@@ -190,8 +191,18 @@
 
 * * *
 
+### reportGateway.checkAuthentication() :id=reportgatewaycheckauthentication
+> Authenticates the current user and returns information regarding the current
+> user and metadata regarding the remote service.
+
+**Kind**: instance method of [<code>ReportGateway</code>](#ReportGateway)  
+**Returns**: <code>Promise.&lt;AuthenticationMetadata&gt;</code>  
+**Access**: public  
+
+* * *
+
 ### reportGateway.getVersion() :id=reportgatewaygetversion
-> Returns the version of the remote service.
+> Returns metadata regarding the remote service.
 
 **Kind**: instance method of [<code>ReportGateway</code>](#ReportGateway)  
 **Returns**: <code>Promise.&lt;ServiceMetadata&gt;</code>  

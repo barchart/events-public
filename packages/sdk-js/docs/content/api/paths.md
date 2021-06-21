@@ -187,11 +187,29 @@
 
 * * *
 
-## GET /system/version 
+## GET /service/version 
 
-> Gets version of remote service.
+> Gets service version and descrioption.
 
-**Summary**: Gets Version
+**Summary**: Get Service Version
+
+#### Responses
+
+**Status Code**: 200
+
+> A JSON object represents version of the service.
+
+**Content Type**: <code>application/json</code>
+
+**Response Type:** [<code>Array&lt;Service&gt;</code>](/content/api/components?id=schemasService)
+
+* * *
+
+## GET /service/authenticate 
+
+> Gets service version and user.
+
+**Summary**: Get service version and user
 
 **Security**: 
 [Basic](/content/api/components?id=securityBasic)
@@ -199,7 +217,7 @@
 
 **Status Code**: 200
 
-> Version of the API.
+> A JSON object represents version of the service and user.
 
 **Content Type**: <code>application/json</code>
 
@@ -207,19 +225,31 @@
     
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
-| version | <code>String</code> | false | false |  |
+| service | [<code>Service</code>](/content/api/components?id=schemasService) |  | false |  |
+| user | <code>Object</code> |  | false |  |
+| user.id | <code>String</code> | false | false | The user's unique identifier. |
+| user.context | <code>String</code> | false | false | The user's context |
+| user.permissions | <code>String</code> | false | true | The user's permissions. |
 
 **Example**:
 
 ```json
 {
-  "version": "1.3.0"
+  "service": {
+    "service": {
+      "version": "2.0.0",
+      "name": "@barchart/events-private-main",
+      "description": "System for collecting and reporting usage statistics",
+      "environment": "prod"
+    }
+  },
+  "user": {
+    "id": 1234567,
+    "context": "barchart.com",
+    "permissions": "string"
+  }
 }
 ```
-
-* * *
-
-**Status Code**: 401 - [Unauthorized](/content/api/components?id=responsesunauthorized)
 
 * * *
 

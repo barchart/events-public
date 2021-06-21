@@ -11,6 +11,7 @@
         * [.ReportStatus](#SchemaReportStatus) : <code>Object</code>
         * [.ReportDownloadLink](#SchemaReportDownloadLink) : <code>Object</code>
         * [.ServiceMetadata](#SchemaServiceMetadata) : <code>Object</code>
+        * [.AuthenticationMetadata](#SchemaAuthenticationMetadata) : <code>Object</code>
 
 
 * * *
@@ -103,7 +104,27 @@
 
 | Name | Type | Description |
 | --- | --- | --- |
-| version | <code>String</code> | <p>The version of the remote service (<a href="https://semver.org/">semver</a>).</p> |
+| service.name | <code>String</code> | <p>Name of the remote service.</p> |
+| service.description | <code>String</code> | <p>Description of the remote service.</p> |
+| service.version | <code>String</code> | <p>The version of the remote service (<a href="https://semver.org/">semver</a>).</p> |
+
+
+* * *
+
+### Schema.AuthenticationMetadata :id=schemaauthenticationmetadata
+> Information regarding the authenticated user (and remote service).
+
+**Kind**: static typedef of [<code>Schema</code>](#Schema)  
+**Properties**
+
+| Name | Type | Description |
+| --- | --- | --- |
+| service.name | <code>String</code> | <p>Name of the remote service.</p> |
+| service.description | <code>String</code> | <p>Description of the remote service.</p> |
+| service.version | <code>String</code> | <p>The version of the remote service (<a href="https://semver.org/">semver</a>).</p> |
+| user.id | <code>String</code> | <p>The user identifier.</p> |
+| user.context- | <code>String</code> | <p>The user's context (i.e. customer identifier).</p> |
+| user.permissions | <code>String</code> | <p>Not used.</p> |
 
 
 * * *

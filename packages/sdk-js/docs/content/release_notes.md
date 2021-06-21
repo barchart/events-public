@@ -1,5 +1,35 @@
 # Release Notes
 
+## 4.0.1
+**Other**
+
+* Minor updates to documentation. No functional changes. No breaking changes.
+
+## 4.0.0
+**Breaking Changes**
+
+* Adapted the `ReportGateway` to comply with a new major version of the remote API. While classified as a "breaking change," this update should be transparent to the consumer.
+
+## 3.3.1
+**Bug Fixes**
+
+* Removed `alertId` attribute from `EventType.ALERT_DELETED_ALL` definition.
+
+## 3.1.1
+**Technical Enhancements**
+
+* Upgraded the [@barchart/common-js](https://github.com/barchart/common-js) library to the next major version.
+
+## 3.1.0
+**New Features**
+
+* Added new `ProductType` for the Barchart Alerting Service.
+* Added several `EventType` items for the Barchart Alerting Service.
+
+**Bug Fixes**
+
+* Added new second enumeration item to correct for misspelling of `ENTITLEMWENTS_AUTHORIZATION_FAILED` item.
+
 ## 3.0.3
 **Other**
 

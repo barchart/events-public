@@ -48,6 +48,13 @@ YnJ5YW46Z3JlZW4tZWdncy1hbmQtc3BhbQ==
 Authorization: Basic YnJ5YW46Z3JlZW4tZWdncy1hbmQtc3BhbQ==
 ```
 
+## Environments
+
+Two environments exist. Here are the hostnames:
+
+* **staging** — used for testing purposes @ events-stage.aws.barchart.com
+* **production** — used to query "real" data @ events.aws.barchart.com
+
 ## Report Gateway
 
 If you are using the SDK, the ```ReportGateway``` class handles communication with the remote service on your behalf, obtain an instance as follows:
@@ -74,7 +81,7 @@ ReportGateway.forProduction({ username: 'my-username', password: 'my-password' }
 
 ## Report Start
 
-The begin a new export, provide the following filter criteria:
+To begin a new export, provide the following filter criteria:
 
 **REQUIRED:**
 
@@ -185,6 +192,8 @@ curl 'https://events-stage.aws.barchart.com/reports/JOB-cb08e3f5-2669-46e9-93e9-
   -H 'authorization: Basic YnJ5YW46Z3JlZW4tZWdncy1hbmQtc3BhbQ=='
 ```
 
+The result of this request will be a JSON document, containing a link to the actual file. This link will only be valid for 15 minutes. After 15 minutes elapses, you'll need to retrieve a new link (by calling the "report download" endpoint again).
+
 ## Report Format
 
 Export files are pipe-delimited, plain text files which have "csv" file extensions. Inside the file, every row represents a discrete event. Columns used for different product types are slightly different (see the [ProductType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/ProductType.js) enumeration).
@@ -214,4 +223,10 @@ Export files are pipe-delimited, plain text files which have "csv" file extensio
 * [8] showClosedPositions - Indicates the state of "show closed positions" checkbox related to the event.
 * [9] dividendStrategy - Indicates "dividend strategy" associated with the event.
 * [10] cashAdjustmentStrategy - Indicates "cash adjustment" strategy associated with the event.
+
+**ALERTING COLUMNS:**
+
+* [3] userId - The identifier of the user who triggered the event.
+* [4] alertId - The identifier of alert which was affected by the event.
+
 
