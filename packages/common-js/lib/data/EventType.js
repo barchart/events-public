@@ -8,7 +8,6 @@ const uuid = require('uuid');
 const CustomerType = require('./CustomerType'),
 	ProductType = require('./ProductType');
 
-
 module.exports = (() => {
 	'use strict';
 
