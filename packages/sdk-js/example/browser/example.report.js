@@ -21811,15 +21811,15 @@ module.exports = (() => {
 
 	// Alerts
 
-	const alertApplicationLoaded = new EventType('ALERT-APPLICATION-LOADED', 'Application Loaded', ProductType.ALERT, ['userId']);
-	const alertCreated = new EventType('ALERT-CREATED', 'Alert Created', ProductType.ALERT, ['userId', 'alertId']);
-	const alertStarted = new EventType('ALERT-STARTED', 'Alert Started', ProductType.ALERT, ['userId', 'alertId']);
-	const alertStartedAll = new EventType('ALERT-STARTED-ALL', 'Alert Started', ProductType.ALERT, ['userId']);
-	const alertStopped = new EventType('ALERT-STOPPED', 'Alert Stopped', ProductType.ALERT, ['userId', 'alertId']);
-	const alertStoppedAll = new EventType('ALERT-STOPPED-ALL', 'Alert Stopped', ProductType.ALERT, ['userId']);
-	const alertNotesEdited = new EventType('ALERT-NOTES-EDITED', 'Alert Notes Edited', ProductType.ALERT, ['userId', 'alertId']);
-	const alertDeleted = new EventType('ALERT-DELETED', 'Alert Deleted', ProductType.ALERT, ['userId', 'alertId']);
-	const alertDeletedAll = new EventType('ALERT-DELETED-ALL', 'Alert Deleted', ProductType.ALERT, ['userId']);
+	const alertApplicationLoaded = new EventType('ALERT-APPLICATION-LOADED', 'Application Loaded', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
+	const alertCreated = new EventType('ALERT-CREATED', 'Alert Created', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
+	const alertStarted = new EventType('ALERT-STARTED', 'Alert Started', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
+	const alertStartedAll = new EventType('ALERT-STARTED-ALL', 'Alert Started', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
+	const alertStopped = new EventType('ALERT-STOPPED', 'Alert Stopped', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
+	const alertStoppedAll = new EventType('ALERT-STOPPED-ALL', 'Alert Stopped', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
+	const alertNotesEdited = new EventType('ALERT-NOTES-EDITED', 'Alert Notes Edited', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
+	const alertDeleted = new EventType('ALERT-DELETED', 'Alert Deleted', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
+	const alertDeletedAll = new EventType('ALERT-DELETED-ALL', 'Alert Deleted', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
 
 	// Watchlist
 
@@ -23456,7 +23456,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '4.1.1'
+    version: '4.1.2'
   };
 })();
 
