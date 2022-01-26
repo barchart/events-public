@@ -8,4 +8,4 @@ example
 node_modules
 
 gulpfile.js
-openapi.yml
+openapi.yaml
