@@ -1,7 +1,11 @@
 .awspublish-barchart-examples
 .awspublish-docs.barchart.com
 
+.DS_Store
+
 docs
 example
+node_modules
 
 gulpfile.js
+openapi.yml
