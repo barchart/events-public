@@ -83,6 +83,17 @@ module.exports = (() => {
 			return entitlements;
 		}
 
+		/**
+		 * The cmdty Marketplace platform.
+		 *
+		 * @public
+		 * @static
+		 * @returns {ProductType}
+		 */
+		static get MARKETPLACE() {
+			return marketplace;
+		}
+
 		toString() {
 			return `[ProductType (code=${this.code})]`;
 		}
@@ -93,6 +104,7 @@ module.exports = (() => {
 	const watchlist = new ProductType('WATCHLIST', 'WATCHLIST');
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
 	const entitlements = new ProductType('ENTITLEMENTS', 'ENTITLEMENTS');
+	const marketplace = new ProductType('MARKETPLACE', 'MARKETPLACE');
 
 	return ProductType;
 })();

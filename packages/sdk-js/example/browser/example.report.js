@@ -21784,6 +21784,26 @@ module.exports = (() => {
 			return entitlementsAuthorizationFailed;
 		}
 
+		static get MARKETPLACE_CUSTOMER_CREATED() {
+			return marketplaceCustomerCreated;
+		}
+
+		static get MARKETPLACE_ACCOUNT_LINKED() {
+			return marketplaceAccountLinked;
+		}
+
+		static get MARKETPLACE_CUSTOMER_OFFER_ACCESS_APPROVED() {
+			return marketplaceCustomerOfferAccessApproved;
+		}
+
+		static get MARKETPLACE_OFFER_CREATED() {
+			return marketplaceOfferCreated;
+		}
+
+		static get MARKETPLACE_CONTRACT_SIGNED() {
+			return marketplaceContractSigned;
+		}
+
 		/**
 		 * Get all context keys for productType.
 		 *
@@ -21879,6 +21899,14 @@ module.exports = (() => {
 
 	const entitlementsAuthorizationFailed = new EventType('ENTITLEMENTS_AUTHORIZATION_FAILED', 'Authorization Failed', ProductType.ENTITLEMENTS, ['userId', 'operation']);
 
+	// Marketplace
+
+	const marketplaceCustomerCreated = new EventType('CUSTOMER-CREATED', 'Customer Created', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
+	const marketplaceAccountLinked = new EventType('ACCOUNT-LINKED', 'Account Linked', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
+	const marketplaceCustomerOfferAccessApproved = new EventType('CUSTOMER-OFFER-ACCESS-APPROVED', 'Offer Access Approved', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
+	const marketplaceOfferCreated = new EventType('OFFER-CREATED', 'Offer Created', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
+	const marketplaceContractSigned = new EventType('CONTRACT-SIGNED', 'Contract Signed', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
+
 	return EventType;
 })();
 
@@ -21968,6 +21996,17 @@ module.exports = (() => {
 			return entitlements;
 		}
 
+		/**
+		 * The cmdty Marketplace platform.
+		 *
+		 * @public
+		 * @static
+		 * @returns {ProductType}
+		 */
+		static get MARKETPLACE() {
+			return marketplace;
+		}
+
 		toString() {
 			return `[ProductType (code=${this.code})]`;
 		}
@@ -21978,6 +22017,7 @@ module.exports = (() => {
 	const watchlist = new ProductType('WATCHLIST', 'WATCHLIST');
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
 	const entitlements = new ProductType('ENTITLEMENTS', 'ENTITLEMENTS');
+	const marketplace = new ProductType('MARKETPLACE', 'MARKETPLACE');
 
 	return ProductType;
 })();
@@ -23456,7 +23496,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '4.1.2'
+    version: '4.2.0'
   };
 })();
 
