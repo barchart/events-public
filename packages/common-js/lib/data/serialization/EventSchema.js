@@ -69,6 +69,7 @@ module.exports = (() => {
 		.withField('customer', DataType.forEnum(CustomerType, 'CustomerType'))
 		.withField('product', DataType.forEnum(ProductType, 'ProductType'))
 		.withField('type', DataType.forEnum(EventType, 'EventType'))
+		.withField('version', DataType.STRING, true)
 		.withField('timestamp', DataType.TIMESTAMP)
 		.withField('batch', DataType.STRING)
 		.withField('sequence', DataType.NUMBER)
@@ -80,6 +81,7 @@ module.exports = (() => {
 		.withField('customer', DataType.forEnum(CustomerType, 'CustomerType'))
 		.withField('product', DataType.forEnum(ProductType, 'ProductType'))
 		.withField('type', DataType.forEnum(EventType, 'EventType'))
+		.withField('version', DataType.STRING, true)
 		.withField('timestamp', DataType.TIMESTAMP)
 		.withField('context', DataType.ARRAY)
 		.schema

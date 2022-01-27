@@ -15,14 +15,17 @@ module.exports = (() => {
 	 * @exported
 	 * @param {CustomerType} customer
 	 * @param {ProductType} product
+	 * @param {String} version
 	 */
 	class EventFactory {
-		constructor(customer, product) {
+		constructor(customer, product, version) {
 			assert.argumentIsRequired(customer, 'customer', CustomerType, 'CustomerType');
 			assert.argumentIsRequired(product, 'product', ProductType, 'ProductType');
+			assert.argumentIsRequired(version, 'version', String, 'String');
 
 			this._customer = customer;
 			this._product = product;
+			this._version = version;
 		}
 
 		/**
@@ -40,6 +43,7 @@ module.exports = (() => {
 			return {
 				customer: this._customer,
 				product: this._product,
+				version: this._version,
 				type: type,
 				timestamp: Timestamp.now().timestamp,
 				context: context
@@ -52,10 +56,11 @@ module.exports = (() => {
 		 * @public
 		 * @param {CustomerType} customer
 		 * @param {ProductType} product
+		 * @param {String} version
 		 * @returns {EventFactory}
 		 */
-		static for(customer, product) {
-			return new EventFactory(customer, product);
+		static for(customer, product, version) {
+			return new EventFactory(customer, product, version);
 		}
 
 		toString() {
