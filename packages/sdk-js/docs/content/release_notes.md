@@ -3,8 +3,8 @@
 ## 5.1.0
 **New Features**
 
-* Added EventType.CMDTYVIEW_WORKSPACE_ACTIVATED.
-* Added `browser` context to EventType.CMDTYVIEW_LOGIN.
+* Added `EventType.CMDTYVIEW_WORKSPACE_ACTIVATED` enumeration item.
+* Added `browser` context to `EventType.CMDTYVIEW_LOGIN` enumeration item.
 
 **Bug Fixes**
 
