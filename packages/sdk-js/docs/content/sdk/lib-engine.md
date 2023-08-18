@@ -90,9 +90,9 @@
     * _instance_
         * [.build(type, context)](#EventFactorybuild) ⇒ [<code>Schema.Event</code>](/content/sdk/lib-data?id=schemaevent)
     * _static_
-        * [.for(customer, product)](#EventFactoryfor) ⇒ [<code>EventFactory</code>](#EventFactory)
+        * [.for(customer, product, version)](#EventFactoryfor) ⇒ [<code>EventFactory</code>](#EventFactory)
     * _constructor_
-        * [new EventFactory(customer, product)](#new_EventFactory_new)
+        * [new EventFactory(customer, product, version)](#new_EventFactory_new)
 
 
 * * *
@@ -112,7 +112,7 @@
 
 * * *
 
-### EventFactory.for(customer, product) :id=eventfactoryfor
+### EventFactory.for(customer, product, version) :id=eventfactoryfor
 > Configures a new event factory, which will build events for a specific customer and product.
 
 **Kind**: static method of [<code>EventFactory</code>](#EventFactory)  
@@ -123,17 +123,19 @@
 | --- | --- |
 | customer | <code>CustomerType</code> | 
 | product | <code>ProductType</code> | 
+| version | <code>String</code> | 
 
 
 * * *
 
-### new EventFactory(customer, product) :id=new_eventfactory_new
+### new EventFactory(customer, product, version) :id=new_eventfactory_new
 **Kind**: constructor of [<code>EventFactory</code>](#EventFactory)  
 
 | Param | Type |
 | --- | --- |
 | customer | <code>CustomerType</code> | 
 | product | <code>ProductType</code> | 
+| version | <code>String</code> | 
 
 
 * * *

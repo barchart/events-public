@@ -27,6 +27,7 @@
 | customer | <code>CustomerType</code> | <p>The customer using the software which generated the event.</p> |
 | product | <code>ProductType</code> | <p>The software system which generated the event.</p> |
 | type | <code>EventType</code> | <p>The type of event.</p> |
+| version | <code>String</code> | <p>The version of the product.</p> |
 | timestamp | <code>Timestamp</code> | <p>The time of the event's occurrence.</p> |
 | context | <code>Array.&lt;String&gt;</code> | <p>Additional data which qualifies the event's type.</p> |
 
