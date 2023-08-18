@@ -12,7 +12,7 @@
 
 **Technical Enhancements**
 
-* Updated [Lerna]() by three major versions.
+* Updated [Lerna](https://lerna.js.org/) by three major versions.
 * Updated other dependencies implicitly.
 
 ## 5.0.0
