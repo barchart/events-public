@@ -292,6 +292,10 @@ module.exports = (() => {
 			return cmdtyViewLogout;
 		}
 
+		static get CMDTYVIEW_WORKSPACE_ACTIVATED() {
+			return cmdtyViewWorkspaceActivated;
+		}
+
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
@@ -408,8 +412,9 @@ module.exports = (() => {
 
 	// cmdtyView
 
-	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User logged in', ProductType.PORTFOLIO, ['userId', 'sessionId']);
-	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User logged out', ProductType.PORTFOLIO, ['userId', 'sessionId']);
+	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User logged in', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser']);
+	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User logged out', ProductType.CMDTYVIEW, ['userId', 'sessionId']);
+	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspace']);
 
 	// Entitlements
 

@@ -13,7 +13,10 @@
   },
   "devDependencies": {
     "jshint": "^2.10.3",
-    "lerna": "^3.22.1"
+    "lerna": "^6.6.2"
+  },
+  "resolutions": {
+    "@yarnpkg/parsers": "3.0.0-rc.48.1"
   },
   "license": "MIT"
 }
