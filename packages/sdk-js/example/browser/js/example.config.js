@@ -24,14 +24,16 @@ module.exports = (() => {
 			ProductType.WATCHLIST,
 			ProductType.ENTITLEMENTS,
 			ProductType.ALERT,
-			ProductType.MARKETPLACE
+			ProductType.MARKETPLACE,
+			ProductType.CMDTYVIEW
 		],
 		types: {
 			[ProductType.PORTFOLIO.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.PORTFOLIO),
 			[ProductType.WATCHLIST.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.WATCHLIST),
 			[ProductType.ENTITLEMENTS.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ENTITLEMENTS),
 			[ProductType.ALERT.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.ALERT),
-			[ProductType.MARKETPLACE.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.MARKETPLACE)
+			[ProductType.MARKETPLACE.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.MARKETPLACE),
+			[ProductType.CMDTYVIEW.code]: Enum.getItems(EventType).filter(eventType => eventType.product === ProductType.CMDTYVIEW)
 		}
 	};
 })();
