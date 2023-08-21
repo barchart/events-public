@@ -196,7 +196,7 @@ The result of this request will be a JSON document, containing a link to the act
 
 ## Report Format
 
-Export files are pipe-delimited, plain text files which have "csv" file extensions. Inside the file, every row represents a discrete event. Columns used for different product types are slightly different (see the [ProductType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/ProductType.js) enumeration).
+Export files are pipe-delimited, plain text files which have "csv" file extensions. Inside the file, every row represents a discrete event. Columns used for different product types are slightly different (see the [ProductType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/ProductType.js) enumeration and [EventType](https://github.com/barchart/events-public/tree/master/packages/common-js/lib/data/EventType.js) enumeration).
 
 **COMMON COLUMNS:**
 
@@ -229,4 +229,9 @@ Export files are pipe-delimited, plain text files which have "csv" file extensio
 * [3] userId - The identifier of the user who triggered the event.
 * [4] alertId - The identifier of alert which was affected by the event.
 
+**CMDTYVIEW COLUMNS:**
 
+* [3] userId - The identifier of the user who triggered the event.
+* [4] sessionId - The identifier of session which was affected by the event.
+* [5] browser - Ad hoc description of the the browser used when the event occurred by the event.
+* [6] workspace - The workspace that was activated when the event occurred.
