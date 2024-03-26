@@ -10,7 +10,7 @@
  * @typedef Event
  * @type {Object}
  * @memberOf Schema
- * @property {CustomerType} customer -  The customer using the software which generated the event.
+ * @property {CustomerType} customer - The customer using the software which generated the event.
  * @property {ProductType} product - The software system which generated the event.
  * @property {EventType} type - The type of event.
  * @property {String} version - The version of the product.
