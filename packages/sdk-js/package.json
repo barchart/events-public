@@ -22,7 +22,7 @@
     "watch": "gulp watch"
   },
   "dependencies": {
-    "@barchart/common-js": "^4.8.0",
+    "@barchart/common-js": "^4.42.0",
     "@barchart/events-api-common": "^5.1.0"
   },
   "devDependencies": {

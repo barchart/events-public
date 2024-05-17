@@ -4,9 +4,10 @@ const assert = require('@barchart/common-js/lang/assert'),
 	Schema = require('@barchart/common-js/serialization/json/Schema'),
 	SchemaBuilder = require('@barchart/common-js/serialization/json/builders/SchemaBuilder');
 
-const CustomerType = require('../CustomerType'),
-	EventJobStatus = require('../EventJobStatus'),
-	ProductType = require('../ProductType');
+const EventType = require('./../EventType'),
+	CustomerType = require('./../CustomerType'),
+	EventJobStatus = require('./../EventJobStatus'),
+	ProductType = require('./../ProductType');
 
 module.exports = (() => {
 	'use strict';
@@ -83,6 +84,7 @@ module.exports = (() => {
 	const start = new EventJobSchema(SchemaBuilder.withName('start')
 		.withField('filter.customer', DataType.forEnum(CustomerType, 'CustomerType'))
 		.withField('filter.product', DataType.forEnum(ProductType, 'ProductType'))
+		.withArray('filter.types', DataType.forEnum(EventType, 'EventType'), true)
 		.withField('filter.start', DataType.TIMESTAMP, true)
 		.withField('filter.end', DataType.TIMESTAMP, true)
 		.schema
@@ -94,6 +96,7 @@ module.exports = (() => {
 		.withField('status', DataType.forEnum(EventJobStatus, 'EventJobStatus'))
 		.withField('filter.customer', DataType.forEnum(CustomerType, 'CustomerType'))
 		.withField('filter.product', DataType.forEnum(ProductType, 'ProductType'))
+		.withArray('filter.types', DataType.forEnum(EventType, 'EventType'), true)
 		.withField('filter.start', DataType.TIMESTAMP, true)
 		.withField('filter.end', DataType.TIMESTAMP, true)
 		.withField('timing.day', DataType.DAY)

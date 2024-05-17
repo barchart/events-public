@@ -17,8 +17,8 @@
     "lint": "jshint ./ --exclude './node_modules'"
   },
   "dependencies": {
-    "@barchart/common-js": "^4.8.0",
-    "uuid": "^8.3.2"
+    "@barchart/common-js": "^4.42.0",
+    "uuid": "^9.0.1"
   },
   "license": "MIT"
 }
