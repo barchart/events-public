@@ -1,6 +1,6 @@
 # API Reference
 
-## Event API 4.0.0 {docsify-ignore}
+## Event API 5.2.0 {docsify-ignore}
     
 > The Barchart Event Tracking System collects usage statistics from various software systems.
 

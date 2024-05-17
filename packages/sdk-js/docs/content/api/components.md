@@ -57,7 +57,7 @@
 
 ### Event :id=schemasevent
 **Type**: <code>Object</code>
-    
+
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
 | customer | <code>String</code> | true | false | Code for customer using the software which generated the event. |
@@ -66,6 +66,7 @@
 | timestamp | <code>Number</code> | true | false | The time of the event's occurrence — milliseconds since epoch. |
 | context | <code>Array</code> | true | false | An array data which qualifies the event (differnt items are required based on event's type). |
 | context[i] | <code>String</code> | false | false |  |
+
 
 **Example**:
 
@@ -85,7 +86,7 @@
 
 ### EventFull :id=schemaseventfull
 **Type**: <code>Object</code>
-    
+
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
 | customer | <code>String</code> | true | false | Code for customer using the software which generated the event. |
@@ -96,6 +97,7 @@
 | context[i] | <code>String</code> | false | false |  |
 | sequence | <code>Number</code> | true | false | The event's order within the batch. Irrelevant to most consumers. |
 | batch | <code>String</code> | true | false | The identifier for the batch this event was inserted with. Irrelevant to most consumers. |
+
 
 **Example**:
 
@@ -117,13 +119,16 @@
 
 ### ReportFilter :id=schemasreportfilter
 **Type**: <code>Object</code>
-    
+
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
 | customer | <code>String</code> | true | false | The customer code to extract events for. |
 | product | <code>String</code> | true | false | The code of the software system to extract events for. |
+| types | <code>Array</code> | false | false |  |
+| types[i] | <code>String</code> | false | false |  |
 | start | <code>String</code> | false | false | The time of the first event to extract — milliseconds since epoch. |
 | end | <code>String</code> | false | false | The time of the final event to extract — milliseconds since epoch. |
+
 
 **Example**:
 
@@ -131,6 +136,9 @@
 {
   "customer": "BARCHART",
   "product": "PORTFOLIO",
+  "types": [
+    "string"
+  ],
   "start": 1571029200000,
   "end": 1571115600000
 }
@@ -140,7 +148,7 @@
 
 ### ReportStatus :id=schemasreportstatus
 **Type**: <code>Object</code>
-    
+
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
 | job | <code>String</code> | true | false | Short identifier for job. Irrelevant to most consumers. |
@@ -152,6 +160,7 @@
 | timing.start | <code>Number</code> | false | false | The moment the report was started — milliseconds since epoch. |
 | timing.end | <code>Number</code> | false | false | The moment the report was finished — milliseconds since epoch. |
 
+
 **Example**:
 
 ```json
@@ -162,11 +171,14 @@
   "filter": {
     "customer": "BARCHART",
     "product": "PORTFOLIO",
+    "types": [
+      "string"
+    ],
     "start": 1571029200000,
     "end": 1571115600000
   },
   "timing": {
-    "day": "2021-06-21T18:16:49.084Z",
+    "day": "2024-05-17T16:34:30.647Z",
     "start": 1571073977278,
     "end": 1571073977279
   }
@@ -177,14 +189,15 @@
 
 ### Service :id=schemasservice
 **Type**: <code>Object</code>
-    
+
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
-| service | <code>Object</code> |  | false |  |
+| service | <code>Object</code> | false | false |  |
 | service.version | <code>String</code> | true | false | The version of the service. |
 | service.name | <code>String</code> | true | false | The name of the service. |
 | service.description | <code>String</code> | true | false |  |
 | service.environment | <code>String</code> | false | false | The environment of the service. |
+
 
 **Example**:
 
@@ -208,7 +221,7 @@
 >
 
 **Type**: http basic
-    
+
 #### Headers
 | Name | Example |
 | ---- | ------- |

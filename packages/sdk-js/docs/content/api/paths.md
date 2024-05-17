@@ -7,14 +7,14 @@
 **Summary**: Create Events
 
 #### Request Body
-    
+
 **Content Type**: application/json
 
 **Type**: <code>Object</code>
 
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
-| events | [<code>Array&lt;Event&gt;</code>](/content/api/components?id=schemasEvent) |  | false | An array of Events. |
+| events | [<code>Array&lt;Event&gt;</code>](/content/api/components?id=schemasEvent) | false | false | An array of Events. |
 
 **Example**:
 
@@ -44,6 +44,24 @@
 
 **Response Type:** [<code>Array&lt;EventFull&gt;</code>](/content/api/components?id=schemasEventFull)
 
+**Example**:
+
+```
+[
+  {
+    "customer": "BARCHART",
+    "product": "PORTFOLIO",
+    "type": "PORTFOLIO-APPLICATION-LOADED",
+    "timestamp": 1568381886060,
+    "context": [
+      "string"
+    ],
+    "sequence": 1,
+    "batch": "e2d04b89-972d-4a0a-b0ee-427bef63a8d0"
+  }
+]
+```
+
 * * *
 
 **Status Code**: 500 - [ServerError](/content/api/components?id=responsesservererror)
@@ -59,14 +77,14 @@
 **Security**: 
 [Basic](/content/api/components?id=securityBasic)
 #### Request Body
-    
+
 **Content Type**: application/json
 
 **Type**: <code>Object</code>
 
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
-| filter | [<code>ReportFilter</code>](/content/api/components?id=schemasReportFilter) |  | false |  |
+| filter | [<code>ReportFilter</code>](/content/api/components?id=schemasReportFilter) | false | false |  |
 
 **Example**:
 
@@ -75,6 +93,9 @@
   "filter": {
     "customer": "BARCHART",
     "product": "PORTFOLIO",
+    "types": [
+      "string"
+    ],
     "start": 1571029200000,
     "end": 1571115600000
   }
@@ -89,7 +110,31 @@
 
 **Content Type**: <code>application/json</code>
 
-**Response Type:** [<code>Array&lt;ReportStatus&gt;</code>](/content/api/components?id=schemasReportStatus)
+**Response Type:** [<code>ReportStatus</code>](/content/api/components?id=schemasReportStatus)
+
+**Example**:
+
+```
+{
+  "job": "0527e342-c92c-45ec-a3cf-fd93f87cb068",
+  "source": "JOB-0527e342-c92c-45ec-a3cf-fd93f87cb068",
+  "status": "RUNNING",
+  "filter": {
+    "customer": "BARCHART",
+    "product": "PORTFOLIO",
+    "types": [
+      "string"
+    ],
+    "start": 1571029200000,
+    "end": 1571115600000
+  },
+  "timing": {
+    "day": "2019-10-14T00:00:00.000Z",
+    "start": 1571073977278,
+    "end": 1571073977279
+  }
+}
+```
 
 * * *
 
@@ -123,7 +168,31 @@
 
 **Content Type**: <code>application/json</code>
 
-**Response Type:** [<code>Array&lt;ReportStatus&gt;</code>](/content/api/components?id=schemasReportStatus)
+**Response Type:** [<code>ReportStatus</code>](/content/api/components?id=schemasReportStatus)
+
+**Example**:
+
+```
+{
+  "job": "0527e342-c92c-45ec-a3cf-fd93f87cb068",
+  "source": "JOB-0527e342-c92c-45ec-a3cf-fd93f87cb068",
+  "status": "RUNNING",
+  "filter": {
+    "customer": "BARCHART",
+    "product": "PORTFOLIO",
+    "types": [
+      "string"
+    ],
+    "start": 1571029200000,
+    "end": 1571115600000
+  },
+  "timing": {
+    "day": "2019-10-14T00:00:00.000Z",
+    "start": 1571073977278,
+    "end": 1571073977279
+  }
+}
+```
 
 * * *
 
@@ -201,7 +270,20 @@
 
 **Content Type**: <code>application/json</code>
 
-**Response Type:** [<code>Array&lt;Service&gt;</code>](/content/api/components?id=schemasService)
+**Response Type:** [<code>Service</code>](/content/api/components?id=schemasService)
+
+**Example**:
+
+```
+{
+  "service": {
+    "version": "2.0.0",
+    "name": "@barchart/events-private-main",
+    "description": "System for collecting and reporting usage statistics",
+    "environment": "prod"
+  }
+}
+```
 
 * * *
 
@@ -225,8 +307,8 @@
     
 | Name | Type | Required | Nullable | Description |
 | ---- | ---- | -------- | -------- | ----------- |
-| service | [<code>Service</code>](/content/api/components?id=schemasService) |  | false |  |
-| user | <code>Object</code> |  | false |  |
+| service | [<code>Service</code>](/content/api/components?id=schemasService) | false | false |  |
+| user | <code>Object</code> | false | false |  |
 | user.id | <code>String</code> | false | false | The user's unique identifier. |
 | user.context | <code>String</code> | false | false | The user's context |
 | user.permissions | <code>String</code> | false | true | The user's permissions. |

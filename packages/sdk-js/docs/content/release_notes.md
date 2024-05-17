@@ -1,5 +1,10 @@
 # Release Notes
 
+## 5.2.0
+**New Features**
+
+* Added support for filtering based on `EventType` items when starting a new report.
+
 ## 5.1.0
 **New Features**
 

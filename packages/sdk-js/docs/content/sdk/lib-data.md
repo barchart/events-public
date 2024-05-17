@@ -59,6 +59,7 @@
 | --- | --- | --- |
 | customer | <code>CustomerType</code> | <p>The customer to extract events for.</p> |
 | product | <code>ProductType</code> | <p>The software system to extract events for.</p> |
+| [types] | <code>Array.&lt;EventType&gt;</code> | <p>The type(s) of events to include. If not specified, all event types will be included.</p> |
 | [start] | <code>Timestamp</code> | <p>The time to begin extracting events.</p> |
 | [end] | <code>Timestamp</code> | <p>The time to stop extracting events.</p> |
 
