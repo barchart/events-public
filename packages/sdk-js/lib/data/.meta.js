@@ -37,7 +37,7 @@
  * @memberOf Schema
  * @property {CustomerType} customer - The customer to extract events for.
  * @property {ProductType} product - The software system to extract events for.
- * @property {EventType[]=} type - The type(s) of events to include. If not specified, all event types will be included.
+ * @property {EventType[]=} types - The type(s) of events to include. If not specified, all event types will be included.
  * @property {Timestamp=} start - The time to begin extracting events.
  * @property {Timestamp=} end - The time to stop extracting events.
  */
