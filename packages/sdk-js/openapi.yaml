@@ -101,6 +101,10 @@ components:
           type: string
           description: The code of the software system to extract events for.
           example: PORTFOLIO
+        types:
+          type: array
+          items:
+            type: string
         start:
           type: string
           description: The time of the first event to extract — milliseconds since epoch.
