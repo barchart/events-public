@@ -103,8 +103,10 @@ components:
           example: PORTFOLIO
         types:
           type: array
+          description: The event type (or types) to extract. If omitted, all types will be included in output.
           items:
             type: string
+            example: PORTFOLIO-APPLICATION-LOADED
         start:
           type: string
           description: The time of the first event to extract — milliseconds since epoch.

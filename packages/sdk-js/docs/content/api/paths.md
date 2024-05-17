@@ -94,7 +94,7 @@
     "customer": "BARCHART",
     "product": "PORTFOLIO",
     "types": [
-      "string"
+      "PORTFOLIO-APPLICATION-LOADED"
     ],
     "start": 1571029200000,
     "end": 1571115600000
@@ -123,7 +123,7 @@
     "customer": "BARCHART",
     "product": "PORTFOLIO",
     "types": [
-      "string"
+      "PORTFOLIO-APPLICATION-LOADED"
     ],
     "start": 1571029200000,
     "end": 1571115600000
@@ -181,7 +181,7 @@
     "customer": "BARCHART",
     "product": "PORTFOLIO",
     "types": [
-      "string"
+      "PORTFOLIO-APPLICATION-LOADED"
     ],
     "start": 1571029200000,
     "end": 1571115600000

@@ -124,7 +124,7 @@
 | ---- | ---- | -------- | -------- | ----------- |
 | customer | <code>String</code> | true | false | The customer code to extract events for. |
 | product | <code>String</code> | true | false | The code of the software system to extract events for. |
-| types | <code>Array</code> | false | false |  |
+| types | <code>Array</code> | false | false | The event type (or types) to extract. If omitted, all types will be included in output. |
 | types[i] | <code>String</code> | false | false |  |
 | start | <code>String</code> | false | false | The time of the first event to extract — milliseconds since epoch. |
 | end | <code>String</code> | false | false | The time of the final event to extract — milliseconds since epoch. |
@@ -137,7 +137,7 @@
   "customer": "BARCHART",
   "product": "PORTFOLIO",
   "types": [
-    "string"
+    "PORTFOLIO-APPLICATION-LOADED"
   ],
   "start": 1571029200000,
   "end": 1571115600000
@@ -172,13 +172,13 @@
     "customer": "BARCHART",
     "product": "PORTFOLIO",
     "types": [
-      "string"
+      "PORTFOLIO-APPLICATION-LOADED"
     ],
     "start": 1571029200000,
     "end": 1571115600000
   },
   "timing": {
-    "day": "2024-05-17T16:34:30.647Z",
+    "day": "2024-05-17T16:50:36.186Z",
     "start": 1571073977278,
     "end": 1571073977279
   }
