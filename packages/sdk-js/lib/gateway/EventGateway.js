@@ -19,7 +19,7 @@ module.exports = (() => {
 	'use strict';
 
 	/**
-	 * A **central component of the SDK** which is responsible for sending events (i.e. usage
+	 * The **central component of the SDK** which is responsible for sending events (i.e. usage
 	 * statistics to the backend).
 	 *
 	 * @public
