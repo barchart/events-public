@@ -8,7 +8,7 @@
 * * *
 
 ## EventGateway :id=eventgateway
-> A <strong>central component of the SDK</strong> which is responsible for sending events (i.e. usage
+> The <strong>central component of the SDK</strong> which is responsible for sending events (i.e. usage
 > statistics to the backend).
 
 **Kind**: global class  
