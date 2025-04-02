@@ -13,7 +13,7 @@
   },
   "devDependencies": {
     "jshint": "^2.10.3",
-    "lerna": "^6.6.2"
+    "lerna": "^8.2.1"
   },
   "resolutions": {
     "@yarnpkg/parsers": "3.0.0-rc.48.1"
