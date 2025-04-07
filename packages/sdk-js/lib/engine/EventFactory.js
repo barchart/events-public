@@ -1,4 +1,5 @@
 const assert = require('@barchart/common-js/lang/assert'),
+	is = require('@barchart/common-js/lang/is'),
 	Timestamp = require('@barchart/common-js/lang/Timestamp');
 
 const CustomerType = require('@barchart/events-api-common/lib/data/CustomerType'),
@@ -71,32 +72,23 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @param {EventType} type
-		 * @param {Array} context
+		 * @param {Array|Object} context
 		 * @returns {Schema.Event}
 		 */
 		build(type, context) {
 			assert.argumentIsRequired(type, 'type', EventType, 'EventType');
-			assert.argumentIsArray(context, 'context');
 
-			const c = context.map((value, index) => {
-				if (value !== null) {
-					return value;
-				}
-				
-				let cached = null;
-				
-				const keys = type.contextKeys;
-				
-				if (index < keys.length) {
-					const key = keys[index];
+			let c;
 
-					if (this._contextCache.has(key)) {
-						cached = this._contextCache.get(key);
-					}
-				}
-				
-				return cached;
-			});
+			if (is.array(context)) {
+				assert.argumentIsArray(context, 'context');
+
+				c = contextFromArray(type, context, this._contextCache);
+			} else {
+				assert.argumentIsRequired(context, 'context', Object);
+
+				c = contextFromObject(type, context, this._contextCache);
+			}
 			
 			return {
 				customer: this._customer,
@@ -124,6 +116,42 @@ module.exports = (() => {
 		toString() {
 			return '[EventFactory]';
 		}
+	}
+
+	function contextFromArray(type, context, contextCache) {
+		return context.map((value, index) => {
+			if (value !== null) {
+				return value;
+			}
+
+			let cached = null;
+
+			const keys = type.contextKeys;
+
+			if (index < keys.length) {
+				const key = keys[index];
+
+				if (contextCache.has(key)) {
+					cached = contextCache.get(key);
+				}
+			}
+
+			return cached;
+		});
+	}
+
+	function contextFromObject(type, context, contextCache) {
+		return type.contextKeys.map((key) => {
+			let value;
+
+			if (contextCache.has(key)) {
+				value = contextCache.get(key);
+			} else {
+				value = context[key] || null;
+			}
+
+			return value;
+		});
 	}
 
 	return EventFactory;
