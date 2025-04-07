@@ -43,7 +43,26 @@ module.exports = (() => {
 			this._scheduler = new Scheduler();
 			this._running = true;
 
-			processBuffer.call(this);
+			scheduleBuffer.call(this);
+		}
+
+		/**
+		 * Attempts to immediately flush the buffer.
+		 *
+		 * @public
+		 * @async
+		 * @param {boolean=} stop
+		 */
+		async flush(stop) {
+			assert.argumentIsOptional(stop, 'stop', Boolean);
+
+			const batch = this._buffer;
+
+			if (stop) {
+				this.stop();
+			}
+
+			return processBuffer.call(this, batch);
 		}
 
 		/**
@@ -85,19 +104,28 @@ module.exports = (() => {
 		}
 	}
 
-	function processBuffer() {
+	function scheduleBuffer() {
 		if (!this._running) {
 			return;
 		}
 
 		if (this._buffer.length === 0) {
-			return this._scheduler.schedule(processBuffer.bind(this), 5000, 'processBuffer');
+			return this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
 		}
 
 		const batch = this._buffer;
 
 		this._buffer = [ ];
 
+		return processBuffer.call(this, batch)
+			.then(() => {
+				if (this._running) {
+					this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
+				}
+			});
+	}
+
+	function processBuffer(batch) {
 		return this._eventGateway.createEvents(batch)
 			.then((response) => {
 				if (this._callback) {
@@ -109,10 +137,6 @@ module.exports = (() => {
 				console.error('Failed to transmit events to Barchart Usage Tracking Service', e);
 
 				return null;
-			}).then(() => {
-				if (this._running) {
-					this._scheduler.schedule(processBuffer.bind(this), 5000, 'processBuffer');
-				}
 			});
 	}
 
