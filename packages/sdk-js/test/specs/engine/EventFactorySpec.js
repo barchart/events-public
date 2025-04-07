@@ -29,7 +29,7 @@ describe('When an event factory is created', () => {
 			let passed;
 
 			beforeEach(() => {
-				event = factory.build(type = TEST_EVENT_TYPE, passed = [ 'value_1', 'value_2', 'value_3' ])
+				event = factory.build(type = TEST_EVENT_TYPE, passed = [ 'value_1', 'value_2', 'value_3' ]);
 			});
 
 			it('the event customer should be correct', () => {
@@ -68,7 +68,7 @@ describe('When an event factory is created', () => {
 			let passed;
 
 			beforeEach(() => {
-				let value_1 = 'value_1'
+				let value_1 = 'value_1';
 				let value_2 = 'value_2';
 				let value_3 = 'value_3';
 
@@ -120,7 +120,7 @@ describe('When an event factory is created', () => {
 			let passed;
 
 			beforeEach(() => {
-				event = factory.build(type = TEST_EVENT_TYPE, passed = [ null, 'value_2', 'value_3' ])
+				event = factory.build(type = TEST_EVENT_TYPE, passed = [ null, 'value_2', 'value_3' ]);
 			});
 
 			it('the event customer should be correct', () => {
