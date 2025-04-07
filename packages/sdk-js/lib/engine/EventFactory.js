@@ -26,6 +26,44 @@ module.exports = (() => {
 			this._customer = customer;
 			this._product = product;
 			this._version = version;
+
+			this._contextCache = new Map();
+		}
+
+		/**
+		 * Sets a context key (and value) to an internal cache for future use by
+		 * when building a new {@link Schema.Event}.
+		 *
+		 * @public
+		 * @param {String} key
+		 * @param {String} value
+		 */
+		setContext(key, value) {
+			assert.argumentIsRequired(key, 'key', String);
+			assert.argumentIsRequired(value, 'value', String);
+
+			this._contextCache.set(key, value);
+		}
+
+		/**
+		 * Removes a context key (and value) from an internal cache.
+		 *
+		 * @public
+		 * @param {String} key
+		 */
+		clearContext(key) {
+			assert.argumentIsRequired(key, 'key', String);
+
+			this._contextCache.delete(key);
+		}
+
+		/**
+		 * Clears the entire internal cache of context keys (and values).
+		 *
+		 * @public
+		 */
+		resetContext() {
+			this._contextCache = new Map();
 		}
 
 		/**
@@ -40,13 +78,33 @@ module.exports = (() => {
 			assert.argumentIsRequired(type, 'type', EventType, 'EventType');
 			assert.argumentIsArray(context, 'context');
 
+			const c = context.map((value, index) => {
+				if (value !== null) {
+					return value;
+				}
+				
+				let cached = null;
+				
+				const keys = type.contextKeys;
+				
+				if (index < keys.length) {
+					const key = keys[index];
+
+					if (this._contextCache.has(key)) {
+						cached = this._contextCache.get(key);
+					}
+				}
+				
+				return cached;
+			});
+			
 			return {
 				customer: this._customer,
 				product: this._product,
 				version: this._version,
 				type: type,
 				timestamp: Timestamp.now().timestamp,
-				context: context
+				context: c
 			};
 		}
 

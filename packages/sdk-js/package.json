@@ -17,6 +17,7 @@
     "deploy:examples": "gulp deploy-examples",
     "deploy:documentation": "gulp deploy-documentation",
     "lint": "jshint ./ --exclude 'node_modules,example/browser/example*.js,docs'",
+    "test": "jasmine --config=test/jasmine.json",
     "postversion": "gulp deploy-examples && gulp deploy-documentation",
     "version": "gulp embed-version && gulp build",
     "watch": "gulp watch"
@@ -35,6 +36,7 @@
     "gulp-awspublish": "^4.1.2",
     "gulp-rename": "^1.4.0",
     "gulp-replace": "^0.5.4",
+    "jasmine": "^4.5.0",
     "jshint": "^2.12.0",
     "merge-stream": "^2.0.0",
     "vinyl-buffer": "^1.0.1",

@@ -6,6 +6,7 @@
 docs
 example
 node_modules
+test
 
 gulpfile.js
 openapi.yaml
