@@ -63,10 +63,6 @@ module.exports = (() => {
 				this.stop();
 			}
 
-			if (!this._running) {
-				return;
-			}
-
 			return processBuffer.call(this, batch);
 		}
 
