@@ -3,7 +3,7 @@ openapi: 3.0.0
 info:
   title: Event API
   description: The Barchart Event Tracking System collects usage statistics from various software systems.
-  version: 5.3.0
+  version: 5.4.0-alpha.0
 
 servers:
   - url: https://events-stage.aws.barchart.com

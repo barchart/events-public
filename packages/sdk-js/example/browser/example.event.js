@@ -17778,8 +17778,28 @@ module.exports = (() => {
 			return cmdtyViewLogout;
 		}
 
+		static get CMDTYVIEW_WORKSPACE_CREATED() {
+			return cmdtyViewWorkspaceCreated;
+		}
+
 		static get CMDTYVIEW_WORKSPACE_ACTIVATED() {
 			return cmdtyViewWorkspaceActivated;
+		}
+
+		static get CMDTYVIEW_ADD_NEW_PANEL() {
+			return cmdtyViewAddNewPanel;
+		}
+
+		static get CMDTYVIEW_REMOVE_PANEL() {
+			return cmdtyViewRemovePanel;
+		}
+
+		static get CMDTYVIEW_QUOTES_SHOW_SYMBOL_BROWSER() {
+			return cmdtyViewQuotesShowSymbolBrowser;
+		}
+
+		static get CMDTYVIEW_QUOTES_SHOW_EXPRESSION_DIALOG() {
+			return cmdtyViewQuotesShowExpressionDialog;
 		}
 
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
@@ -17900,7 +17920,12 @@ module.exports = (() => {
 
 	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User logged in', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser']);
 	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User logged out', ProductType.CMDTYVIEW, ['userId', 'sessionId']);
-	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspace']);
+	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title'])
+	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title', 'panels']);
+	const cmdtyViewAddNewPanel = new EventType('CMDTYVIEW-ADD-NEW-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'origin']);
+	const cmdtyViewRemovePanel = new EventType('CMDTYVIEW-REMOVE-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewQuotesShowSymbolBrowser = new EventType('CMDTYVIEW-QUOTES-SHOW-SYMBOL-BROWSER', 'Show Symbol Browser in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewQuotesShowExpressionDialog = new EventType('CMDTYVIEW-QUOTES-SHOW-EXPRESSION-DIALOG', 'Show Expression Dialog in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 
 	// Entitlements
 
@@ -19464,7 +19489,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.3.0'
+    version: '5.4.0-alpha.0'
   };
 })();
 
