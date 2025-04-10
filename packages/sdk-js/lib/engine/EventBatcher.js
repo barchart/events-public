@@ -1,4 +1,5 @@
 const assert = require('@barchart/common-js/lang/assert'),
+	is = require('@barchart/common-js/lang/is'),
 	Scheduler = require('@barchart/common-js/timing/Scheduler');
 
 const EventGateway = require('../gateway/EventGateway');
@@ -62,6 +63,10 @@ module.exports = (() => {
 				this.stop();
 			}
 
+			if (!this._running) {
+				return;
+			}
+
 			return processBuffer.call(this, batch);
 		}
 
@@ -93,7 +98,7 @@ module.exports = (() => {
 		 * Adds a new event to the buffer.
 		 *
 		 * @public
-		 * @param {Schema.Event} event
+		 * @param {Schema.Event|Callbacks.EventGenerator} event
 		 */
 		push(event) {
 			this._buffer.push(event);
@@ -117,7 +122,7 @@ module.exports = (() => {
 
 		this._buffer = [ ];
 
-		return processBuffer.call(this, batch)
+		processBuffer.call(this, batch)
 			.then(() => {
 				if (this._running) {
 					this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
@@ -125,8 +130,24 @@ module.exports = (() => {
 			});
 	}
 
-	function processBuffer(batch) {
-		return this._eventGateway.createEvents(batch)
+	async function processBuffer(batch) {
+		if (batch.length === 0) {
+			return;
+		}
+
+		const events = batch.map((item) => {
+			let event;
+
+			if (is.fn(item)) {
+				event = item();
+			} else {
+				event = item;
+			}
+
+			return event;
+		});
+
+		return this._eventGateway.createEvents(events)
 			.then((response) => {
 				if (this._callback) {
 					this._callback(response);

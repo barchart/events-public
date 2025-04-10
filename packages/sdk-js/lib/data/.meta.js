@@ -90,3 +90,17 @@
  * @property {String} user.context- The user's context (i.e. customer identifier).
  * @property {String} user.permissions - Not used.
  */
+
+/**
+ * A meta namespace definitions for anonymous functions.
+ *
+ * @namespace Callbacks
+ */
+
+/**
+ * A function that builds an event.
+ *
+ * @callback EventGenerator
+ * @memberOf Callbacks
+ * @returns {Schema.Event}
+ */
