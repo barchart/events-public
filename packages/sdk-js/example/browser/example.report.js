@@ -17673,7 +17673,7 @@ module.exports = (() => {
 
 	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User logged in', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser']);
 	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User logged out', ProductType.CMDTYVIEW, ['userId', 'sessionId']);
-	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title'])
+	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title']);
 	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title', 'panels']);
 	const cmdtyViewAddNewPanel = new EventType('CMDTYVIEW-ADD-NEW-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'origin']);
 	const cmdtyViewRemovePanel = new EventType('CMDTYVIEW-REMOVE-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
@@ -19255,7 +19255,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.0-alpha.0'
+    version: '5.4.0'
   };
 })();
 

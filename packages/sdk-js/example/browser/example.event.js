@@ -17920,7 +17920,7 @@ module.exports = (() => {
 
 	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User logged in', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser']);
 	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User logged out', ProductType.CMDTYVIEW, ['userId', 'sessionId']);
-	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title'])
+	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title']);
 	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title', 'panels']);
 	const cmdtyViewAddNewPanel = new EventType('CMDTYVIEW-ADD-NEW-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'origin']);
 	const cmdtyViewRemovePanel = new EventType('CMDTYVIEW-REMOVE-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
@@ -19197,6 +19197,7 @@ module.exports = (() => {
 
 },{}],104:[function(require,module,exports){
 const assert = require('@barchart/common-js/lang/assert'),
+  is = require('@barchart/common-js/lang/is'),
   Scheduler = require('@barchart/common-js/timing/Scheduler');
 const EventGateway = require('../gateway/EventGateway');
 module.exports = (() => {
@@ -19250,6 +19251,9 @@ module.exports = (() => {
       if (stop) {
         this.stop();
       }
+      if (!this._running) {
+        return;
+      }
       return processBuffer.call(this, batch);
     }
 
@@ -19280,7 +19284,7 @@ module.exports = (() => {
      * Adds a new event to the buffer.
      *
      * @public
-     * @param {Schema.Event} event
+     * @param {Schema.Event|Callbacks.EventGenerator} event
      */
     push(event) {
       this._buffer.push(event);
@@ -19298,14 +19302,26 @@ module.exports = (() => {
     }
     const batch = this._buffer;
     this._buffer = [];
-    return processBuffer.call(this, batch).then(() => {
+    processBuffer.call(this, batch).then(() => {
       if (this._running) {
         this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
       }
     });
   }
-  function processBuffer(batch) {
-    return this._eventGateway.createEvents(batch).then(response => {
+  async function processBuffer(batch) {
+    if (batch.length === 0) {
+      return;
+    }
+    const events = batch.map(item => {
+      let event;
+      if (is.fn(item)) {
+        event = item();
+      } else {
+        event = item;
+      }
+      return event;
+    });
+    return this._eventGateway.createEvents(events).then(response => {
       if (this._callback) {
         this._callback(response);
       }
@@ -19318,7 +19334,7 @@ module.exports = (() => {
   return EventBatcher;
 })();
 
-},{"../gateway/EventGateway":105,"@barchart/common-js/lang/assert":33,"@barchart/common-js/timing/Scheduler":45}],105:[function(require,module,exports){
+},{"../gateway/EventGateway":105,"@barchart/common-js/lang/assert":33,"@barchart/common-js/lang/is":36,"@barchart/common-js/timing/Scheduler":45}],105:[function(require,module,exports){
 const assert = require('@barchart/common-js/lang/assert'),
   Disposable = require('@barchart/common-js/lang/Disposable'),
   Enum = require('@barchart/common-js/lang/Enum');
@@ -19489,7 +19505,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.0-alpha.0'
+    version: '5.4.0'
   };
 })();
 
