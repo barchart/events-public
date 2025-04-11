@@ -17547,12 +17547,28 @@ module.exports = (() => {
 			return cmdtyViewRemovePanel;
 		}
 
+		static get CMDTYVIEW_COLUMNS_MENU_SHOW() {
+			return cmdtyViewColumnsMenuShow;
+		}
+
+		static get CMDTYVIEW_COLUMN_ADDED() {
+			return cmdtyViewColumnAdded;
+		}
+
+		static get CMDTYVIEW_COLUMN_REMOVED() {
+			return cmdtyViewColumnRemoved;
+		}
+
 		static get CMDTYVIEW_QUOTES_SHOW_SYMBOL_BROWSER() {
 			return cmdtyViewQuotesShowSymbolBrowser;
 		}
 
 		static get CMDTYVIEW_QUOTES_SHOW_EXPRESSION_DIALOG() {
 			return cmdtyViewQuotesShowExpressionDialog;
+		}
+
+		static get CMDTYVIEW_COLUMNS_RESTORED() {
+			return cmdtyViewColumnsRestored;
 		}
 
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
@@ -17679,6 +17695,11 @@ module.exports = (() => {
 	const cmdtyViewRemovePanel = new EventType('CMDTYVIEW-REMOVE-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewQuotesShowSymbolBrowser = new EventType('CMDTYVIEW-QUOTES-SHOW-SYMBOL-BROWSER', 'Show Symbol Browser in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewQuotesShowExpressionDialog = new EventType('CMDTYVIEW-QUOTES-SHOW-EXPRESSION-DIALOG', 'Show Expression Dialog in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	
+	const cmdtyViewColumnsMenuShow = new EventType('CMDTYVIEW-COLUMNS-MENU-SHOW', 'Columns Menu Display', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
+	const cmdtyViewColumnAdded = new EventType('CMDTYVIEW-COLUMN-ADDED', 'Column Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
+	const cmdtyViewColumnRemoved = new EventType('CMDTYVIEW-COLUMN-REMOVED', 'Column Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
+	const cmdtyViewColumnsRestored = new EventType('CMDTYVIEW-COLUMNS-RESTORED', 'Column Restored', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
 
 	// Entitlements
 
@@ -19255,7 +19276,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.0'
+    version: '5.4.1'
   };
 })();
 
