@@ -17806,16 +17806,24 @@ module.exports = (() => {
 			return cmdtyViewColumnRemoved;
 		}
 
-		static get CMDTYVIEW_QUOTES_SHOW_SYMBOL_BROWSER() {
-			return cmdtyViewQuotesShowSymbolBrowser;
+		static get CMDTYVIEW_SYMBOL_BROWSER_SHOW() {
+			return cmdtyViewSymbolBrowserShow;
 		}
 
-		static get CMDTYVIEW_QUOTES_SHOW_EXPRESSION_DIALOG() {
-			return cmdtyViewQuotesShowExpressionDialog;
+		static get CMDTYVIEW_EXPRESSION_DIALOG_SHOW() {
+			return cmdtyViewExpressionDialogShow;
 		}
 
 		static get CMDTYVIEW_COLUMNS_RESTORED() {
 			return cmdtyViewColumnsRestored;
+		}
+
+		static get CMDTYVIEW_EXCEL_EXPORT() {
+			return cmdtyViewExcelExport;
+		}
+
+		static get CMDTYVIEW_EXPORT_SHOW() {
+			return cmdtyViewExportShow;
 		}
 
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
@@ -17828,6 +17836,14 @@ module.exports = (() => {
 
 		static get MARKETPLACE_CUSTOMER_CREATED() {
 			return marketplaceCustomerCreated;
+		}
+
+		static get CMDTYVIEW_QUOTES_PRICE_FORMAT_SHOW() {
+			return cmdtyViewQuotesPriceFormatShow;
+		}
+
+		static get CMDTYVIEW_QUOTES_PRICE_FORMAT_CHANGED() {
+			return cmdtyViewQuotesPriceFormatChanged;
 		}
 
 		static get MARKETPLACE_ACCOUNT_LINKED() {
@@ -17940,13 +17956,20 @@ module.exports = (() => {
 	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title', 'panels']);
 	const cmdtyViewAddNewPanel = new EventType('CMDTYVIEW-ADD-NEW-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'origin']);
 	const cmdtyViewRemovePanel = new EventType('CMDTYVIEW-REMOVE-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
-	const cmdtyViewQuotesShowSymbolBrowser = new EventType('CMDTYVIEW-QUOTES-SHOW-SYMBOL-BROWSER', 'Show Symbol Browser in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
-	const cmdtyViewQuotesShowExpressionDialog = new EventType('CMDTYVIEW-QUOTES-SHOW-EXPRESSION-DIALOG', 'Show Expression Dialog in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	
+	const cmdtyViewSymbolBrowserShow = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SHOW', 'Symbol Browser  show', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewExpressionDialogShow = new EventType('CMDTYVIEW-EXPRESSION-DIALOG-SHOW', 'Expression Dialog show', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	
 	const cmdtyViewColumnsMenuShow = new EventType('CMDTYVIEW-COLUMNS-MENU-SHOW', 'Columns Menu Display', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
 	const cmdtyViewColumnAdded = new EventType('CMDTYVIEW-COLUMN-ADDED', 'Column Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
 	const cmdtyViewColumnRemoved = new EventType('CMDTYVIEW-COLUMN-REMOVED', 'Column Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
 	const cmdtyViewColumnsRestored = new EventType('CMDTYVIEW-COLUMNS-RESTORED', 'Column Restored', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
+	
+	const cmdtyViewExcelExport = new EventType('CMDTYVIEW-EXCEL-EXPORT', 'Export data to Excel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'exportType']);
+	const cmdtyViewExportShow = new EventType('CMDTYVIEW-EXPORT-SHOW', 'Export menu shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	
+	const cmdtyViewQuotesPriceFormatShow = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-SHOW', 'Price format drop down menu in Quotes panel show', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewQuotesPriceFormatChanged = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-CHANGED', 'Price format changed in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousFormat', 'newFormat']);
 
 	// Entitlements
 
@@ -19523,7 +19546,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.1'
+    version: '5.4.2'
   };
 })();
 
