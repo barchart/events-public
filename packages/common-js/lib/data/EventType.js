@@ -484,7 +484,7 @@ module.exports = (() => {
 	const cmdtyViewColumnsRestored = new EventType('CMDTYVIEW-COLUMNS-RESTORED', 'Column(s) Restored', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
 
 	const cmdtyViewExcelExportShown = new EventType('CMDTYVIEW-EXCEL-EXPORT-SHOWN', 'Export Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
-	const cmdtyViewExcelExportCompleted = new EventType('CMDTYVIEW_EXCEL_EXPORT_COMPLETED', 'Data Exported to Excel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'exportType']);
+	const cmdtyViewExcelExportCompleted = new EventType('CMDTYVIEW-EXCEL-EXPORT-COMPLETED', 'Data Exported to Excel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'exportType']);
 
 	const cmdtyViewQuotesPriceFormatShown = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-SHOWN', 'Price Format Drop Down Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewQuotesPriceFormatChanged = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-CHANGED', 'Price Format Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousFormat', 'newFormat']);
