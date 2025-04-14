@@ -332,6 +332,14 @@ module.exports = (() => {
 			return cmdtyViewColumnsRestored;
 		}
 
+		static get CMDTYVIEW_EXCEL_EXPORT() {
+			return cmdtyViewExcelExport;
+		}
+
+		static get CMDTYVIEW_EXPORT_SHOW() {
+			return cmdtyViewExportShow;
+		}
+
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
@@ -461,6 +469,9 @@ module.exports = (() => {
 	const cmdtyViewColumnAdded = new EventType('CMDTYVIEW-COLUMN-ADDED', 'Column Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
 	const cmdtyViewColumnRemoved = new EventType('CMDTYVIEW-COLUMN-REMOVED', 'Column Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
 	const cmdtyViewColumnsRestored = new EventType('CMDTYVIEW-COLUMNS-RESTORED', 'Column Restored', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
+
+	const cmdtyViewExcelExport = new EventType('CMDTYVIEW-EXCEL-EXPORT', 'Export data to Excel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'exportType']);
+	const cmdtyViewExportShow = new EventType('CMDTYVIEW-EXPORT-SHOW', 'Export menu shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 
 	// Entitlements
 
