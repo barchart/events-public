@@ -17523,6 +17523,8 @@ module.exports = (() => {
 			return portfolioValueGraphDurationChanged;
 		}
 
+		
+		
 		static get CMDTYVIEW_LOGIN() {
 			return cmdtyViewLogin;
 		}
@@ -17539,44 +17541,52 @@ module.exports = (() => {
 			return cmdtyViewWorkspaceActivated;
 		}
 
-		static get CMDTYVIEW_ADD_NEW_PANEL() {
-			return cmdtyViewAddNewPanel;
+		static get CMDTYVIEW_PANEL_ADDED() {
+			return cmdtyViewPanelAdded;
 		}
 
-		static get CMDTYVIEW_REMOVE_PANEL() {
-			return cmdtyViewRemovePanel;
+		static get CMDTYVIEW_PANEL_REMOVED() {
+			return cmdtyViewPanelRemoved;
 		}
 
-		static get CMDTYVIEW_COLUMNS_MENU_SHOW() {
-			return cmdtyViewColumnsMenuShow;
+		static get CMDTYVIEW_SYMBOL_BROWSER_SHOWN() {
+			return cmdtyViewSymbolBrowserShown;
 		}
 
-		static get CMDTYVIEW_COLUMN_ADDED() {
-			return cmdtyViewColumnAdded;
+		static get CMDTYVIEW_EXPRESSION_DIALOG_SHOWN() {
+			return cmdtyViewExpressionDialogShown;
 		}
 
-		static get CMDTYVIEW_COLUMN_REMOVED() {
-			return cmdtyViewColumnRemoved;
+		static get CMDTYVIEW_COLUMNS_MENU_SHOWN() {
+			return cmdtyViewColumnsMenuShown;
 		}
 
-		static get CMDTYVIEW_SYMBOL_BROWSER_SHOW() {
-			return cmdtyViewSymbolBrowserShow;
+		static get CMDTYVIEW_COLUMNS_ADDED() {
+			return cmdtyViewColumnsAdded;
 		}
 
-		static get CMDTYVIEW_EXPRESSION_DIALOG_SHOW() {
-			return cmdtyViewExpressionDialogShow;
+		static get CMDTYVIEW_COLUMNS_REMOVED() {
+			return cmdtyViewColumnsRemoved;
 		}
 
 		static get CMDTYVIEW_COLUMNS_RESTORED() {
 			return cmdtyViewColumnsRestored;
 		}
 
-		static get CMDTYVIEW_EXCEL_EXPORT() {
-			return cmdtyViewExcelExport;
+		static get CMDTYVIEW_EXCEL_EXPORT_SHOWN() {
+			return cmdtyViewExcelExportShown;
 		}
 
-		static get CMDTYVIEW_EXPORT_SHOW() {
-			return cmdtyViewExportShow;
+		static get CMDTYVIEW_EXCEL_EXPORT_COMPLETED() {
+			return cmdtyViewExcelExportCompleted;
+		}
+
+		static get CMDTYVIEW_QUOTES_PRICE_FORMAT_SHOWN() {
+			return cmdtyViewQuotesPriceFormatShown;
+		}
+
+		static get CMDTYVIEW_QUOTES_PRICE_FORMAT_CHANGED() {
+			return cmdtyViewQuotesPriceFormatChanged;
 		}
 
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
@@ -17589,14 +17599,6 @@ module.exports = (() => {
 
 		static get MARKETPLACE_CUSTOMER_CREATED() {
 			return marketplaceCustomerCreated;
-		}
-
-		static get CMDTYVIEW_QUOTES_PRICE_FORMAT_SHOW() {
-			return cmdtyViewQuotesPriceFormatShow;
-		}
-
-		static get CMDTYVIEW_QUOTES_PRICE_FORMAT_CHANGED() {
-			return cmdtyViewQuotesPriceFormatChanged;
 		}
 
 		static get MARKETPLACE_ACCOUNT_LINKED() {
@@ -17703,26 +17705,28 @@ module.exports = (() => {
 
 	// cmdtyView
 
-	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User logged in', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser']);
-	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User logged out', ProductType.CMDTYVIEW, ['userId', 'sessionId']);
+	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User Logged In', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser']);
+	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User Logged Out', ProductType.CMDTYVIEW, ['userId', 'sessionId']);
+
 	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title']);
 	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title', 'panels']);
-	const cmdtyViewAddNewPanel = new EventType('CMDTYVIEW-ADD-NEW-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'origin']);
-	const cmdtyViewRemovePanel = new EventType('CMDTYVIEW-REMOVE-PANEL', 'Add New Panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+
+	const cmdtyViewPanelAdded = new EventType('CMDTYVIEW-PANEL-ADDED', 'Panel Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'origin']);
+	const cmdtyViewPanelRemoved = new EventType('CMDTYVIEW-PANEL-REMOVED', 'Panel Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	
-	const cmdtyViewSymbolBrowserShow = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SHOW', 'Symbol Browser  show', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
-	const cmdtyViewExpressionDialogShow = new EventType('CMDTYVIEW-EXPRESSION-DIALOG-SHOW', 'Expression Dialog show', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
-	
-	const cmdtyViewColumnsMenuShow = new EventType('CMDTYVIEW-COLUMNS-MENU-SHOW', 'Columns Menu Display', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
-	const cmdtyViewColumnAdded = new EventType('CMDTYVIEW-COLUMN-ADDED', 'Column Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
-	const cmdtyViewColumnRemoved = new EventType('CMDTYVIEW-COLUMN-REMOVED', 'Column Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
-	const cmdtyViewColumnsRestored = new EventType('CMDTYVIEW-COLUMNS-RESTORED', 'Column Restored', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
-	
-	const cmdtyViewExcelExport = new EventType('CMDTYVIEW-EXCEL-EXPORT', 'Export data to Excel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'exportType']);
-	const cmdtyViewExportShow = new EventType('CMDTYVIEW-EXPORT-SHOW', 'Export menu shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
-	
-	const cmdtyViewQuotesPriceFormatShow = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-SHOW', 'Price format drop down menu in Quotes panel show', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
-	const cmdtyViewQuotesPriceFormatChanged = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-CHANGED', 'Price format changed in Quotes panel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousFormat', 'newFormat']);
+	const cmdtyViewSymbolBrowserShown = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SHOWN', 'Symbol Browser Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewExpressionDialogShown = new EventType('CMDTYVIEW-EXPRESSION-DIALOG-SHOWN', 'Expression Dialog Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+
+	const cmdtyViewColumnsMenuShown = new EventType('CMDTYVIEW-COLUMNS-MENU-SHOWN', 'Columns Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
+	const cmdtyViewColumnsAdded = new EventType('CMDTYVIEW-COLUMNS-ADDED', 'Column(s) Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
+	const cmdtyViewColumnsRemoved = new EventType('CMDTYVIEW-COLUMNS-REMOVED', 'Column(s) Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
+	const cmdtyViewColumnsRestored = new EventType('CMDTYVIEW-COLUMNS-RESTORED', 'Column(s) Restored', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
+
+	const cmdtyViewExcelExportShown = new EventType('CMDTYVIEW-EXCEL-EXPORT-SHOWN', 'Export Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewExcelExportCompleted = new EventType('CMDTYVIEW_EXCEL_EXPORT_COMPLETED', 'Data Exported to Excel', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'exportType']);
+
+	const cmdtyViewQuotesPriceFormatShown = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-SHOWN', 'Price Format Drop Down Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewQuotesPriceFormatChanged = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-CHANGED', 'Price Format Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousFormat', 'newFormat']);
 
 	// Entitlements
 
@@ -19299,7 +19303,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.2'
+    version: '5.4.3'
   };
 })();
 
