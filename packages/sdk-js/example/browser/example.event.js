@@ -17836,8 +17836,104 @@ module.exports = (() => {
 			return cmdtyViewQuotesPriceFormatChanged;
 		}
 
+		static get CMDTYVIEW_QUOTES_CONTEXT_MENU_SHOWN() {
+			return cmdtyViewQuotesContextMenuShown;
+		}
+
+		static get CMDTYVIEW_QUOTES_CONTEXT_MENU_SELECTED() {
+			return cmdtyViewQuotesContextMenuSelected;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_NUM_STRIKES_MENU_SHOWN() {
+			return cmdtyViewOptionsStrikesNumStrikesMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_NUM_STRIKES_CHANGED() {
+			return cmdtyViewOptionsStrikesNumStrikesChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_FIELDS_MENU_SHOWN() {
+			return cmdtyViewOptionsStrikesFieldsMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_FIELD_CHANGED() {
+			return cmdtyViewOptionsStrikesFieldChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_DATE_CHANGED() {
+			return cmdtyViewOptionsChainDateChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_HIGHLIGHT_MENU_SHOWN() {
+			return cmdtyViewOptionsChainHighlightMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_HIGHLIGHT_CHANGED() {
+			return cmdtyViewOptionsChainHighlightChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_STRIKE_COUNT_CHANGED() {
+			return cmdtyViewOptionsChainStrikeCountChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_COLUMNS_VIEW_CHANGED() {
+			return cmdtyViewOptionsChainColumnsViewChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_EXPIRATION_MENU_SHOWN() {
+			return cmdtyViewOptionsChainExpirationMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_EXPIRATION_SELECTED() {
+			return cmdtyViewOptionsChainExpirationSelected;
+		}
+
+		static get CMDTYVIEW_HISTORY_AGGREGATION_MENU_SHOWN() {
+			return cmdtyViewHistoryAggregationMenuShown;
+		}
+
+		static get CMDTYVIEW_HISTORY_AGGREGATION_SELECTED() {
+			return cmdtyViewHistoryAggregationSelected;
+		}
+
+		static get CMDTYVIEW_HISTORY_RANGE_SELECTED() {
+			return cmdtyViewHistoryRangeSelected;
+		}
+
+		static get CMDTYVIEW_HISTORY_CONTRACT_ROLL_CHANGED() {
+			return cmdtyViewHistoryContractRollChanged;
+		}
+
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
+		}
+
+		static get CMDTYVIEW_HISTORY_INDICATOR_DIALOG_SHOWN() {
+			return cmdtyViewHistoryIndicatorDialogShown;
+		}
+
+		static get CMDTYVIEW_HISTORY_INDICATOR_ADDED() {
+			return cmdtyViewHistoryIndicatorAdded;
+		}
+
+		static get CMDTYVIEW_HISTORY_INDICATOR_REMOVED() {
+			return cmdtyViewHistoryIndicatorRemoved;
+		}
+
+		static get CMDTYVIEW_NEWS_FILTER_VISIBILITY_CHANGED() {
+			return cmdtyViewNewsFilterVisibilityChanged;
+		}
+		
+		static get CMDTYVIEW_NEWS_SHOW_SYMBOLS_CHANGED() {
+			return cmdtyViewNewsShowSymbolsChanged;
+		}
+
+		static get CMDTYVIEW_NEWS_OPEN_CHART_ON_CLICK_CHANGED() {
+			return cmdtyViewNewsOpenChartOnClickChanged;
+		}
+
+		static get CMDTYVIEW_NEWS_FILTER_CHANGED() {
+			return cmdtyViewNewsFilterChanged;
 		}
 
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
@@ -17974,6 +18070,35 @@ module.exports = (() => {
 
 	const cmdtyViewQuotesPriceFormatShown = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-SHOWN', 'Price Format Drop Down Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewQuotesPriceFormatChanged = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-CHANGED', 'Price Format Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousFormat', 'newFormat']);
+
+	const cmdtyViewQuotesContextMenuShown = new EventType('CMDTYVIEW-QUOTES-CONTEXT-MENU-SHOWN', 'Quoteboard Context Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol']);
+	const cmdtyViewQuotesContextMenuSelected = new EventType('CMDTYVIEW-QUOTES-CONTEXT-MENU-SELECTED', 'Quoteboard Context Menu Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'action', 'symbol']);
+
+	const cmdtyViewOptionsStrikesNumStrikesMenuShown = new EventType('CMDTYVIEW-OPTIONS-STRIKES-NUM-STRIKES-MENU-SHOWN', 'Options Strikes Num Strikes Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsStrikesNumStrikesChanged = new EventType('CMDTYVIEW-OPTIONS-STRIKES-NUM-STRIKES-CHANGED', 'Options Strikes Num Strikes Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousNumber', 'newNumber'])
+	const cmdtyViewOptionsStrikesFieldsMenuShown = new EventType('CMDTYVIEW-OPTIONS-STRIKES-FIELDS-MENU-SHOWN', 'Options Strikes Fields Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsStrikesFieldChanged = new EventType('CMDTYVIEW-OPTIONS-STRIKES-FIELD-CHANGED', 'Options Strikes Field Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'oldField', 'newField']);
+
+	const cmdtyViewOptionsChainDateChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-DATE-CHANGED', 'Options Chain Date Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'date']);
+	const cmdtyViewOptionsChainHighlightMenuShown = new EventType('CMDTYVIEW-OPTIONS-CHAIN-HIGHLIGHT-MENU-SHOWN', 'Options Chain Highlight Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsChainHighlightChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-HIGHLIGHT-CHANGED', 'Options Chain Highlight Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'oldValue', 'newValue']);
+	const cmdtyViewOptionsChainStrikeCountChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-STRIKE-COUNT-CHANGED', 'Options Chain Strike Count Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'strikeCount']);
+	const cmdtyViewOptionsChainColumnsViewChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-COLUMNS-VIEW-CHANGED', 'Options Chain Columns View Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'view']);
+	const cmdtyViewOptionsChainExpirationMenuShown = new EventType('CMDTYVIEW-OPTIONS-CHAIN-EXPIRATION-MENU-SHOWN', 'Options Chain Expiration Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsChainExpirationSelected = new EventType('CMDTYVIEW-OPTIONS-CHAIN-EXPIRATION-SELECTED', 'Options Chain Expiration Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'monthCode', 'underlier', 'date']);
+
+	const cmdtyViewHistoryAggregationMenuShown = new EventType('CMDTYVIEW-HISTORY-AGGREGATION-MENU_SHOWN', 'History Aggregation Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol']);
+	const cmdtyViewHistoryAggregationSelected = new EventType('CMDTYVIEW-HISTORY-AGGREGATION-SELECTED', 'History Aggregation Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'previousAggregation', 'newAggregation']);
+	const cmdtyViewHistoryRangeSelected = new EventType('CMDTYVIEW-HISTORY-RANGE-SELECTED', 'History Range Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'previousRange', 'newRange']);
+	const cmdtyViewHistoryContractRollChanged = new EventType('CMDTYVIEW-HISTORY-CONTRACT-ROLL-CHANGED', 'History Contract Roll Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'oldRollType', 'newRollType', 'oldBackAdjust', 'newBackAdjust']);
+	const cmdtyViewHistoryIndicatorDialogShown = new EventType('CMDTYVIEW-HISTORY-INDICATOR-DIALOG-SHOWN', 'History Indicator Dialog Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol']);
+	const cmdtyViewHistoryIndicatorAdded = new EventType('CMDTYVIEW-HISTORY-INDICATOR-ADDED', 'History Indicator Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'indicator', 'indicators']);
+	const cmdtyViewHistoryIndicatorRemoved = new EventType('CMDTYVIEW-HISTORY-INDICATOR-REMOVED', 'History Indicator Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'indicator', 'indicators']);
+
+	const cmdtyViewNewsFilterVisibilityChanged = new EventType('CMDTYVIEW-NEWS-FILTER-VISIBILITY-CHANGED', 'News Filter Sidebar Visibility Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filterVisible']);
+	const cmdtyViewNewsShowSymbolsChanged = new EventType('CMDTYVIEW-NEWS-SHOW-SYMBOLS-CHANGED', 'News Show Symbols Option Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'value']);
+	const cmdtyViewNewsOpenChartOnClickChanged = new EventType('CMDTYVIEW-NEWS-OPEN-CHART-ON-CLICK-CHANGED', 'News Open Chart On Click Option Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'value']);
+	const cmdtyViewNewsFilterChanged = new EventType('CMDTYVIEW-NEWS-FILTER-CHANGED', 'News Filter Selection Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filter']);
 
 	// Entitlements
 
@@ -19550,7 +19675,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.4'
+    version: '5.4.5'
   };
 })();
 
