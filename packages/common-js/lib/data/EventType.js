@@ -402,8 +402,36 @@ module.exports = (() => {
 			return cmdtyViewOptionsChainExpirationSelected;
 		}
 
+		static get CMDTYVIEW_HISTORY_AGGREGATION_MENU_SHOWN() {
+			return cmdtyViewHistoryAggregationMenuShown;
+		}
+
+		static get CMDTYVIEW_HISTORY_AGGREGATION_SELECTED() {
+			return cmdtyViewHistoryAggregationSelected;
+		}
+
+		static get CMDTYVIEW_HISTORY_RANGE_SELECTED() {
+			return cmdtyViewHistoryRangeSelected;
+		}
+
+		static get CMDTYVIEW_HISTORY_CONTRACT_ROLL_CHANGED() {
+			return cmdtyViewHistoryContractRollChanged;
+		}
+
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
+		}
+
+		static get CMDTYVIEW_HISTORY_INDICATOR_DIALOG_SHOWN() {
+			return cmdtyViewHistoryIndicatorDialogShown;
+		}
+
+		static get CMDTYVIEW_HISTORY_INDICATOR_ADDED() {
+			return cmdtyViewHistoryIndicatorAdded;
+		}
+
+		static get CMDTYVIEW_HISTORY_INDICATOR_REMOVED() {
+			return cmdtyViewHistoryIndicatorRemoved;
 		}
 
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
@@ -556,6 +584,14 @@ module.exports = (() => {
 	const cmdtyViewOptionsChainColumnsViewChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-COLUMNS-VIEW-CHANGED', 'Options Chain Columns View Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'view']);
 	const cmdtyViewOptionsChainExpirationMenuShown = new EventType('CMDTYVIEW-OPTIONS-CHAIN-EXPIRATION-MENU-SHOWN', 'Options Chain Expiration Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewOptionsChainExpirationSelected = new EventType('CMDTYVIEW-OPTIONS-CHAIN-EXPIRATION-SELECTED', 'Options Chain Expiration Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'monthCode', 'underlier', 'date']);
+
+	const cmdtyViewHistoryAggregationMenuShown = new EventType('CMDTYVIEW-HISTORY-AGGREGATION-MENU_SHOWN', 'History Aggregation Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol']);
+	const cmdtyViewHistoryAggregationSelected = new EventType('CMDTYVIEW-HISTORY-AGGREGATION-SELECTED', 'History Aggregation Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'previousAggregation', 'newAggregation']);
+	const cmdtyViewHistoryRangeSelected = new EventType('CMDTYVIEW-HISTORY-RANGE-SELECTED', 'History Range Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'previousRange', 'newRange']);
+	const cmdtyViewHistoryContractRollChanged = new EventType('CMDTYVIEW-HISTORY-CONTRACT-ROLL-CHANGED', 'History Contract Roll Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'oldRollType', 'newRollType', 'oldBackAdjust', 'newBackAdjust']);
+	const cmdtyViewHistoryIndicatorDialogShown = new EventType('CMDTYVIEW-HISTORY-INDICATOR-DIALOG-SHOWN', 'History Indicator Dialog Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol']);
+	const cmdtyViewHistoryIndicatorAdded = new EventType('CMDTYVIEW-HISTORY-INDICATOR-ADDED', 'History Indicator Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'indicator', 'indicators']);
+	const cmdtyViewHistoryIndicatorRemoved = new EventType('CMDTYVIEW-HISTORY-INDICATOR-REMOVED', 'History Indicator Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'indicator', 'indicators']);
 
 	// Entitlements
 
