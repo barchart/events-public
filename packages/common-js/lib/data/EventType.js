@@ -350,6 +350,58 @@ module.exports = (() => {
 			return cmdtyViewQuotesPriceFormatChanged;
 		}
 
+		static get CMDTYVIEW_QUOTES_CONTEXT_MENU_SHOWN() {
+			return cmdtyViewQuotesContextMenuShown;
+		}
+
+		static get CMDTYVIEW_QUOTES_CONTEXT_MENU_SELECTED() {
+			return cmdtyViewQuotesContextMenuSelected;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_NUM_STRIKES_MENU_SHOWN() {
+			return cmdtyViewOptionsStrikesNumStrikesMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_NUM_STRIKES_CHANGED() {
+			return cmdtyViewOptionsStrikesNumStrikesChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_FIELDS_MENU_SHOWN() {
+			return cmdtyViewOptionsStrikesFieldsMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_STRIKES_FIELD_CHANGED() {
+			return cmdtyViewOptionsStrikesFieldChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_DATE_CHANGED() {
+			return cmdtyViewOptionsChainDateChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_HIGHLIGHT_MENU_SHOWN() {
+			return cmdtyViewOptionsChainHighlightMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_HIGHLIGHT_CHANGED() {
+			return cmdtyViewOptionsChainHighlightChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_STRIKE_COUNT_CHANGED() {
+			return cmdtyViewOptionsChainStrikeCountChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_COLUMNS_VIEW_CHANGED() {
+			return cmdtyViewOptionsChainColumnsViewChanged;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_EXPIRATION_MENU_SHOWN() {
+			return cmdtyViewOptionsChainExpirationMenuShown;
+		}
+
+		static get CMDTYVIEW_OPTIONS_CHAIN_EXPIRATION_SELECTED() {
+			return cmdtyViewOptionsChainExpirationSelected;
+		}
+
 		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
@@ -488,6 +540,22 @@ module.exports = (() => {
 
 	const cmdtyViewQuotesPriceFormatShown = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-SHOWN', 'Price Format Drop Down Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewQuotesPriceFormatChanged = new EventType('CMDTYVIEW-QUOTES-PRICE-FORMAT-CHANGED', 'Price Format Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousFormat', 'newFormat']);
+
+	const cmdtyViewQuotesContextMenuShown = new EventType('CMDTYVIEW-QUOTES-CONTEXT-MENU-SHOWN', 'Quoteboard Context Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol']);
+	const cmdtyViewQuotesContextMenuSelected = new EventType('CMDTYVIEW-QUOTES-CONTEXT-MENU-SELECTED', 'Quoteboard Context Menu Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'action', 'symbol']);
+
+	const cmdtyViewOptionsStrikesNumStrikesMenuShown = new EventType('CMDTYVIEW-OPTIONS-STRIKES-NUM-STRIKES-MENU-SHOWN', 'Options Strikes Num Strikes Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsStrikesNumStrikesChanged = new EventType('CMDTYVIEW-OPTIONS-STRIKES-NUM-STRIKES-CHANGED', 'Options Strikes Num Strikes Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousNumber', 'newNumber'])
+	const cmdtyViewOptionsStrikesFieldsMenuShown = new EventType('CMDTYVIEW-OPTIONS-STRIKES-FIELDS-MENU-SHOWN', 'Options Strikes Fields Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsStrikesFieldChanged = new EventType('CMDTYVIEW-OPTIONS-STRIKES-FIELD-CHANGED', 'Options Strikes Field Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'oldField', 'newField']);
+
+	const cmdtyViewOptionsChainDateChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-DATE-CHANGED', 'Options Chain Date Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'date']);
+	const cmdtyViewOptionsChainHighlightMenuShown = new EventType('CMDTYVIEW-OPTIONS-CHAIN-HIGHLIGHT-MENU-SHOWN', 'Options Chain Highlight Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsChainHighlightChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-HIGHLIGHT-CHANGED', 'Options Chain Highlight Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'oldValue', 'newValue']);
+	const cmdtyViewOptionsChainStrikeCountChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-STRIKE-COUNT-CHANGED', 'Options Chain Strike Count Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'strikeCount']);
+	const cmdtyViewOptionsChainColumnsViewChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-COLUMNS-VIEW-CHANGED', 'Options Chain Columns View Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'view']);
+	const cmdtyViewOptionsChainExpirationMenuShown = new EventType('CMDTYVIEW-OPTIONS-CHAIN-EXPIRATION-MENU-SHOWN', 'Options Chain Expiration Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewOptionsChainExpirationSelected = new EventType('CMDTYVIEW-OPTIONS-CHAIN-EXPIRATION-SELECTED', 'Options Chain Expiration Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'monthCode', 'underlier', 'date']);
 
 	// Entitlements
 
