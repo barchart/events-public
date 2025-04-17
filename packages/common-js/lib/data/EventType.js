@@ -434,6 +434,22 @@ module.exports = (() => {
 			return cmdtyViewHistoryIndicatorRemoved;
 		}
 
+		static get CMDTYVIEW_NEWS_FILTER_VISIBILITY_CHANGED() {
+			return cmdtyViewNewsFilterVisibilityChanged;
+		}
+		
+		static get CMDTYVIEW_NEWS_SHOW_SYMBOLS_CHANGED() {
+			return cmdtyViewNewsShowSymbolsChanged;
+		}
+
+		static get CMDTYVIEW_NEWS_OPEN_CHART_ON_CLICK_CHANGED() {
+			return cmdtyViewNewsOpenChartOnClickChanged;
+		}
+
+		static get CMDTYVIEW_NEWS_FILTER_CHANGED() {
+			return cmdtyViewNewsFilterChanged;
+		}
+
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
@@ -592,6 +608,11 @@ module.exports = (() => {
 	const cmdtyViewHistoryIndicatorDialogShown = new EventType('CMDTYVIEW-HISTORY-INDICATOR-DIALOG-SHOWN', 'History Indicator Dialog Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol']);
 	const cmdtyViewHistoryIndicatorAdded = new EventType('CMDTYVIEW-HISTORY-INDICATOR-ADDED', 'History Indicator Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'indicator', 'indicators']);
 	const cmdtyViewHistoryIndicatorRemoved = new EventType('CMDTYVIEW-HISTORY-INDICATOR-REMOVED', 'History Indicator Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'indicator', 'indicators']);
+
+	const cmdtyViewNewsFilterVisibilityChanged = new EventType('CMDTYVIEW-NEWS-FILTER-VISIBILITY-CHANGED', 'News Filter Sidebar Visibility Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filterVisible']);
+	const cmdtyViewNewsShowSymbolsChanged = new EventType('CMDTYVIEW-NEWS-SHOW-SYMBOLS-CHANGED', 'News Show Symbols Option Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'value']);
+	const cmdtyViewNewsOpenChartOnClickChanged = new EventType('CMDTYVIEW-NEWS-OPEN-CHART-ON-CLICK-CHANGED', 'News Open Chart On Click Option Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'value']);
+	const cmdtyViewNewsFilterChanged = new EventType('CMDTYVIEW-NEWS-FILTER-CHANGED', 'News Filter Selection Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filter']);
 
 	// Entitlements
 
