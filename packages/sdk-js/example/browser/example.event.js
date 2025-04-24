@@ -17800,8 +17800,32 @@ module.exports = (() => {
 			return cmdtyViewSymbolBrowserShown;
 		}
 
+		static get CMDTYVIEW_SYMBOL_BROWSER_SEARCH() {
+			return cmdtyViewSymbolBrowserSearch;
+		}
+
+		static get CMDTYVIEW_SYMBOL_BROWSER_SYMBOL_CONFIRMED() {
+			return cmdtyViewSymbolBrowerSymbolConfirmed;
+		}
+
+		static get CMDTYVIEW_SYMBOL_BROWSER_BRANCH_STATE_CHANGED() {
+			return cmdtyViewSymbolBrowserBranchStateChanged;
+		}
+
+		static get CMDTYVIEW_SYMBOL_BROWSER_FILTER_CHANGED() {
+			return cmdtyViewSymbolBrowserFilterChanged;
+		}
+
+		static get CMDTYVIEW_SYMBOL_BROWSER_SYMBOLS_INSERTED() {
+			return cmdtyViewSymbolBrowserSymbolsInserted;
+		}
+
 		static get CMDTYVIEW_EXPRESSION_DIALOG_SHOWN() {
 			return cmdtyViewExpressionDialogShown;
+		}
+
+		static get CMDTYVIEW_EXPRESSION_ADDED() {
+			return cmdtyViewExpressionAdded;
 		}
 
 		static get CMDTYVIEW_COLUMNS_MENU_SHOWN() {
@@ -17860,12 +17884,12 @@ module.exports = (() => {
 			return cmdtyViewOptionsStrikesFieldChanged;
 		}
 
-		static get CMDTYVIEW_OPTIONS_CHAIN_DATE_CHANGED() {
-			return cmdtyViewOptionsChainDateChanged;
+		static get CMDTYVIEW_OPTIONS_STRIKES_ROOT_SELECTED() {
+			return cmdtyViewOptionsStrikesRootSelected;
 		}
 
-		static get CMDTYVIEW_OPTIONS_CHAIN_HIGHLIGHT_MENU_SHOWN() {
-			return cmdtyViewOptionsChainHighlightMenuShown;
+		static get CMDTYVIEW_OPTIONS_CHAIN_DATE_CHANGED() {
+			return cmdtyViewOptionsChainDateChanged;
 		}
 
 		static get CMDTYVIEW_OPTIONS_CHAIN_HIGHLIGHT_CHANGED() {
@@ -18058,7 +18082,14 @@ module.exports = (() => {
 	const cmdtyViewPanelRemoved = new EventType('CMDTYVIEW-PANEL-REMOVED', 'Panel Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	
 	const cmdtyViewSymbolBrowserShown = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SHOWN', 'Symbol Browser Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewSymbolBrowserSearch = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SEARCH', 'Symbol Browser Search Performed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'searchString']);
+	const cmdtyViewSymbolBrowerSymbolConfirmed = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SYMBOL-CONFIRMED', 'Symbol Browser Symbol Confirmed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'path']);
+	const cmdtyViewSymbolBrowserBranchStateChanged = new EventType('CMDTYVIEW-SYMBOL-BROWSER-BRANCH-STATE-CHANGED', 'Symbol Browser Branch State Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'path', 'isOpen']);
+	const cmdtyViewSymbolBrowserFilterChanged = new EventType('CMDTYVIEW-SYMBOL-BROWSER-FILTER-CHANGED', 'Symbol Browser Filter Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filter', 'filterSelected', 'activeFilters']);
+	const cmdtyViewSymbolBrowserSymbolsInserted = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SYMBOLS-INSERTED', 'Symbol Browser Symbols Inserted', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbols']);
+
 	const cmdtyViewExpressionDialogShown = new EventType('CMDTYVIEW-EXPRESSION-DIALOG-SHOWN', 'Expression Dialog Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewExpressionAdded = new EventType('CMDTYVIEW-EXPRESSION-ADDED', 'Expression Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'expressionName', 'expressionSource', 'expression']);
 
 	const cmdtyViewColumnsMenuShown = new EventType('CMDTYVIEW-COLUMNS-MENU-SHOWN', 'Columns Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'columns']);
 	const cmdtyViewColumnsAdded = new EventType('CMDTYVIEW-COLUMNS-ADDED', 'Column(s) Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'column', 'columns']);
@@ -18078,9 +18109,9 @@ module.exports = (() => {
 	const cmdtyViewOptionsStrikesNumStrikesChanged = new EventType('CMDTYVIEW-OPTIONS-STRIKES-NUM-STRIKES-CHANGED', 'Options Strikes Num Strikes Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'previousNumber', 'newNumber'])
 	const cmdtyViewOptionsStrikesFieldsMenuShown = new EventType('CMDTYVIEW-OPTIONS-STRIKES-FIELDS-MENU-SHOWN', 'Options Strikes Fields Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewOptionsStrikesFieldChanged = new EventType('CMDTYVIEW-OPTIONS-STRIKES-FIELD-CHANGED', 'Options Strikes Field Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'oldField', 'newField']);
+	const cmdtyViewOptionsStrikesRootSelected = new EventType('CMDTYVIEW-OPTIONS-STRIKES-ROOT-SELECTED', 'Options Strikes Root Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'oldRoot', 'newRoot']);
 
 	const cmdtyViewOptionsChainDateChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-DATE-CHANGED', 'Options Chain Date Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'date']);
-	const cmdtyViewOptionsChainHighlightMenuShown = new EventType('CMDTYVIEW-OPTIONS-CHAIN-HIGHLIGHT-MENU-SHOWN', 'Options Chain Highlight Menu Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewOptionsChainHighlightChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-HIGHLIGHT-CHANGED', 'Options Chain Highlight Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'oldValue', 'newValue']);
 	const cmdtyViewOptionsChainStrikeCountChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-STRIKE-COUNT-CHANGED', 'Options Chain Strike Count Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'strikeCount']);
 	const cmdtyViewOptionsChainColumnsViewChanged = new EventType('CMDTYVIEW-OPTIONS-CHAIN-COLUMNS-VIEW-CHANGED', 'Options Chain Columns View Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'view']);
@@ -19675,7 +19706,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.5'
+    version: '5.4.6'
   };
 })();
 

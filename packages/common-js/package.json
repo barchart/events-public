@@ -1,6 +1,6 @@
 {
   "name": "@barchart/events-api-common",
-  "version": "5.4.5",
+  "version": "5.4.6",
   "description": "Common classes used by the Barchart Event Tracking System",
   "author": {
     "name": "Bryan Ingle",
