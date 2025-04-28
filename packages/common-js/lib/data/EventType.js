@@ -474,6 +474,26 @@ module.exports = (() => {
 			return cmdtyViewNewsFilterChanged;
 		}
 
+		static get CMDTYVIEW_GRAIN_BID_ZIP_CODE_CHANGED() {
+			return cmdtyViewGraiBidZipCodeChanged;
+		}
+
+		static get CMDTYVIEW_GRAIN_BID_LOCATIONS_CHANGED() {
+			return cmdtyViewGrainBidLocationsChanged;
+		}
+
+		static get CMDTYVIEW_GRAIN_BID_COMMODITIES_CHANGED() {
+			return cmdtyViewGrainBidCommoditiesChanged;
+		}
+
+		static get CMDTYVIEW_GRAIN_BID_DISTANCE_CHANGED() {
+			return cmdtyViewGrainBidDistanceChanged;
+		}
+
+		static get CMDTYVIEW_GRAIN_BID_DELIVERIES_CHANGED() {
+			return cmdtyViewGrainBidDeliveriesChanged;
+		}
+
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
@@ -644,6 +664,13 @@ module.exports = (() => {
 	const cmdtyViewNewsShowSymbolsChanged = new EventType('CMDTYVIEW-NEWS-SHOW-SYMBOLS-CHANGED', 'News Show Symbols Option Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'value']);
 	const cmdtyViewNewsOpenChartOnClickChanged = new EventType('CMDTYVIEW-NEWS-OPEN-CHART-ON-CLICK-CHANGED', 'News Open Chart On Click Option Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'value']);
 	const cmdtyViewNewsFilterChanged = new EventType('CMDTYVIEW-NEWS-FILTER-CHANGED', 'News Filter Selection Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filter']);
+
+	const cmdtyViewGraiBidZipCodeChanged = new EventType('CMDTYVIEW-GRAIN-BID-ZIP-CODE-CHANGED', 'Grain Bid Zip Code Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'zipCode', 'previousZipCode']);
+	const cmdtyViewGrainBidLocationsChanged = new EventType('CMDTYVIEW-GRAIN-BID-LOCATIONS-CHANGED', 'Grain Bid Locations Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'locations', 'previousLocations']);
+	const cmdtyViewGrainBidCommoditiesChanged = new EventType('CMDTYVIEW-GRAIN-BID-COMMODITIES-CHANGED', 'Grain Bid Commodities Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'commodities', 'previousCommodities']);
+	const cmdtyViewGrainBidDistanceChanged = new EventType('CMDTYVIEW-GRAIN-BID-DISTANCE-CHANGED', 'Grain Bid Distance Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'distance', 'previousDistance']);
+	const cmdtyViewGrainBidDeliveriesChanged = new EventType('CMDTYVIEW-GRAIN-BID-DELIVERIES-CHANGED', 'Grain Bid Deliveries Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'deliveries', 'previousDeliveries']);
+
 
 	// Entitlements
 
