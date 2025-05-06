@@ -334,6 +334,22 @@ module.exports = (() => {
 			return cmdtyViewSymbolBrowserSymbolsInserted;
 		}
 
+		static get CMDTYVIEW_SYMBOL_SEARCH_SYMBOL_SELECTED() {
+			return cmdtyViewSymbolSearchSymbolSelected;
+		}
+
+		static get CMDTYVIEW_SYMBOL_SEARCH_RESULTS_SHOWN() {
+			return cmdtyViewSymbolSearchResultsShown;
+		}
+
+		static get CMDTYVIEW_SYMBOL_SEARCH_BRANCH_SELECTED() {
+			return cmdtyViewSymbolSearchBranchSelected;
+		}
+
+		static get CMDTYVIEW_SYMBOL_SEARCH_OPTIONS_TREE_OPENED() {
+			return cmdtyViewSymbolSearchOptionsTreeOpened;
+		}
+
 		static get CMDTYVIEW_EXPRESSION_DIALOG_SHOWN() {
 			return cmdtyViewExpressionDialogShown;
 		}
@@ -621,6 +637,11 @@ module.exports = (() => {
 	const cmdtyViewSymbolBrowserBranchStateChanged = new EventType('CMDTYVIEW-SYMBOL-BROWSER-BRANCH-STATE-CHANGED', 'Symbol Browser Branch State Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'path', 'isOpen']);
 	const cmdtyViewSymbolBrowserFilterChanged = new EventType('CMDTYVIEW-SYMBOL-BROWSER-FILTER-CHANGED', 'Symbol Browser Filter Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filter', 'filterSelected', 'activeFilters']);
 	const cmdtyViewSymbolBrowserSymbolsInserted = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SYMBOLS-INSERTED', 'Symbol Browser Symbols Inserted', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbols']);
+
+	const cmdtyViewSymbolSearchSymbolSelected = new EventType('CMDTYVIEW-SYMBOL-SEARCH-SYMBOL-SELECTED', 'Symbol Search Symbol Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'path']);
+	const cmdtyViewSymbolSearchResultsShown = new EventType('CMDTYVIEW-SYMBOL-SEARCH-RESULTS-SHOWN', 'Symbol Search Results Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'searchString']);
+	const cmdtyViewSymbolSearchBranchSelected = new EventType('CMDTYVIEW-SYMBOL-SEARCH-BRANCH-SELECTED', 'Symbol Search Branch Selected', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'path', 'collapsed']);
+	const cmdtyViewSymbolSearchOptionsTreeOpened = new EventType('CMDTYVIEW-SYMBOL-SEARCH-OPTIONS-TREE-OPENED', 'Symbol Search Options Tree Opened', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'path']);
 
 	const cmdtyViewExpressionDialogShown = new EventType('CMDTYVIEW-EXPRESSION-DIALOG-SHOWN', 'Expression Dialog Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewExpressionAdded = new EventType('CMDTYVIEW-EXPRESSION-ADDED', 'Expression Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'expressionName', 'expressionSource', 'expression']);
