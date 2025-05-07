@@ -57,6 +57,10 @@ module.exports = (() => {
 		async flush(stop) {
 			assert.argumentIsOptional(stop, 'stop', Boolean);
 
+			if (!this._running) {
+				return;
+			}
+
 			const batch = this._buffer;
 
 			if (stop) {
