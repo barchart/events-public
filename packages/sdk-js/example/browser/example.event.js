@@ -19499,6 +19499,9 @@ module.exports = (() => {
      */
     async flush(stop) {
       assert.argumentIsOptional(stop, 'stop', Boolean);
+      if (!this._running) {
+        return;
+      }
       const batch = this._buffer;
       if (stop) {
         this.stop();
@@ -19754,7 +19757,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.4.8'
+    version: '5.4.9'
   };
 })();
 
