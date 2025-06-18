@@ -2,6 +2,6 @@ module.exports = (() => {
 	'use strict';
 
 	return {
-		version: '5.4.11'
+		version: '5.4.12'
 	};
 })();
