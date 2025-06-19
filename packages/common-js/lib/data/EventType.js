@@ -76,6 +76,8 @@ module.exports = (() => {
 			return Enum.fromCode(EventType, code);
 		}
 
+		// ALERTING SERVICE
+
 		static get ALERT_APPLICATION_LOADED() {
 			return alertApplicationLoaded;
 		}
@@ -111,6 +113,8 @@ module.exports = (() => {
 		static get ALERT_DELETED_ALL() {
 			return alertDeletedAll;
 		}
+
+		// WATCHLIST
 
 		static get WATCHLIST_APPLICATION_LOADED() {
 			return watchlistApplicationLoaded;
@@ -183,6 +187,8 @@ module.exports = (() => {
 		static get WATCHLIST_ASSET_CLASS_FILTER_DEACTIVATED() {
 			return watchlistAssetClassFilterDeactivated;
 		}
+
+		// PORTFOLIO
 
 		static get PORTFOLIO_APPLICATION_LOADED() {
 			return portfolioApplicationLoaded;
@@ -284,7 +290,7 @@ module.exports = (() => {
 			return portfolioValueGraphDurationChanged;
 		}
 
-		
+		// CMDTYVIEW
 		
 		static get CMDTYVIEW_LOGIN() {
 			return cmdtyViewLogin;
@@ -510,9 +516,13 @@ module.exports = (() => {
 			return cmdtyViewGrainBidDeliveriesChanged;
 		}
 
+		// ENTITLEMENTS
+
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
+
+		// MARKETPLACE
 
 		static get MARKETPLACE_CUSTOMER_CREATED() {
 			return marketplaceCustomerCreated;
