@@ -20,18 +20,22 @@ module.exports = (() => {
 	 * @param {String} description
 	 * @param {ProductType=} product
 	 * @param {Array=} contextKeys
+	 * @param {Object=} validators
+	 * @param {Object=} transformers
 	 */
 	class EventType extends Enum {
-		constructor(code, description, product, contextKeys, validators) {
+		constructor(code, description, product, contextKeys, validators, transformers) {
 			super(code, description);
 
 			assert.argumentIsOptional(product, 'product', ProductType, 'ProductType');
 			assert.argumentIsOptional(contextKeys, 'contextKeys', Array);
 			assert.argumentIsOptional(validators, 'validators', Object);
+			assert.argumentIsOptional(transformers, 'transformers', Object);
 
 			this._product = product || null;
 			this._contextKeys = contextKeys || [ ];
 			this._validators = validators || { };
+			this._transformers = transformers || {};
 		}
 
 		/**
@@ -58,10 +62,20 @@ module.exports = (() => {
 		 * The validators.
 		 *
 		 * @public
-		 * @returns {Array}
+		 * @returns {Object}
 		 */
 		get validators() {
 			return this._validators;
+		}
+
+		/**
+		 * The transformers.
+		 *
+		 * @public
+		 * @returns {Object}
+		 */
+		get transformers() {
+			return this._transformers;
 		}
 
 		/**
@@ -565,42 +579,50 @@ module.exports = (() => {
 			return `[EventType (code=${this.code})]`;
 		}
 	}
+	
+	const validators = { };
+	
+	validators.string = x => is.string(x) && x.length > 0;
+	validators.uuid = x => is.string(x) && x.length > 0 && uuid.validate(x);
 
-	const stringValidator = (x) => is.string(x) && x.length > 0;
-	const uuidValidator = (x) => is.string(x) && x.length > 0 && uuid.validate(x);
+	validators.stringOptional = x => is.string(x);
+	
+	const transformers = { };
 
+	transformers.stringOptional = x => x || '';
+	
 	// Alerts
 
-	const alertApplicationLoaded = new EventType('ALERT-APPLICATION-LOADED', 'Application Loaded', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
-	const alertCreated = new EventType('ALERT-CREATED', 'Alert Created', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const alertStarted = new EventType('ALERT-STARTED', 'Alert Started', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const alertStartedAll = new EventType('ALERT-STARTED-ALL', 'Alert Started', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
-	const alertStopped = new EventType('ALERT-STOPPED', 'Alert Stopped', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const alertStoppedAll = new EventType('ALERT-STOPPED-ALL', 'Alert Stopped', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
-	const alertNotesEdited = new EventType('ALERT-NOTES-EDITED', 'Alert Notes Edited', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const alertDeleted = new EventType('ALERT-DELETED', 'Alert Deleted', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const alertDeletedAll = new EventType('ALERT-DELETED-ALL', 'Alert Deleted', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
+	const alertApplicationLoaded = new EventType('ALERT-APPLICATION-LOADED', 'Application Loaded', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [validators.string]});
+	const alertCreated = new EventType('ALERT-CREATED', 'Alert Created', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const alertStarted = new EventType('ALERT-STARTED', 'Alert Started', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const alertStartedAll = new EventType('ALERT-STARTED-ALL', 'Alert Started', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [validators.string]});
+	const alertStopped = new EventType('ALERT-STOPPED', 'Alert Stopped', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const alertStoppedAll = new EventType('ALERT-STOPPED-ALL', 'Alert Stopped', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [validators.string]});
+	const alertNotesEdited = new EventType('ALERT-NOTES-EDITED', 'Alert Notes Edited', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const alertDeleted = new EventType('ALERT-DELETED', 'Alert Deleted', ProductType.ALERT, ['userId', 'alertId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const alertDeletedAll = new EventType('ALERT-DELETED-ALL', 'Alert Deleted', ProductType.ALERT, ['userId'], {[CustomerType.TGAM.code]: [validators.string]});
 
 	// Watchlist
 
-	const watchlistApplicationLoaded = new EventType('WATCHLIST-APPLICATION-LOADED', 'Application Loaded', ProductType.WATCHLIST, ['userId'], {[CustomerType.TGAM.code]: [stringValidator]});
-	const watchlistAccessed = new EventType('WATCHLIST-ACCESSED', 'Watchlist Selected', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator]});
-	const watchlistCreated = new EventType('WATCHLIST-CREATED', 'Watchlist Created', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator]});
-	const watchlistDownloaded = new EventType('WATCHLIST-DOWNLOADED', 'Watchlist Downloaded', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator]});
-	const watchlistPrinted = new EventType('WATCHLIST-PRINTED', 'Watchlist Printed', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator]});
-	const watchlistDeleted = new EventType('WATCHLIST-DELETED', 'Watchlist Deleted', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator]});
-	const watchlistSymbolAdded = new EventType('WATCHLIST-SYMBOL-ADDED', 'Symbol Added', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const watchlistSymbolRemoved = new EventType('WATCHLIST-SYMBOL-REMOVED', 'Symbol Removed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const watchlistCustomViewCreated = new EventType('WATCHLIST-CUSTOM-VIEW-CREATED', 'Custom View Created', ProductType.WATCHLIST, ['userId', 'viewName'], {[CustomerType.TGAM.code]: [stringValidator, stringValidator]});
-	const watchlistCustomViewDeleted = new EventType('WATCHLIST-CUSTOM-VIEW-DELETED', 'Custom View Deleted', ProductType.WATCHLIST, ['userId', 'viewName'], {[CustomerType.TGAM.code]: [stringValidator, stringValidator]});
-	const watchlistViewTypeChanged = new EventType('WATCHLIST-VIEW-TYPE-CHANGED', 'View Type Changed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'viewType'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const watchlistViewChanged = new EventType('WATCHLIST-VIEW-CHANGED', 'View Changed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'viewName'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const watchlistDataModeChanged = new EventType('WATCHLIST-DATA-MODE-CHANGED', 'Data mode changed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'dataMode'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const watchlistEditScreenInvoked = new EventType('WATCHLIST-SCREEN-INVOKED-EDIT', 'Edit Screen Invoked', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator]});
-	const watchlistPortfolioAddScreenInvoked = new EventType('WATCHLIST-SCREEN-INVOKED-PORTFOLIO-ADD', 'Portfolio Add Screen Invoked', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const watchlistSymbolNotesScreenInvoked = new EventType('WATCHLIST-SCREEN-INVOKED-SYMBOL-NOTES', 'Symbol Notes Screen Accessed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [stringValidator, uuidValidator, stringValidator]});
-	const watchlistAssetClassFilterActivated = new EventType('WATCHLIST-ASSET-CLASS-FILTER-ACTIVATED', 'Asset Filter Activated', ProductType.WATCHLIST, ['userId', 'classFilter'], {[CustomerType.TGAM.code]: [stringValidator, stringValidator]});
-	const watchlistAssetClassFilterDeactivated = new EventType('WATCHLIST-ASSET-CLASS-FILTER-DEACTIVATED', 'Asset Filter Deactivated', ProductType.WATCHLIST, ['userId', 'classFilter'], {[CustomerType.TGAM.code]: [stringValidator, stringValidator]});
+	const watchlistApplicationLoaded = new EventType('WATCHLIST-APPLICATION-LOADED', 'Application Loaded', ProductType.WATCHLIST, ['userId'], {[CustomerType.TGAM.code]: [validators.string]});
+	const watchlistAccessed = new EventType('WATCHLIST-ACCESSED', 'Watchlist Selected', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid]});
+	const watchlistCreated = new EventType('WATCHLIST-CREATED', 'Watchlist Created', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid]});
+	const watchlistDownloaded = new EventType('WATCHLIST-DOWNLOADED', 'Watchlist Downloaded', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid]});
+	const watchlistPrinted = new EventType('WATCHLIST-PRINTED', 'Watchlist Printed', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid]});
+	const watchlistDeleted = new EventType('WATCHLIST-DELETED', 'Watchlist Deleted', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid]});
+	const watchlistSymbolAdded = new EventType('WATCHLIST-SYMBOL-ADDED', 'Symbol Added', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const watchlistSymbolRemoved = new EventType('WATCHLIST-SYMBOL-REMOVED', 'Symbol Removed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const watchlistCustomViewCreated = new EventType('WATCHLIST-CUSTOM-VIEW-CREATED', 'Custom View Created', ProductType.WATCHLIST, ['userId', 'viewName'], {[CustomerType.TGAM.code]: [validators.string, validators.string]});
+	const watchlistCustomViewDeleted = new EventType('WATCHLIST-CUSTOM-VIEW-DELETED', 'Custom View Deleted', ProductType.WATCHLIST, ['userId', 'viewName'], {[CustomerType.TGAM.code]: [validators.string, validators.string]});
+	const watchlistViewTypeChanged = new EventType('WATCHLIST-VIEW-TYPE-CHANGED', 'View Type Changed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'viewType'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const watchlistViewChanged = new EventType('WATCHLIST-VIEW-CHANGED', 'View Changed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'viewName'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const watchlistDataModeChanged = new EventType('WATCHLIST-DATA-MODE-CHANGED', 'Data mode changed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'dataMode'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const watchlistEditScreenInvoked = new EventType('WATCHLIST-SCREEN-INVOKED-EDIT', 'Edit Screen Invoked', ProductType.WATCHLIST, ['userId', 'watchlistId'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid]});
+	const watchlistPortfolioAddScreenInvoked = new EventType('WATCHLIST-SCREEN-INVOKED-PORTFOLIO-ADD', 'Portfolio Add Screen Invoked', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const watchlistSymbolNotesScreenInvoked = new EventType('WATCHLIST-SCREEN-INVOKED-SYMBOL-NOTES', 'Symbol Notes Screen Accessed', ProductType.WATCHLIST, ['userId', 'watchlistId', 'symbol'], {[CustomerType.TGAM.code]: [validators.string, validators.uuid, validators.string]});
+	const watchlistAssetClassFilterActivated = new EventType('WATCHLIST-ASSET-CLASS-FILTER-ACTIVATED', 'Asset Filter Activated', ProductType.WATCHLIST, ['userId', 'classFilter'], {[CustomerType.TGAM.code]: [validators.string, validators.string]});
+	const watchlistAssetClassFilterDeactivated = new EventType('WATCHLIST-ASSET-CLASS-FILTER-DEACTIVATED', 'Asset Filter Deactivated', ProductType.WATCHLIST, ['userId', 'classFilter'], {[CustomerType.TGAM.code]: [validators.string, validators.string]});
 
 	// Portfolio
 
@@ -632,7 +654,7 @@ module.exports = (() => {
 
 	// cmdtyView
 
-	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User Logged In', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser', 'hostname']);
+	const cmdtyViewLogin = new EventType('CMDTYVIEW-LOGIN', 'User Logged In', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'browser', 'hostname'], {[CustomerType.BARCHART.code]: [null, null, null, validators.stringOptional]}, {[CustomerType.BARCHART.code]: [null, null, null, transformers.stringOptional]});
 	const cmdtyViewLogout = new EventType('CMDTYVIEW-LOGOUT', 'User Logged Out', ProductType.CMDTYVIEW, ['userId', 'sessionId']);
 
 	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title']);
