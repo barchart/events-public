@@ -702,7 +702,6 @@ module.exports = (() => {
 	const cmdtyViewGrainBidDistanceChanged = new EventType('CMDTYVIEW-GRAIN-BID-DISTANCE-CHANGED', 'Grain Bid Distance Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'distance', 'previousDistance']);
 	const cmdtyViewGrainBidDeliveriesChanged = new EventType('CMDTYVIEW-GRAIN-BID-DELIVERIES-CHANGED', 'Grain Bid Deliveries Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'deliveries', 'previousDeliveries']);
 
-
 	// Entitlements
 
 	const entitlementsAuthorizationFailed = new EventType('ENTITLEMENTS_AUTHORIZATION_FAILED', 'Authorization Failed', ProductType.ENTITLEMENTS, ['userId', 'operation']);
