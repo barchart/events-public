@@ -102,6 +102,9 @@ module.exports = (() => {
 		.withField('timing.day', DataType.DAY)
 		.withField('timing.start', DataType.TIMESTAMP)
 		.withField('timing.end', DataType.TIMESTAMP, true)
+		.withField('export.delimiter', DataType.STRING, true)
+		.withField('export.bucketName', DataType.STRING, true)
+		.withField('export.bucketKey', DataType.STRING, true)
 		.schema
 	);
 
