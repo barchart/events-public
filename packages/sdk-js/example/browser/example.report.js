@@ -18196,6 +18196,9 @@ module.exports = (() => {
 		.withField('timing.day', DataType.DAY)
 		.withField('timing.start', DataType.TIMESTAMP)
 		.withField('timing.end', DataType.TIMESTAMP, true)
+		.withField('export.delimiter', DataType.STRING, true)
+		.withField('export.bucketName', DataType.STRING, true)
+		.withField('export.bucketKey', DataType.STRING, true)
 		.schema
 	);
 
@@ -19538,7 +19541,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.5.0'
+    version: '5.6.0'
   };
 })();
 
