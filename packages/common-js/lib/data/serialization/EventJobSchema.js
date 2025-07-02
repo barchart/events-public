@@ -87,6 +87,9 @@ module.exports = (() => {
 		.withArray('filter.types', DataType.forEnum(EventType, 'EventType'), true)
 		.withField('filter.start', DataType.TIMESTAMP, true)
 		.withField('filter.end', DataType.TIMESTAMP, true)
+		.withField('export.delimiter', DataType.STRING, true)
+		.withField('export.bucketName', DataType.STRING, true)
+		.withField('export.bucketKey', DataType.STRING, true)
 		.schema
 	);
 
