@@ -43,6 +43,17 @@
  */
 
 /**
+ * Criteria used to export events to a report file.
+ *
+ * @typedef ReportOutputConfig
+ * @type {Object}
+ * @memberOf Schema
+ * @property {String=} delimiter - The delimiter to use in the report file. Defaults to '|'.
+ * @property {String=} bucketName - The name of the S3 bucket to export the report to.
+ * @property {String=} bucketKey - The key (i.e. path) in the S3 bucket to export the report to.
+ */
+
+/**
  * Describes the status (i.e. progress) of event extraction to a report file.
  *
  * @typedef ReportStatus

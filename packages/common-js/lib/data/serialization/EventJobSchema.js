@@ -87,9 +87,9 @@ module.exports = (() => {
 		.withArray('filter.types', DataType.forEnum(EventType, 'EventType'), true)
 		.withField('filter.start', DataType.TIMESTAMP, true)
 		.withField('filter.end', DataType.TIMESTAMP, true)
-		.withField('export.delimiter', DataType.STRING, true)
-		.withField('export.bucketName', DataType.STRING, true)
-		.withField('export.bucketKey', DataType.STRING, true)
+		.withField('output.delimiter', DataType.STRING, true)
+		.withField('output.bucketName', DataType.STRING, true)
+		.withField('output.bucketKey', DataType.STRING, true)
 		.schema
 	);
 
@@ -105,9 +105,9 @@ module.exports = (() => {
 		.withField('timing.day', DataType.DAY)
 		.withField('timing.start', DataType.TIMESTAMP)
 		.withField('timing.end', DataType.TIMESTAMP, true)
-		.withField('export.delimiter', DataType.STRING, true)
-		.withField('export.bucketName', DataType.STRING, true)
-		.withField('export.bucketKey', DataType.STRING, true)
+		.withField('output.delimiter', DataType.STRING, true)
+		.withField('output.bucketName', DataType.STRING, true)
+		.withField('output.bucketKey', DataType.STRING, true)
 		.schema
 	);
 

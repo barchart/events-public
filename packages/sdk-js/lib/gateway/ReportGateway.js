@@ -154,16 +154,18 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @param {Schema.ReportFilter} filter
+		 * @param {Schema.ReportOutputConfig} output
 		 * @returns {Promise<Schema.ReportStatus>}
 		 */
-		startReport(filter) {
+		startReport(filter, output) {
 			return Promise.resolve()
 				.then(() => {
 					checkStart.call(this);
 
 					assert.argumentIsRequired(filter, 'filter', Object);
+					assert.argumentIsOptional(output, 'output', Object);
 
-					return Gateway.invoke(this._startReportEndpoint, EventJobSchema.START.schema.format({ filter }));
+					return Gateway.invoke(this._startReportEndpoint, EventJobSchema.START.schema.format({ filter, output }));
 				});
 		}
 
