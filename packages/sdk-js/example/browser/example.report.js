@@ -17717,10 +17717,6 @@ module.exports = (() => {
 			return cmdtyViewHistoryContractRollChanged;
 		}
 
-		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
-			return entitlementsAuthorizationFailed;
-		}
-
 		static get CMDTYVIEW_HISTORY_INDICATOR_DIALOG_SHOWN() {
 			return cmdtyViewHistoryIndicatorDialogShown;
 		}
@@ -17772,6 +17768,10 @@ module.exports = (() => {
 		// ENTITLEMENTS
 
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
+			return entitlementsAuthorizationFailed;
+		}
+
+		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
 
@@ -18181,6 +18181,9 @@ module.exports = (() => {
 		.withArray('filter.types', DataType.forEnum(EventType, 'EventType'), true)
 		.withField('filter.start', DataType.TIMESTAMP, true)
 		.withField('filter.end', DataType.TIMESTAMP, true)
+		.withField('export.delimiter', DataType.STRING, true)
+		.withField('export.bucketName', DataType.STRING, true)
+		.withField('export.bucketKey', DataType.STRING, true)
 		.schema
 	);
 
@@ -19541,7 +19544,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.6.0'
+    version: '5.6.1'
   };
 })();
 
