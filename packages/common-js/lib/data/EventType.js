@@ -478,10 +478,6 @@ module.exports = (() => {
 			return cmdtyViewHistoryContractRollChanged;
 		}
 
-		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
-			return entitlementsAuthorizationFailed;
-		}
-
 		static get CMDTYVIEW_HISTORY_INDICATOR_DIALOG_SHOWN() {
 			return cmdtyViewHistoryIndicatorDialogShown;
 		}
@@ -533,6 +529,10 @@ module.exports = (() => {
 		// ENTITLEMENTS
 
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
+			return entitlementsAuthorizationFailed;
+		}
+
+		static get ENTITLEMENTS_AUTHORIZATION_FAILED() {
 			return entitlementsAuthorizationFailed;
 		}
 
