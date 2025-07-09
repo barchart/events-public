@@ -19321,7 +19321,7 @@ module.exports = (() => {
       const protocolType = Enum.fromCode(ProtocolType, protocol.toUpperCase());
       this._startReportEndpoint = EndpointBuilder.for('start-report', 'start report').withVerb(VerbType.POST).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
         pb.withLiteralParameter('reports', 'reports');
-      }).withBody('filter').withBody('output').withBasicAuthentication(credentials.username, credentials.password).withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withResponseInterceptor(responseInterceptorForReportStartDeserialization).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
+      }).withBody('filter and output').withBasicAuthentication(credentials.username, credentials.password).withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withResponseInterceptor(responseInterceptorForReportStartDeserialization).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
       this._getReportAvailabilityEndpoint = EndpointBuilder.for('get-report-availability', 'get report availability').withVerb(VerbType.GET).withProtocol(protocolType).withHost(host).withPort(port).withPathBuilder(pb => {
         pb.withLiteralParameter('reports', 'reports').withVariableParameter('source', 'source', 'source', false).withLiteralParameter('availability', 'availability');
       }).withBasicAuthentication(credentials.username, credentials.password).withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE).withResponseInterceptor(responseInterceptorForReportAvailabilityDeserialization).withErrorInterceptor(ErrorInterceptor.GENERAL).endpoint;
@@ -19547,7 +19547,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.6.3'
+    version: '5.6.4'
   };
 })();
 
