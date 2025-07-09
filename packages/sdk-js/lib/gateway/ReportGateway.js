@@ -54,8 +54,7 @@ module.exports = (() => {
 				.withPathBuilder((pb) => {
 					pb.withLiteralParameter('reports', 'reports');
 				})
-				.withBody('filter')
-				.withBody('output')
+				.withBody('filter and output')
 				.withBasicAuthentication(credentials.username, credentials.password)
 				.withRequestInterceptor(RequestInterceptor.PLAIN_TEXT_RESPONSE)
 				.withResponseInterceptor(responseInterceptorForReportStartDeserialization)
