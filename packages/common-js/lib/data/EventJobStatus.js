@@ -12,7 +12,7 @@ module.exports = (() => {
 	 * @param {String} code
 	 * @param {String} description
 	 * @param {Boolean} initial
-	 * @param {Boolean} final
+	 * @param {Boolean} terminal
 	 */
 	class EventJobStatus extends Enum {
 		constructor(code, description, initial, terminal) {

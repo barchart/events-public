@@ -1,5 +1,5 @@
 /**
- * A meta namespace containing structural contracts of anonymous objects.
+ * A meta-namespace containing structural contracts of anonymous objects.
  *
  * @namespace Schema
  */
@@ -103,7 +103,7 @@
  */
 
 /**
- * A meta namespace definitions for anonymous functions.
+ * A meta-namespace definitions for anonymous functions.
  *
  * @namespace Callbacks
  */

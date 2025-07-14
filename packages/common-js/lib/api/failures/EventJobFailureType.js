@@ -6,6 +6,7 @@ module.exports = (() => {
 	/**
 	 * A static container for {@link FailureType} objects.
 	 *
+	 * @public
 	 */
 	class EventJobFailureType {
 		constructor() {

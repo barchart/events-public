@@ -35,7 +35,7 @@ module.exports = (() => {
 			this._product = product || null;
 			this._contextKeys = contextKeys || [ ];
 			this._validators = validators || { };
-			this._transformers = transformers || {};
+			this._transformers = transformers || { };
 		}
 
 		/**
