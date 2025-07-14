@@ -85,6 +85,7 @@ module.exports = (() => {
 		 * Saves one (or many) events.
 		 *
 		 * @public
+		 * @async
 		 * @param {Schema.Event[]} events
 		 * @returns {Promise<Schema.Event[]>}
 		 */
@@ -100,6 +101,8 @@ module.exports = (() => {
 		 * Creates and starts a new {@link EventGateway} for an environment.
 		 *
 		 * @public
+		 * @static
+		 * @async
 		 * @param {String} stage
 		 * @returns {Promise<EventGateway|null>}
 		 */
@@ -118,6 +121,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
+		 * @async
 		 * @returns {Promise<EventGateway>}
 		 */
 		static async forDevelopment() {
@@ -129,6 +133,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
+		 * @async
 		 * @returns {Promise<EventGateway>}
 		 */
 		static async forStaging() {
@@ -140,6 +145,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
+		 * @async
 		 * @returns {Promise<EventGateway>}
 		 */
 		static async forProduction() {

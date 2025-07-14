@@ -153,6 +153,7 @@ module.exports = (() => {
 		 * Starts a report.
 		 *
 		 * @public
+		 * @async
 		 * @param {Schema.ReportFilter} filter
 		 * @param {Schema.ReportOutputConfig} output
 		 * @returns {Promise<Schema.ReportStatus>}
@@ -170,6 +171,7 @@ module.exports = (() => {
 		 * Returns data regarding the status of a report (i.e. running, finished, etc).
 		 *
 		 * @public
+		 * @async
 		 * @param {String} source - The "source" identifier for the report.
 		 * @return {Promise<Schema.ReportStatus>}
 		 */
@@ -186,6 +188,7 @@ module.exports = (() => {
 		 * download the actual report in CSV format.
 		 *
 		 * @public
+		 * @async
 		 * @param {String} source - The "source" identifier for the report.
 		 * @return {Promise<ReportDownloadLink>}
 		 */
@@ -202,6 +205,7 @@ module.exports = (() => {
 		 * user and metadata regarding the remote service.
 		 *
 		 * @public
+		 * @async
 		 * @return {Promise<AuthenticationMetadata>}
 		 */
 		async checkAuthentication() {
@@ -214,6 +218,7 @@ module.exports = (() => {
 		 * Returns metadata regarding the remote service.
 		 *
 		 * @public
+		 * @async
 		 * @return {Promise<ServiceMetadata>}
 		 */
 		async getVersion() {
@@ -226,6 +231,8 @@ module.exports = (() => {
 		 * Creates and starts a new {@link ReportGateway} for an environment.
 		 *
 		 * @public
+		 * @static
+		 * @async
 		 * @param {String} stage
 		 * @param {Schema.ReportCredentials} credentials
 		 * @returns {Promise<ReportGateway|null>}
@@ -245,6 +252,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
+		 * async
 		 * @param {Schema.ReportCredentials} credentials
 		 * @returns {Promise<ReportGateway>}
 		 */
@@ -257,6 +265,7 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @static
+		 * @async
 		 * @param {Schema.ReportCredentials} credentials
 		 * @returns {Promise<ReportGateway>}
 		 */
