@@ -157,16 +157,13 @@ module.exports = (() => {
 		 * @param {Schema.ReportOutputConfig} output
 		 * @returns {Promise<Schema.ReportStatus>}
 		 */
-		startReport(filter, output) {
-			return Promise.resolve()
-				.then(() => {
-					checkStart.call(this);
+		async startReport(filter, output) {
+			checkStart.call(this);
 
-					assert.argumentIsRequired(filter, 'filter', Object);
-					assert.argumentIsOptional(output, 'output', Object);
+			assert.argumentIsRequired(filter, 'filter', Object);
+			assert.argumentIsOptional(output, 'output', Object);
 
-					return Gateway.invoke(this._startReportEndpoint, EventJobSchema.START.schema.format({ filter, output }));
-				});
+			return await Gateway.invoke(this._startReportEndpoint, EventJobSchema.START.schema.format({ filter, output }));
 		}
 
 		/**
@@ -176,15 +173,12 @@ module.exports = (() => {
 		 * @param {String} source - The "source" identifier for the report.
 		 * @return {Promise<Schema.ReportStatus>}
 		 */
-		getReportAvailability(source) {
-			return Promise.resolve()
-				.then(() => {
-					checkStart.call(this);
+		async getReportAvailability(source) {
+			checkStart.call(this);
 
-					assert.argumentIsRequired(source, 'source', String);
+			assert.argumentIsRequired(source, 'source', String);
 
-					return Gateway.invoke(this._getReportAvailabilityEndpoint, { source });
-				});
+			return await Gateway.invoke(this._getReportAvailabilityEndpoint, { source });
 		}
 
 		/**
@@ -195,15 +189,12 @@ module.exports = (() => {
 		 * @param {String} source - The "source" identifier for the report.
 		 * @return {Promise<ReportDownloadLink>}
 		 */
-		getReport(source) {
-			return Promise.resolve()
-				.then(() => {
-					checkStart.call(this);
+		async getReport(source) {
+			checkStart.call(this);
 
-					assert.argumentIsRequired(source, 'source', String);
+			assert.argumentIsRequired(source, 'source', String);
 
-					return Gateway.invoke(this._getReportEndpoint, { source });
-				});
+			return await Gateway.invoke(this._getReportEndpoint, { source });
 		}
 
 		/**
@@ -213,13 +204,10 @@ module.exports = (() => {
 		 * @public
 		 * @return {Promise<AuthenticationMetadata>}
 		 */
-		checkAuthentication() {
-			return Promise.resolve()
-				.then(() => {
-					checkStart.call(this);
+		async checkAuthentication() {
+			checkStart.call(this);
 
-					return Gateway.invoke(this._checkAuthenticationEndpoint, { });
-				});
+			return await Gateway.invoke(this._checkAuthenticationEndpoint, {});
 		}
 
 		/**
@@ -228,13 +216,10 @@ module.exports = (() => {
 		 * @public
 		 * @return {Promise<ServiceMetadata>}
 		 */
-		getVersion() {
-			return Promise.resolve()
-				.then(() => {
-					checkStart.call(this);
+		async getVersion() {
+			checkStart.call(this);
 
-					return Gateway.invoke(this._getVersionEndpoint, { });
-				});
+			return await Gateway.invoke(this._getVersionEndpoint, {});
 		}
 
 		/**
@@ -245,18 +230,14 @@ module.exports = (() => {
 		 * @param {Schema.ReportCredentials} credentials
 		 * @returns {Promise<ReportGateway|null>}
 		 */
-		static for(stage, credentials) {
-			let gatewayPromise;
-
+		static async for(stage, credentials) {
 			if (stage === 'staging') {
-				gatewayPromise = ReportGateway.forStaging(credentials);
+				return await ReportGateway.forStaging(credentials);
 			} else if (stage === 'production') {
-				gatewayPromise = ReportGateway.forProduction(credentials);
+				return await ReportGateway.forProduction(credentials);
 			} else {
-				gatewayPromise = Promise.resolve(null);
+				return null;
 			}
-
-			return gatewayPromise;
 		}
 
 		/**
@@ -267,11 +248,8 @@ module.exports = (() => {
 		 * @param {Schema.ReportCredentials} credentials
 		 * @returns {Promise<ReportGateway>}
 		 */
-		static forStaging(credentials) {
-			return Promise.resolve()
-				.then(() => {
-					return start(new ReportGateway('https', Configuration.stagingHost, 443, credentials));
-				});
+		static async forStaging(credentials) {
+			return await start(new ReportGateway('https', Configuration.stagingHost, 443, credentials));
 		}
 
 		/**
@@ -282,11 +260,8 @@ module.exports = (() => {
 		 * @param {Schema.ReportCredentials} credentials
 		 * @returns {Promise<ReportGateway>}
 		 */
-		static forProduction(credentials) {
-			return Promise.resolve()
-				.then(() => {
-					return start(new ReportGateway('https', Configuration.productionHost, 443, credentials));
-				});
+		static async forProduction(credentials) {
+			return await start(new ReportGateway('https', Configuration.productionHost, 443, credentials));
 		}
 
 		toString() {
@@ -334,11 +309,10 @@ module.exports = (() => {
 		}
 	});
 
-	function start(gateway) {
-		return gateway.start()
-			.then(() => {
-				return gateway;
-			});
+	async function start(gateway) {
+		await gateway.start();
+
+		return gateway;
 	}
 
 	function checkStart() {

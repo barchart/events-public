@@ -88,15 +88,12 @@ module.exports = (() => {
 		 * @param {Schema.Event[]} events
 		 * @returns {Promise<Schema.Event[]>}
 		 */
-		createEvents(events) {
-			return Promise.resolve()
-				.then(() => {
-					checkStart.call(this);
+		async createEvents(events) {
+			checkStart.call(this);
 
-					assert.argumentIsArray(events, 'events');
+			assert.argumentIsArray(events, 'events');
 
-					return Gateway.invoke(this._createEventEndpoint, { events: events.map((event) => EventSchema.CLIENT.schema.format(event)) });
-				});
+			return await Gateway.invoke(this._createEventEndpoint, { events: events.map((event) => EventSchema.CLIENT.schema.format(event)) });
 		}
 
 		/**
@@ -104,20 +101,16 @@ module.exports = (() => {
 		 *
 		 * @public
 		 * @param {String} stage
-		 * @returns {Promise<EventGateway>|Promise<null>}
+		 * @returns {Promise<EventGateway|null>}
 		 */
-		static for(stage) {
-			let gatewayPromise;
-
+		static async for(stage) {
 			if (stage === 'staging') {
-				gatewayPromise = EventGateway.forStaging();
+				return await EventGateway.forStaging();
 			} else if (stage === 'production') {
-				gatewayPromise = EventGateway.forProduction();
+				return await EventGateway.forProduction();
 			} else {
-				gatewayPromise = Promise.resolve(null);
+				return null;
 			}
-
-			return gatewayPromise;
 		}
 
 		/**
@@ -127,11 +120,8 @@ module.exports = (() => {
 		 * @static
 		 * @returns {Promise<EventGateway>}
 		 */
-		static forDevelopment() {
-			return Promise.resolve()
-				.then(() => {
-					return start(new EventGateway('https', Configuration.developmentHost, 443));
-				});
+		static async forDevelopment() {
+			return await start(new EventGateway('https', Configuration.developmentHost, 443));
 		}
 
 		/**
@@ -141,11 +131,8 @@ module.exports = (() => {
 		 * @static
 		 * @returns {Promise<EventGateway>}
 		 */
-		static forStaging() {
-			return Promise.resolve()
-				.then(() => {
-					return start(new EventGateway('https', Configuration.stagingHost, 443));
-				});
+		static async forStaging() {
+			return await start(new EventGateway('https', Configuration.stagingHost, 443));
 		}
 
 		/**
@@ -155,11 +142,8 @@ module.exports = (() => {
 		 * @static
 		 * @returns {Promise<EventGateway>}
 		 */
-		static forProduction() {
-			return Promise.resolve()
-				.then(() => {
-					return start(new EventGateway('https', Configuration.productionHost, 443));
-				});
+		static async forProduction() {
+			return await start(new EventGateway('https', Configuration.productionHost, 443));
 		}
 
 		toString() {
@@ -167,22 +151,22 @@ module.exports = (() => {
 		}
 	}
 
-	function start(gateway) {
-		return gateway.start()
-			.then(() => {
-				return gateway;
-			});
+	async function start(gateway) {
+		await gateway.start();
+
+		return gateway;
 	}
 
-	const createEventRequestInterceptor = (request) => {
-		return Promise.all(request.data.events.map((event) => FailureReason.validateSchema(EventSchema.CLIENT, event)))
-			.then(() => {
-				return Promise.resolve(request);
-			}).catch((e) => {
-				console.error('Error serializing data for event creation (using EventSchema.CLIENT schema)', e);
+	const createEventRequestInterceptor = async (request) => {
+		try {
+			await Promise.all(request.data.events.map((event) => FailureReason.validateSchema(EventSchema.CLIENT, event)));
 
-				return Promise.reject();
-			});
+			return request;
+		} catch (e) {
+			console.error('Error serializing data for event creation (using EventSchema.CLIENT schema)', e);
+
+			throw e;
+		}
 	};
 
 	const responseInterceptorForEventDeserialization = ResponseInterceptor.fromDelegate((response, ignored) => {

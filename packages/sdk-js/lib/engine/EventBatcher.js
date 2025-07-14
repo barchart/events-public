@@ -35,8 +35,9 @@ module.exports = (() => {
 		 * to the remote service.
 		 *
 		 * @public
+		 * @async
 		 */
-		start() {
+		async start() {
 			if (this._running) {
 				return;
 			}
@@ -44,7 +45,7 @@ module.exports = (() => {
 			this._scheduler = new Scheduler();
 			this._running = true;
 
-			scheduleBuffer.call(this);
+			await scheduleBuffer.call(this);
 		}
 
 		/**
@@ -67,13 +68,13 @@ module.exports = (() => {
 				this.stop();
 			}
 
-			return processBuffer.call(this, batch);
+			await processBuffer.call(this, batch);
 		}
 
 		/**
 		 * Stops the queue processing. Items in the buffer accumulate without being
 		 * transmitted to the remote service.
-		 * 
+		 *
 		 * @public
 		 */
 		stop() {
@@ -109,25 +110,25 @@ module.exports = (() => {
 		}
 	}
 
-	function scheduleBuffer() {
+	async function scheduleBuffer() {
 		if (!this._running) {
 			return;
 		}
 
 		if (this._buffer.length === 0) {
-			return this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
+			this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
+
+			return;
 		}
 
 		const batch = this._buffer;
-
 		this._buffer = [ ];
 
-		processBuffer.call(this, batch)
-			.then(() => {
-				if (this._running) {
-					this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
-				}
-			});
+		await processBuffer.call(this, batch);
+
+		if (this._running) {
+			this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
+		}
 	}
 
 	async function processBuffer(batch) {
@@ -135,30 +136,21 @@ module.exports = (() => {
 			return;
 		}
 
-		const events = batch.map((item) => {
-			let event;
+		const events = batch.map((item) => is.fn(item) ? item() : item);
 
-			if (is.fn(item)) {
-				event = item();
-			} else {
-				event = item;
+		try {
+			const response = await this._eventGateway.createEvents(events);
+
+			if (this._callback) {
+				this._callback(response);
 			}
 
-			return event;
-		});
+			return response;
+		} catch (e) {
+			console.error('Failed to transmit events to Barchart Usage Tracking Service', e);
 
-		return this._eventGateway.createEvents(events)
-			.then((response) => {
-				if (this._callback) {
-					this._callback(response);
-				}
-
-				return response;
-			}).catch((e) => {
-				console.error('Failed to transmit events to Barchart Usage Tracking Service', e);
-
-				return null;
-			});
+			return null;
+		}
 	}
 
 	return EventBatcher;
