@@ -61,24 +61,22 @@ module.exports = (() => {
 		 * @public
 		 * @returns {Promise<EventGateway>}
 		 */
-		start() {
-			return Promise.resolve()
-				.then(() => {
-					if (this._startPromise === null) {
-						this._startPromise = Promise.resolve()
-						.then(() => {
-							this._started = true;
+		async start() {
+			if (this._startPromise === null) {
+				try {
+					this._startPromise = (async () => {
+						this._started = true;
 
-							return this;
-						}).catch((e) => {
-							this._startPromise = null;
+						return this;
+					})();
+				} catch (e) {
+					this._startPromise = null;
 
-							throw e;
-						});
-					}
+					throw e;
+				}
+			}
 
-					return this._startPromise;
-				});
+			return this._startPromise;
 		}
 
 		/**
