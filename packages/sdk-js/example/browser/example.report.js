@@ -17146,7 +17146,7 @@ module.exports = (() => {
 	 * @param {String} code
 	 * @param {String} description
 	 * @param {Boolean} initial
-	 * @param {Boolean} final
+	 * @param {Boolean} terminal
 	 */
 	class EventJobStatus extends Enum {
 		constructor(code, description, initial, terminal) {
@@ -17274,7 +17274,7 @@ module.exports = (() => {
 			this._product = product || null;
 			this._contextKeys = contextKeys || [ ];
 			this._validators = validators || { };
-			this._transformers = transformers || {};
+			this._transformers = transformers || { };
 		}
 
 		/**
@@ -17797,6 +17797,24 @@ module.exports = (() => {
 			return marketplaceContractSigned;
 		}
 
+        // BARCHART EXCEL
+
+        static get BARCHART_EXCEL_LOGIN() {
+            return barchartExcelLogin;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_OPENED() {
+            return barchartExcelQuotesOpened;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_CLOSED() {
+            return barchartExcelQuotesClosed;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_INSERTED() {
+            return barchartExcelQuotesInserted;
+        }
+
 		/**
 		 * Get all context keys for productType.
 		 *
@@ -17975,6 +17993,14 @@ module.exports = (() => {
 	const marketplaceOfferCreated = new EventType('OFFER-CREATED', 'Offer Created', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 	const marketplaceContractSigned = new EventType('CONTRACT-SIGNED', 'Contract Signed', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 
+    // Barchart Excel
+
+    const barchartExcelLogin = new EventType('BARCHART-EXCEL-LOGIN', 'User Logged In', ProductType.BARCHART_EXCEL, ['userId']);
+
+    const barchartExcelQuotesOpened = new EventType('BARCHART-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelQuotesClosed = new EventType('BARCHART-EXCEL-QUOTES-CLOSED', 'Quotes Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelQuotesInserted = new EventType('BARCHART-EXCEL-QUOTES-INSERTED', 'Quotes Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'fieldsCount']);
+
 	return EventType;
 })();
 
@@ -18075,6 +18101,17 @@ module.exports = (() => {
 			return marketplace;
 		}
 
+        /**
+         * The Barchart Excel platform.
+         *
+         * @public
+         * @static
+         * @return {ProductType}
+         */
+        static get BARCHART_EXCEL() {
+            return barchartExcel;
+        }
+
 		toString() {
 			return `[ProductType (code=${this.code})]`;
 		}
@@ -18086,6 +18123,7 @@ module.exports = (() => {
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
 	const entitlements = new ProductType('ENTITLEMENTS', 'ENTITLEMENTS');
 	const marketplace = new ProductType('MARKETPLACE', 'MARKETPLACE');
+    const barchartExcel = new ProductType('BARCHART-EXCEL', 'BARCHART-EXCEL');
 
 	return ProductType;
 })();
@@ -19343,55 +19381,53 @@ module.exports = (() => {
      * @public
      * @returns {Promise<ReportGateway>}
      */
-    start() {
-      return Promise.resolve().then(() => {
-        if (this._startPromise === null) {
-          this._startPromise = Promise.resolve().then(() => {
+    async start() {
+      if (this._startPromise === null) {
+        try {
+          this._startPromise = (async () => {
             this._started = true;
             return this;
-          }).catch(e => {
-            this._startPromise = null;
-            throw e;
-          });
+          })();
+        } catch (e) {
+          this._startPromise = null;
+          throw e;
         }
-        return this._startPromise;
-      });
+      }
+      return this._startPromise;
     }
 
     /**
      * Starts a report.
      *
      * @public
+     * @async
      * @param {Schema.ReportFilter} filter
      * @param {Schema.ReportOutputConfig} output
      * @returns {Promise<Schema.ReportStatus>}
      */
-    startReport(filter, output) {
-      return Promise.resolve().then(() => {
-        checkStart.call(this);
-        assert.argumentIsRequired(filter, 'filter', Object);
-        assert.argumentIsOptional(output, 'output', Object);
-        return Gateway.invoke(this._startReportEndpoint, EventJobSchema.START.schema.format({
-          filter,
-          output
-        }));
-      });
+    async startReport(filter, output) {
+      checkStart.call(this);
+      assert.argumentIsRequired(filter, 'filter', Object);
+      assert.argumentIsOptional(output, 'output', Object);
+      return await Gateway.invoke(this._startReportEndpoint, EventJobSchema.START.schema.format({
+        filter,
+        output
+      }));
     }
 
     /**
      * Returns data regarding the status of a report (i.e. running, finished, etc).
      *
      * @public
+     * @async
      * @param {String} source - The "source" identifier for the report.
      * @return {Promise<Schema.ReportStatus>}
      */
-    getReportAvailability(source) {
-      return Promise.resolve().then(() => {
-        checkStart.call(this);
-        assert.argumentIsRequired(source, 'source', String);
-        return Gateway.invoke(this._getReportAvailabilityEndpoint, {
-          source
-        });
+    async getReportAvailability(source) {
+      checkStart.call(this);
+      assert.argumentIsRequired(source, 'source', String);
+      return await Gateway.invoke(this._getReportAvailabilityEndpoint, {
+        source
       });
     }
 
@@ -19400,16 +19436,15 @@ module.exports = (() => {
      * download the actual report in CSV format.
      *
      * @public
+     * @async
      * @param {String} source - The "source" identifier for the report.
      * @return {Promise<ReportDownloadLink>}
      */
-    getReport(source) {
-      return Promise.resolve().then(() => {
-        checkStart.call(this);
-        assert.argumentIsRequired(source, 'source', String);
-        return Gateway.invoke(this._getReportEndpoint, {
-          source
-        });
+    async getReport(source) {
+      checkStart.call(this);
+      assert.argumentIsRequired(source, 'source', String);
+      return await Gateway.invoke(this._getReportEndpoint, {
+        source
       });
     }
 
@@ -19418,46 +19453,44 @@ module.exports = (() => {
      * user and metadata regarding the remote service.
      *
      * @public
+     * @async
      * @return {Promise<AuthenticationMetadata>}
      */
-    checkAuthentication() {
-      return Promise.resolve().then(() => {
-        checkStart.call(this);
-        return Gateway.invoke(this._checkAuthenticationEndpoint, {});
-      });
+    async checkAuthentication() {
+      checkStart.call(this);
+      return await Gateway.invoke(this._checkAuthenticationEndpoint, {});
     }
 
     /**
      * Returns metadata regarding the remote service.
      *
      * @public
+     * @async
      * @return {Promise<ServiceMetadata>}
      */
-    getVersion() {
-      return Promise.resolve().then(() => {
-        checkStart.call(this);
-        return Gateway.invoke(this._getVersionEndpoint, {});
-      });
+    async getVersion() {
+      checkStart.call(this);
+      return await Gateway.invoke(this._getVersionEndpoint, {});
     }
 
     /**
      * Creates and starts a new {@link ReportGateway} for an environment.
      *
      * @public
+     * @static
+     * @async
      * @param {String} stage
      * @param {Schema.ReportCredentials} credentials
      * @returns {Promise<ReportGateway|null>}
      */
-    static for(stage, credentials) {
-      let gatewayPromise;
+    static async for(stage, credentials) {
       if (stage === 'staging') {
-        gatewayPromise = ReportGateway.forStaging(credentials);
+        return await ReportGateway.forStaging(credentials);
       } else if (stage === 'production') {
-        gatewayPromise = ReportGateway.forProduction(credentials);
+        return await ReportGateway.forProduction(credentials);
       } else {
-        gatewayPromise = Promise.resolve(null);
+        return null;
       }
-      return gatewayPromise;
     }
 
     /**
@@ -19465,13 +19498,12 @@ module.exports = (() => {
      *
      * @public
      * @static
+     * async
      * @param {Schema.ReportCredentials} credentials
      * @returns {Promise<ReportGateway>}
      */
-    static forStaging(credentials) {
-      return Promise.resolve().then(() => {
-        return start(new ReportGateway('https', Configuration.stagingHost, 443, credentials));
-      });
+    static async forStaging(credentials) {
+      return await start(new ReportGateway('https', Configuration.stagingHost, 443, credentials));
     }
 
     /**
@@ -19479,13 +19511,12 @@ module.exports = (() => {
      *
      * @public
      * @static
+     * @async
      * @param {Schema.ReportCredentials} credentials
      * @returns {Promise<ReportGateway>}
      */
-    static forProduction(credentials) {
-      return Promise.resolve().then(() => {
-        return start(new ReportGateway('https', Configuration.productionHost, 443, credentials));
-      });
+    static async forProduction(credentials) {
+      return await start(new ReportGateway('https', Configuration.productionHost, 443, credentials));
     }
     toString() {
       return '[ReportGateway]';
@@ -19526,10 +19557,9 @@ module.exports = (() => {
       console.log('Error deserializing report service version', e);
     }
   });
-  function start(gateway) {
-    return gateway.start().then(() => {
-      return gateway;
-    });
+  async function start(gateway) {
+    await gateway.start();
+    return gateway;
   }
   function checkStart() {
     if (this.getIsDisposed()) {
@@ -19547,7 +19577,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.6.4'
+    version: '5.7.0'
   };
 })();
 

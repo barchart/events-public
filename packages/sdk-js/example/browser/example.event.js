@@ -17521,7 +17521,7 @@ module.exports = (() => {
 			this._product = product || null;
 			this._contextKeys = contextKeys || [ ];
 			this._validators = validators || { };
-			this._transformers = transformers || {};
+			this._transformers = transformers || { };
 		}
 
 		/**
@@ -18044,6 +18044,24 @@ module.exports = (() => {
 			return marketplaceContractSigned;
 		}
 
+        // BARCHART EXCEL
+
+        static get BARCHART_EXCEL_LOGIN() {
+            return barchartExcelLogin;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_OPENED() {
+            return barchartExcelQuotesOpened;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_CLOSED() {
+            return barchartExcelQuotesClosed;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_INSERTED() {
+            return barchartExcelQuotesInserted;
+        }
+
 		/**
 		 * Get all context keys for productType.
 		 *
@@ -18222,6 +18240,14 @@ module.exports = (() => {
 	const marketplaceOfferCreated = new EventType('OFFER-CREATED', 'Offer Created', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 	const marketplaceContractSigned = new EventType('CONTRACT-SIGNED', 'Contract Signed', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 
+    // Barchart Excel
+
+    const barchartExcelLogin = new EventType('BARCHART-EXCEL-LOGIN', 'User Logged In', ProductType.BARCHART_EXCEL, ['userId']);
+
+    const barchartExcelQuotesOpened = new EventType('BARCHART-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelQuotesClosed = new EventType('BARCHART-EXCEL-QUOTES-CLOSED', 'Quotes Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelQuotesInserted = new EventType('BARCHART-EXCEL-QUOTES-INSERTED', 'Quotes Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'fieldsCount']);
+
 	return EventType;
 })();
 
@@ -18322,6 +18348,17 @@ module.exports = (() => {
 			return marketplace;
 		}
 
+        /**
+         * The Barchart Excel platform.
+         *
+         * @public
+         * @static
+         * @return {ProductType}
+         */
+        static get BARCHART_EXCEL() {
+            return barchartExcel;
+        }
+
 		toString() {
 			return `[ProductType (code=${this.code})]`;
 		}
@@ -18333,6 +18370,7 @@ module.exports = (() => {
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
 	const entitlements = new ProductType('ENTITLEMENTS', 'ENTITLEMENTS');
 	const marketplace = new ProductType('MARKETPLACE', 'MARKETPLACE');
+    const barchartExcel = new ProductType('BARCHART-EXCEL', 'BARCHART-EXCEL');
 
 	return ProductType;
 })();
@@ -19511,14 +19549,15 @@ module.exports = (() => {
      * to the remote service.
      *
      * @public
+     * @async
      */
-    start() {
+    async start() {
       if (this._running) {
         return;
       }
       this._scheduler = new Scheduler();
       this._running = true;
-      scheduleBuffer.call(this);
+      await scheduleBuffer.call(this);
     }
 
     /**
@@ -19537,13 +19576,13 @@ module.exports = (() => {
       if (stop) {
         this.stop();
       }
-      return processBuffer.call(this, batch);
+      await processBuffer.call(this, batch);
     }
 
     /**
      * Stops the queue processing. Items in the buffer accumulate without being
      * transmitted to the remote service.
-     * 
+     *
      * @public
      */
     stop() {
@@ -19576,43 +19615,36 @@ module.exports = (() => {
       return '[EventBatcher]';
     }
   }
-  function scheduleBuffer() {
+  async function scheduleBuffer() {
     if (!this._running) {
       return;
     }
     if (this._buffer.length === 0) {
-      return this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
+      this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
+      return;
     }
     const batch = this._buffer;
     this._buffer = [];
-    processBuffer.call(this, batch).then(() => {
-      if (this._running) {
-        this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
-      }
-    });
+    await processBuffer.call(this, batch);
+    if (this._running) {
+      this._scheduler.schedule(scheduleBuffer.bind(this), 5000, 'scheduleBuffer');
+    }
   }
   async function processBuffer(batch) {
     if (batch.length === 0) {
       return;
     }
-    const events = batch.map(item => {
-      let event;
-      if (is.fn(item)) {
-        event = item();
-      } else {
-        event = item;
-      }
-      return event;
-    });
-    return this._eventGateway.createEvents(events).then(response => {
+    const events = batch.map(item => is.fn(item) ? item() : item);
+    try {
+      const response = await this._eventGateway.createEvents(events);
       if (this._callback) {
         this._callback(response);
       }
       return response;
-    }).catch(e => {
+    } catch (e) {
       console.error('Failed to transmit events to Barchart Usage Tracking Service', e);
       return null;
-    });
+    }
   }
   return EventBatcher;
 })();
@@ -19663,35 +19695,34 @@ module.exports = (() => {
      * @public
      * @returns {Promise<EventGateway>}
      */
-    start() {
-      return Promise.resolve().then(() => {
-        if (this._startPromise === null) {
-          this._startPromise = Promise.resolve().then(() => {
+    async start() {
+      if (this._startPromise === null) {
+        try {
+          this._startPromise = (async () => {
             this._started = true;
             return this;
-          }).catch(e => {
-            this._startPromise = null;
-            throw e;
-          });
+          })();
+        } catch (e) {
+          this._startPromise = null;
+          throw e;
         }
-        return this._startPromise;
-      });
+      }
+      return this._startPromise;
     }
 
     /**
      * Saves one (or many) events.
      *
      * @public
+     * @async
      * @param {Schema.Event[]} events
      * @returns {Promise<Schema.Event[]>}
      */
-    createEvents(events) {
-      return Promise.resolve().then(() => {
-        checkStart.call(this);
-        assert.argumentIsArray(events, 'events');
-        return Gateway.invoke(this._createEventEndpoint, {
-          events: events.map(event => EventSchema.CLIENT.schema.format(event))
-        });
+    async createEvents(events) {
+      checkStart.call(this);
+      assert.argumentIsArray(events, 'events');
+      return await Gateway.invoke(this._createEventEndpoint, {
+        events: events.map(event => EventSchema.CLIENT.schema.format(event))
       });
     }
 
@@ -19699,19 +19730,19 @@ module.exports = (() => {
      * Creates and starts a new {@link EventGateway} for an environment.
      *
      * @public
+     * @static
+     * @async
      * @param {String} stage
-     * @returns {Promise<EventGateway>|Promise<null>}
+     * @returns {Promise<EventGateway|null>}
      */
-    static for(stage) {
-      let gatewayPromise;
+    static async for(stage) {
       if (stage === 'staging') {
-        gatewayPromise = EventGateway.forStaging();
+        return await EventGateway.forStaging();
       } else if (stage === 'production') {
-        gatewayPromise = EventGateway.forProduction();
+        return await EventGateway.forProduction();
       } else {
-        gatewayPromise = Promise.resolve(null);
+        return null;
       }
-      return gatewayPromise;
     }
 
     /**
@@ -19719,12 +19750,11 @@ module.exports = (() => {
      *
      * @public
      * @static
+     * @async
      * @returns {Promise<EventGateway>}
      */
-    static forDevelopment() {
-      return Promise.resolve().then(() => {
-        return start(new EventGateway('https', Configuration.developmentHost, 443));
-      });
+    static async forDevelopment() {
+      return await start(new EventGateway('https', Configuration.developmentHost, 443));
     }
 
     /**
@@ -19732,12 +19762,11 @@ module.exports = (() => {
      *
      * @public
      * @static
+     * @async
      * @returns {Promise<EventGateway>}
      */
-    static forStaging() {
-      return Promise.resolve().then(() => {
-        return start(new EventGateway('https', Configuration.stagingHost, 443));
-      });
+    static async forStaging() {
+      return await start(new EventGateway('https', Configuration.stagingHost, 443));
     }
 
     /**
@@ -19745,29 +19774,28 @@ module.exports = (() => {
      *
      * @public
      * @static
+     * @async
      * @returns {Promise<EventGateway>}
      */
-    static forProduction() {
-      return Promise.resolve().then(() => {
-        return start(new EventGateway('https', Configuration.productionHost, 443));
-      });
+    static async forProduction() {
+      return await start(new EventGateway('https', Configuration.productionHost, 443));
     }
     toString() {
       return '[EventGateway]';
     }
   }
-  function start(gateway) {
-    return gateway.start().then(() => {
-      return gateway;
-    });
+  async function start(gateway) {
+    await gateway.start();
+    return gateway;
   }
-  const createEventRequestInterceptor = request => {
-    return Promise.all(request.data.events.map(event => FailureReason.validateSchema(EventSchema.CLIENT, event))).then(() => {
-      return Promise.resolve(request);
-    }).catch(e => {
+  const createEventRequestInterceptor = async request => {
+    try {
+      await Promise.all(request.data.events.map(event => FailureReason.validateSchema(EventSchema.CLIENT, event)));
+      return request;
+    } catch (e) {
       console.error('Error serializing data for event creation (using EventSchema.CLIENT schema)', e);
-      return Promise.reject();
-    });
+      throw e;
+    }
   };
   const responseInterceptorForEventDeserialization = ResponseInterceptor.fromDelegate((response, ignored) => {
     return JSON.parse(response.data);
@@ -19788,7 +19816,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.6.4'
+    version: '5.7.0'
   };
 })();
 
