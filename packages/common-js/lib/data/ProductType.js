@@ -94,6 +94,17 @@ module.exports = (() => {
 			return marketplace;
 		}
 
+        /**
+         * The Barchart Excel platform.
+         *
+         * @public
+         * @static
+         * @return {ProductType}
+         */
+        static get BARCHART_EXCEL() {
+            return barchartExcel;
+        }
+
 		toString() {
 			return `[ProductType (code=${this.code})]`;
 		}
@@ -105,6 +116,7 @@ module.exports = (() => {
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
 	const entitlements = new ProductType('ENTITLEMENTS', 'ENTITLEMENTS');
 	const marketplace = new ProductType('MARKETPLACE', 'MARKETPLACE');
+    const barchartExcel = new ProductType('BARCHART-EXCEL', 'BARCHART-EXCEL');
 
 	return ProductType;
 })();

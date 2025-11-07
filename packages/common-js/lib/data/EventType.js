@@ -558,6 +558,24 @@ module.exports = (() => {
 			return marketplaceContractSigned;
 		}
 
+        // BARCHART EXCEL
+
+        static get BARCHART_EXCEL_LOGIN() {
+            return barchartExcelLogin;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_OPENED() {
+            return barchartExcelQuotesOpened;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_CLOSED() {
+            return barchartExcelQuotesClosed;
+        }
+
+        static get BARCHART_EXCEL_QUOTES_INSERTED() {
+            return barchartExcelQuotesInserted;
+        }
+
 		/**
 		 * Get all context keys for productType.
 		 *
@@ -735,6 +753,14 @@ module.exports = (() => {
 	const marketplaceCustomerOfferAccessApproved = new EventType('CUSTOMER-OFFER-ACCESS-APPROVED', 'Offer Access Approved', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 	const marketplaceOfferCreated = new EventType('OFFER-CREATED', 'Offer Created', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 	const marketplaceContractSigned = new EventType('CONTRACT-SIGNED', 'Contract Signed', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
+
+    // Barchart Excel
+
+    const barchartExcelLogin = new EventType('BARCHART-EXCEL-LOGIN', 'User Logged In', ProductType.BARCHART_EXCEL, ['userId']);
+
+    const barchartExcelQuotesOpened = new EventType('BARCHART-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelQuotesClosed = new EventType('BARCHART-EXCEL-QUOTES-CLOSED', 'Quotes Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelQuotesInserted = new EventType('BARCHART-EXCEL-QUOTES-INSERTED', 'Quotes Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'fieldsCount']);
 
 	return EventType;
 })();
