@@ -17803,6 +17803,10 @@ module.exports = (() => {
             return barchartExcelLogin;
         }
 
+        static get BARCHART_EXCEL_LOGOUT() {
+            return barchartExcelLogout;
+        }
+
         static get BARCHART_EXCEL_QUOTES_OPENED() {
             return barchartExcelQuotesOpened;
         }
@@ -17815,7 +17819,243 @@ module.exports = (() => {
             return barchartExcelQuotesInserted;
         }
 
-		/**
+        static get BARCHART_EXCEL_HISTORY_OPENED() {
+            return barchartExcelHistoryOpened;
+        }
+
+        static get BARCHART_EXCEL_HISTORY_CLOSED() {
+            return barchartExcelHistoryClosed;
+        }
+
+        static get BARCHART_EXCEL_HISTORY_INSERTED() {
+            return barchartExcelHistoryInserted;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_OPENED() {
+            return barchartExcelOptionsOpened;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_CLOSED() {
+            return barchartExcelOptionsClosed;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_INSERTED() {
+            return barchartExcelOptionsInserted;
+        }
+
+        static get BARCHART_EXCEL_CHART_OPENED() {
+            return barchartExcelChartOpened;
+        }
+
+        static get BARCHART_EXCEL_CHART_CLOSED() {
+            return barchartExcelChartClosed;
+        }
+
+        static get BARCHART_EXCEL_CHART_INSERTED() {
+            return barchartExcelChartInserted;
+        }
+
+        static get BARCHART_EXCEL_FORWARD_CURVES_OPENED() {
+            return barchartExcelForwardCurvesOpened;
+        }
+
+        static get BARCHART_EXCEL_FORWARD_CURVES_CLOSED() {
+            return barchartExcelForwardCurvesClosed;
+        }
+
+        static get BARCHART_EXCEL_FORWARD_CURVES_INSERTED() {
+            return barchartExcelForwardCurvesInserted;
+        }
+
+        static get BARCHART_EXCEL_TIME_AND_SALES_OPENED() {
+            return barchartExcelTimeAndSalesOpened;
+        }
+
+        static get BARCHART_EXCEL_TIME_AND_SALES_CLOSED() {
+            return barchartExcelTimeAndSalesClosed;
+        }
+
+        static get BARCHART_EXCEL_TIME_AND_SALES_INSERTED() {
+            return barchartExcelTimeAndSalesInserted;
+        }
+
+        static get BARCHART_EXCEL_REFRESH_SELECTED() {
+            return barchartExcelRefreshSelected;
+        }
+
+        static get BARCHART_EXCEL_REFRESH_ALL() {
+            return barchartExcelRefreshAll;
+        }
+
+        static get BARCHART_EXCEL_STOCKS_LISTS_OPENED() {
+            return barchartExcelStocksListsOpened;
+        }
+
+        static get BARCHART_EXCEL_STOCKS_LISTS_CLOSED() {
+            return barchartExcelStocksListsClosed;
+        }
+
+        static get BARCHART_EXCEL_STOCKS_LISTS_INSERTED() {
+            return barchartExcelStocksListsInserted;
+        }
+
+        static get BARCHART_EXCEL_ETFS_LISTS_OPENED() {
+            return barchartExcelEtfsListsOpened;
+        }
+
+        static get BARCHART_EXCEL_ETFS_LISTS_CLOSED() {
+            return barchartExcelEtfsListsClosed;
+        }
+
+        static get BARCHART_EXCEL_ETFS_LISTS_INSERTED() {
+            return barchartExcelEtfsListsInserted;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_LISTS_OPENED() {
+            return barchartExcelOptionsListsOpened;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_LISTS_CLOSED() {
+            return barchartExcelOptionsListsClosed;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_LISTS_INSERTED() {
+            return barchartExcelOptionsListsInserted;
+        }
+
+        static get BARCHART_EXCEL_FUTURES_LISTS_OPENED() {
+            return barchartExcelFuturesListsOpened;
+        }
+
+        static get BARCHART_EXCEL_FUTURES_LISTS_CLOSED() {
+            return barchartExcelFuturesListsClosed;
+        }
+
+        static get BARCHART_EXCEL_FUTURES_LISTS_INSERTED() {
+            return barchartExcelFuturesListsInserted;
+        }
+
+        static get BARCHART_EXCEL_CURRENCIES_LISTS_OPENED() {
+            return barchartExcelCurrenciesListsOpened;
+        }
+
+        static get BARCHART_EXCEL_CURRENCIES_LISTS_CLOSED() {
+            return barchartExcelCurrenciesListsClosed;
+        }
+
+        static get BARCHART_EXCEL_CURRENCIES_LISTS_INSERTED() {
+            return barchartExcelCurrenciesListsInserted;
+        }
+
+        static get BARCHART_EXCEL_FUNDAMENTALS_OPENED() {
+            return barchartExcelFundamentalsOpened;
+        }
+
+        static get BARCHART_EXCEL_FUNDAMENTALS_CLOSED() {
+            return barchartExcelFundamentalsClosed;
+        }
+
+        static get BARCHART_EXCEL_FUNDAMENTALS_INSERTED() {
+            return barchartExcelFundamentalsInserted;
+        }
+
+        static get BARCHART_EXCEL_STOCK_SCREENER_OPENED() {
+            return barchartExcelStockScreenerOpened;
+        }
+
+        static get BARCHART_EXCEL_STOCK_SCREENER_CLOSED() {
+            return barchartExcelStockScreenerClosed;
+        }
+
+        static get BARCHART_EXCEL_STOCK_SCREENER_INSERTED() {
+            return barchartExcelStockScreenerInserted;
+        }
+
+        static get BARCHART_EXCEL_ETF_SCREENER_OPENED() {
+            return barchartExcelEtfScreenerOpened;
+        }
+
+        static get BARCHART_EXCEL_ETF_SCREENER_CLOSED() {
+            return barchartExcelEtfScreenerClosed;
+        }
+
+        static get BARCHART_EXCEL_ETF_SCREENER_INSERTED() {
+            return barchartExcelEtfScreenerInserted;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_SCREENER_OPENED() {
+            return barchartExcelOptionsScreenerOpened;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_SCREENER_CLOSED() {
+            return barchartExcelOptionsScreenerClosed;
+        }
+
+        static get BARCHART_EXCEL_OPTIONS_SCREENER_INSERTED() {
+            return barchartExcelOptionsScreenerInserted;
+        }
+
+        static get BARCHART_EXCEL_VOLATILITY_ANALYSIS_OPENED() {
+            return barchartExcelVolatilityAnalysisOpened;
+        }
+
+        static get BARCHART_EXCEL_VOLATILITY_ANALYSIS_CLOSED() {
+            return barchartExcelVolatilityAnalysisClosed;
+        }
+
+        static get BARCHART_EXCEL_VOLATILITY_ANALYSIS_INSERTED() {
+            return barchartExcelVolatilityAnalysisInserted;
+        }
+
+        static get BARCHART_EXCEL_WATCHLIST_OPENED() {
+            return barchartExcelWatchlistOpened;
+        }
+
+        static get BARCHART_EXCEL_WATCHLIST_CLOSED() {
+            return barchartExcelWatchlistClosed;
+        }
+
+        static get BARCHART_EXCEL_WATCHLIST_INSERTED() {
+            return barchartExcelWatchlistInserted;
+        }
+
+        static get BARCHART_EXCEL_PORTFOLIO_OPENED() {
+            return barchartExcelPortfolioOpened;
+        }
+
+        static get BARCHART_EXCEL_PORTFOLIO_CLOSED() {
+            return barchartExcelPortfolioClosed;
+        }
+
+        static get BARCHART_EXCEL_PORTFOLIO_INSERTED() {
+            return barchartExcelPortfolioInserted;
+        }
+
+        static get BARCHART_EXCEL_ABOUT_OPENED() {
+            return barchartExcelAboutOpened;
+        }
+
+        static get BARCHART_EXCEL_ABOUT_CLOSED() {
+            return barchartExcelAboutClosed;
+        }
+
+        static get BARCHART_EXCEL_PREFERENCES_OPENED() {
+            return barchartExcelPreferencesOpened;
+        }
+
+        static get BARCHART_EXCEL_PREFERENCES_CLOSED() {
+            return barchartExcelPreferencesClosed;
+        }
+
+        static get BARCHART_EXCEL_SETTINGS_OPENED() {
+            return barchartExcelSettingsOpened;
+        }
+
+        static get BARCHART_EXCEL_SETTINGS_CLOSED() {
+            return barchartExcelSettingsClosed;
+        }
+
+        /**
 		 * Get all context keys for productType.
 		 *
 		 * @public
@@ -17996,12 +18236,93 @@ module.exports = (() => {
     // Barchart Excel
 
     const barchartExcelLogin = new EventType('BARCHART-EXCEL-LOGIN', 'User Logged In', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelLogout = new EventType('BARCHART-EXCEL-LOGOUT', 'User Logged Out', ProductType.BARCHART_EXCEL, ['userId']);
 
     const barchartExcelQuotesOpened = new EventType('BARCHART-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.BARCHART_EXCEL, ['userId']);
     const barchartExcelQuotesClosed = new EventType('BARCHART-EXCEL-QUOTES-CLOSED', 'Quotes Closed', ProductType.BARCHART_EXCEL, ['userId']);
     const barchartExcelQuotesInserted = new EventType('BARCHART-EXCEL-QUOTES-INSERTED', 'Quotes Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'fieldsCount']);
 
-	return EventType;
+    const barchartExcelHistoryOpened = new EventType('BARCHART-EXCEL-HISTORY-OPENED', 'History Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelHistoryClosed = new EventType('BARCHART-EXCEL-HISTORY-CLOSED', 'History Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelHistoryInserted = new EventType('BARCHART-EXCEL-HISTORY-INSERTED', 'History Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'fieldsCount']);
+
+    const barchartExcelOptionsOpened = new EventType('BARCHART-EXCEL-OPTIONS-OPENED', 'Options Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelOptionsClosed = new EventType('BARCHART-EXCEL-OPTIONS-CLOSED', 'Options Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelOptionsInserted = new EventType('BARCHART-EXCEL-OPTIONS-INSERTED', 'Options Inserted', ProductType.BARCHART_EXCEL, ['userId', 'optionsType', 'strikeType', 'lookBackDate']);
+
+    const barchartExcelChartOpened = new EventType('BARCHART-EXCEL-CHART-OPENED', 'Chart Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelChartClosed = new EventType('BARCHART-EXCEL-CHART-CLOSED', 'Chart Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelChartInserted = new EventType('BARCHART-EXCEL-CHART-INSERTED', 'Chart Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'chartType']);
+
+    const barchartExcelForwardCurvesOpened = new EventType('BARCHART-EXCEL-FORWARD-CURVES-OPENED', 'Forward Curves Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelForwardCurvesClosed = new EventType('BARCHART-EXCEL-FORWARD-CURVES-CLOSED', 'Forward Curves Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelForwardCurvesInserted = new EventType('BARCHART-EXCEL-FORWARD-CURVES-INSERTED', 'Forward Curves Inserted', ProductType.BARCHART_EXCEL, ['userId', 'rootsCount']);
+
+    const barchartExcelTimeAndSalesOpened = new EventType('BARCHART-EXCEL-TIME-AND-SALES-OPENED', 'Time And Sales Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelTimeAndSalesClosed = new EventType('BARCHART-EXCEL-TIME-AND-SALES-CLOSED', 'Time And Sales Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelTimeAndSalesInserted = new EventType('BARCHART-EXCEL-TIME-AND-SALES-INSERTED', 'Time And Sales Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'fieldsCount']);
+
+    const barchartExcelRefreshSelected = new EventType('BARCHART-EXCEL-REFRESH-SELECTED', 'Refresh Selected', ProductType.BARCHART_EXCEL, ['userId', 'refreshModule']);
+    const barchartExcelRefreshAll = new EventType('BARCHART-EXCEL-REFRESH-ALL', 'Refresh All', ProductType.BARCHART_EXCEL, ['userId']);
+
+    const barchartExcelStocksListsOpened = new EventType('BARCHART-EXCEL-STOCKS-LISTS-OPENED', 'Stocks Lists Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelStocksListsClosed = new EventType('BARCHART-EXCEL-STOCKS-LISTS-CLOSED', 'Stocks Lists Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelStocksListsInserted = new EventType('BARCHART-EXCEL-STOCKS-LISTS-INSERTED', 'Stocks Lists Inserted', ProductType.BARCHART_EXCEL, ['userId', 'reportsType', 'marketType']);
+
+    const barchartExcelEtfsListsOpened = new EventType('BARCHART-EXCEL-ETFS-LISTS-OPENED', 'ETFs Lists Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelEtfsListsClosed = new EventType('BARCHART-EXCEL-ETFS-LISTS-CLOSED', 'ETFs Lists Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelEtfsListsInserted = new EventType('BARCHART-EXCEL-ETFS-LISTS-INSERTED', 'ETFs Lists Inserted', ProductType.BARCHART_EXCEL, ['userId', 'reportsType', 'marketType']);
+
+    const barchartExcelOptionsListsOpened = new EventType('BARCHART-EXCEL-OPTIONS-LISTS-OPENED', 'Options Lists Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelOptionsListsClosed = new EventType('BARCHART-EXCEL-OPTIONS-LISTS-CLOSED', 'Options Lists Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelOptionsListsInserted = new EventType('BARCHART-EXCEL-OPTIONS-LISTS-INSERTED', 'Options Lists Inserted', ProductType.BARCHART_EXCEL, ['userId', 'reportsType', 'listsType', 'marketType']);
+
+    const barchartExcelFuturesListsOpened = new EventType('BARCHART-EXCEL-FUTURES-LISTS-OPENED', 'Futures Lists Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelFuturesListsClosed = new EventType('BARCHART-EXCEL-FUTURES-LISTS-CLOSED', 'Futures Lists Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelFuturesListsInserted = new EventType('BARCHART-EXCEL-FUTURES-LISTS-INSERTED', 'Futures Lists Inserted', ProductType.BARCHART_EXCEL, ['userId', 'reportsType']);
+
+    const barchartExcelCurrenciesListsOpened = new EventType('BARCHART-EXCEL-CURRENCIES-LISTS-OPENED', 'Currencies Lists Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelCurrenciesListsClosed = new EventType('BARCHART-EXCEL-CURRENCIES-LISTS-CLOSED', 'Currencies Lists Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelCurrenciesListsInserted = new EventType('BARCHART-EXCEL-CURRENCIES-LISTS-INSERTED', 'Currencies Lists Inserted', ProductType.BARCHART_EXCEL, ['userId', 'reportsType']);
+
+    const barchartExcelFundamentalsOpened = new EventType('BARCHART-EXCEL-FUNDAMENTALS-OPENED', 'Fundamentals Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelFundamentalsClosed = new EventType('BARCHART-EXCEL-FUNDAMENTALS-CLOSED', 'Fundamentals Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelFundamentalsInserted = new EventType('BARCHART-EXCEL-FUNDAMENTALS-INSERTED', 'Fundamentals Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'category', 'types']);
+
+    const barchartExcelStockScreenerOpened = new EventType('BARCHART-EXCEL-STOCK-SCREENER-OPENED', 'Stock Screener Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelStockScreenerClosed = new EventType('BARCHART-EXCEL-STOCK-SCREENER-CLOSED', 'Stock Screener Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelStockScreenerInserted = new EventType('BARCHART-EXCEL-STOCK-SCREENER-INSERTED', 'Stock Screener Inserted', ProductType.BARCHART_EXCEL, ['userId', 'marketType']);
+
+    const barchartExcelEtfScreenerOpened = new EventType('BARCHART-EXCEL-ETF-SCREENER-OPENED', 'ETF Screener Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelEtfScreenerClosed = new EventType('BARCHART-EXCEL-ETF-SCREENER-CLOSED', 'ETF Screener Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelEtfScreenerInserted = new EventType('BARCHART-EXCEL-ETF-SCREENER-INSERTED', 'ETF Screener Inserted', ProductType.BARCHART_EXCEL, ['userId', 'marketType']);
+
+    const barchartExcelOptionsScreenerOpened = new EventType('BARCHART-EXCEL-OPTIONS-SCREENER-OPENED', 'Options Screener Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelOptionsScreenerClosed = new EventType('BARCHART-EXCEL-OPTIONS-SCREENER-CLOSED', 'Options Screener Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelOptionsScreenerInserted = new EventType('BARCHART-EXCEL-OPTIONS-SCREENER-INSERTED', 'Options Screener Inserted', ProductType.BARCHART_EXCEL, ['userId', 'marketType']);
+
+    const barchartExcelVolatilityAnalysisOpened = new EventType('BARCHART-EXCEL-VOLATILITY-ANALYSIS-OPENED', 'Volatility Analysis Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelVolatilityAnalysisClosed = new EventType('BARCHART-EXCEL-VOLATILITY-ANALYSIS-CLOSED', 'Volatility Analysis Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelVolatilityAnalysisInserted = new EventType('BARCHART-EXCEL-VOLATILITY-ANALYSIS-INSERTED', 'Volatility Analysis Inserted', ProductType.BARCHART_EXCEL, ['userId', 'volatilityType']);
+
+    const barchartExcelWatchlistOpened = new EventType('BARCHART-EXCEL-WATCHLIST-OPENED', 'Watchlist Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelWatchlistClosed = new EventType('BARCHART-EXCEL-WATCHLIST-CLOSED', 'Watchlist Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelWatchlistInserted = new EventType('BARCHART-EXCEL-WATCHLIST-INSERTED', 'Watchlist Inserted', ProductType.BARCHART_EXCEL, ['userId', 'symbolsCount', 'fieldsCount']);
+
+    const barchartExcelPortfolioOpened = new EventType('BARCHART-EXCEL-PORTFOLIO-OPENED', 'Portfolio Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelPortfolioClosed = new EventType('BARCHART-EXCEL-PORTFOLIO-CLOSED', 'Portfolio Closed', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelPortfolioInserted = new EventType('BARCHART-EXCEL-PORTFOLIO-INSERTED', 'Portfolio Inserted', ProductType.BARCHART_EXCEL, ['userId', 'fieldsCount']);
+
+    const barchartExcelAboutOpened = new EventType('BARCHART-EXCEL-ABOUT-OPENED', 'About Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelAboutClosed = new EventType('BARCHART-EXCEL-ABOUT-CLOSED', 'About Closed', ProductType.BARCHART_EXCEL, ['userId']);
+
+    const barchartExcelPreferencesOpened = new EventType('BARCHART-EXCEL-PREFERENCES-OPENED', 'Preferences Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelPreferencesClosed = new EventType('BARCHART-EXCEL-PREFERENCES-CLOSED', 'Preferences Closed', ProductType.BARCHART_EXCEL, ['userId']);
+
+    const barchartExcelSettingsOpened = new EventType('BARCHART-EXCEL-SETTINGS-OPENED', 'Settings Opened', ProductType.BARCHART_EXCEL, ['userId']);
+    const barchartExcelSettingsClosed = new EventType('BARCHART-EXCEL-SETTINGS-CLOSED', 'Settings Closed', ProductType.BARCHART_EXCEL, ['userId']);
+
+    return EventType;
 })();
 
 },{"./CustomerType":79,"./ProductType":82,"@barchart/common-js/lang/Enum":29,"@barchart/common-js/lang/array":32,"@barchart/common-js/lang/assert":33,"@barchart/common-js/lang/is":36,"uuid":84}],82:[function(require,module,exports){
@@ -19577,7 +19898,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.7.0'
+    version: '5.8.0'
   };
 })();
 
