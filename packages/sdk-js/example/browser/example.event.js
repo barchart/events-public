@@ -18495,7 +18495,8 @@ module.exports = (() => {
 
     const barchartExcelOptionsOpened = new EventType('BARCHART-EXCEL-OPTIONS-OPENED', 'Options Opened', ProductType.BARCHART_EXCEL, ['userId']);
     const barchartExcelOptionsClosed = new EventType('BARCHART-EXCEL-OPTIONS-CLOSED', 'Options Closed', ProductType.BARCHART_EXCEL, ['userId']);
-    const barchartExcelOptionsInserted = new EventType('BARCHART-EXCEL-OPTIONS-INSERTED', 'Options Inserted', ProductType.BARCHART_EXCEL, ['userId', 'optionsType', 'strikeType', 'lookBackDate']);
+
+    const barchartExcelOptionsInserted = new EventType('BARCHART-EXCEL-OPTIONS-INSERTED', 'Options Inserted', ProductType.BARCHART_EXCEL, ['userId', 'optionsType', 'strikeType', 'lookBackDate'], {[CustomerType.BARCHART.code]: [null, null, null, validators.stringOptional]}, {[CustomerType.BARCHART.code]: [null, null, null, transformers.stringOptional]});
 
     const barchartExcelChartOpened = new EventType('BARCHART-EXCEL-CHART-OPENED', 'Chart Opened', ProductType.BARCHART_EXCEL, ['userId']);
     const barchartExcelChartClosed = new EventType('BARCHART-EXCEL-CHART-CLOSED', 'Chart Closed', ProductType.BARCHART_EXCEL, ['userId']);
@@ -20137,7 +20138,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.8.0'
+    version: '5.8.1'
   };
 })();
 
