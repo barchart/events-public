@@ -18302,6 +18302,18 @@ module.exports = (() => {
             return barchartExcelSettingsClosed;
         }
 
+        static get BARCHART_EXCEL_CUSTOM_VIEWS_INSERTED() {
+            return barchartExcelCustomViewsInserted;
+        }
+
+        static get BARCHART_EXCEL_CUSTOM_VIEWS_CHANGED() {
+            return barchartExcelCustomViewsChanged;
+        }
+
+        static get BARCHART_EXCEL_CUSTOM_VIEWS_LOADED() {
+            return barchartExcelCustomViewsLoaded;
+        }
+
         /**
 		 * Get all context keys for productType.
 		 *
@@ -18495,7 +18507,6 @@ module.exports = (() => {
 
     const barchartExcelOptionsOpened = new EventType('BARCHART-EXCEL-OPTIONS-OPENED', 'Options Opened', ProductType.BARCHART_EXCEL, ['userId']);
     const barchartExcelOptionsClosed = new EventType('BARCHART-EXCEL-OPTIONS-CLOSED', 'Options Closed', ProductType.BARCHART_EXCEL, ['userId']);
-
     const barchartExcelOptionsInserted = new EventType('BARCHART-EXCEL-OPTIONS-INSERTED', 'Options Inserted', ProductType.BARCHART_EXCEL, ['userId', 'optionsType', 'strikeType', 'lookBackDate'], {[CustomerType.BARCHART.code]: [null, null, null, validators.stringOptional]}, {[CustomerType.BARCHART.code]: [null, null, null, transformers.stringOptional]});
 
     const barchartExcelChartOpened = new EventType('BARCHART-EXCEL-CHART-OPENED', 'Chart Opened', ProductType.BARCHART_EXCEL, ['userId']);
@@ -18569,6 +18580,10 @@ module.exports = (() => {
 
     const barchartExcelSettingsOpened = new EventType('BARCHART-EXCEL-SETTINGS-OPENED', 'Settings Opened', ProductType.BARCHART_EXCEL, ['userId']);
     const barchartExcelSettingsClosed = new EventType('BARCHART-EXCEL-SETTINGS-CLOSED', 'Settings Closed', ProductType.BARCHART_EXCEL, ['userId']);
+
+    const barchartExcelCustomViewsInserted = new EventType('BARCHART-EXCEL-CUSTOM-VIEWS-INSERTED', 'Custom Views Inserted', ProductType.BARCHART_EXCEL, ['userId', 'moduleType', 'isSet']);
+    const barchartExcelCustomViewsChanged = new EventType('BARCHART-EXCEL-CUSTOM-VIEWS-CHANGED', 'Custom Views Changed', ProductType.BARCHART_EXCEL, ['userId', 'moduleType']);
+    const barchartExcelCustomViewsLoaded = new EventType('BARCHART-EXCEL-CUSTOM-VIEWS-LOADED', 'Custom Views Loaded', ProductType.BARCHART_EXCEL, ['userId', 'moduleType', 'isSet']);
 
     return EventType;
 })();
@@ -20138,7 +20153,7 @@ module.exports = (() => {
   'use strict';
 
   return {
-    version: '5.8.1'
+    version: '5.9.0'
   };
 })();
 
