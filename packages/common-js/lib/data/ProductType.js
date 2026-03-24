@@ -73,6 +73,17 @@ module.exports = (() => {
 		}
 
 		/**
+		 * The cmdtyView web Excel platform.
+		 *
+		 * @public
+		 * @static
+		 * @returns {ProductType}
+		 */
+		static get CMDTYVIEW_WEB_EXCEL() {
+			return cmdtyViewWebExcel;
+		}
+
+		/**
 		 * The entitlements service.
 		 *
 		 * @public
@@ -105,6 +116,17 @@ module.exports = (() => {
             return barchartExcel;
         }
 
+		/**
+		 * The Barchart web Excel platform.
+		 *
+		 * @public
+		 * @static
+		 * @returns {ProductType}
+		 */
+		static get BARCHART_WEB_EXCEL() {
+			return barchartWebExcel;
+		}
+
 		toString() {
 			return `[ProductType (code=${this.code})]`;
 		}
@@ -114,9 +136,11 @@ module.exports = (() => {
 	const portfolio = new ProductType('PORTFOLIO', 'PORTFOLIO');
 	const watchlist = new ProductType('WATCHLIST', 'WATCHLIST');
 	const cmdtyView = new ProductType('CMDTYVIEW', 'CMDTYVIEW');
+	const cmdtyViewWebExcel = new ProductType('CMDTYVIEW-WEB-EXCEL', 'CMDTYVIEW-WEB-EXCEL');
 	const entitlements = new ProductType('ENTITLEMENTS', 'ENTITLEMENTS');
 	const marketplace = new ProductType('MARKETPLACE', 'MARKETPLACE');
     const barchartExcel = new ProductType('BARCHART-EXCEL', 'BARCHART-EXCEL');
+	const barchartWebExcel = new ProductType('BARCHART-WEB-EXCEL', 'BARCHART-WEB-EXCEL');
 
 	return ProductType;
 })();
