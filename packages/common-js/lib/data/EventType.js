@@ -526,6 +526,100 @@ module.exports = (() => {
 			return cmdtyViewGrainBidDeliveriesChanged;
 		}
 
+		// CMDTYVIEW WEB EXCEL
+
+		static get CMDTYVIEW_WEB_EXCEL_LOGIN() {
+			return cmdtyViewWebExcelLogin;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_LOGOUT() {
+			return cmdtyViewWebExcelLogout;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_QUOTES_OPENED() {
+			return cmdtyViewWebExcelQuotesOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_QUOTES_INSERTED() {
+			return cmdtyViewWebExcelQuotesInserted;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_HISTORY_OPENED() {
+			return cmdtyViewWebExcelHistoryOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_HISTORY_INSERTED() {
+			return cmdtyViewWebExcelHistoryInserted;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_OPTIONS_OPENED() {
+			return cmdtyViewWebExcelOptionsOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_OPTIONS_INSERTED() {
+			return cmdtyViewWebExcelOptionsInserted;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_CHART_OPENED() {
+			return cmdtyViewWebExcelChartOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_CHART_INSERTED() {
+			return cmdtyViewWebExcelChartInserted;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_FORWARD_CURVES_OPENED() {
+			return cmdtyViewWebExcelForwardCurvesOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_FORWARD_CURVES_INSERTED() {
+			return cmdtyViewWebExcelForwardCurvesInserted;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_ORDER_BOOK_OPENED() {
+			return cmdtyViewWebExcelOrderBookOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_ORDER_BOOK_INSERTED() {
+			return cmdtyViewWebExcelOrderBookInserted;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_REFRESH_SELECTED() {
+			return cmdtyViewWebExcelRefreshSelected;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_REFRESH_ALL() {
+			return cmdtyViewWebExcelRefreshAll;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_ABOUT_OPENED() {
+			return cmdtyViewWebExcelAboutOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_PREFERENCES_OPENED() {
+			return cmdtyViewWebExcelPreferencesOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_TEMPLATES_OPENED() {
+			return cmdtyViewWebExcelTemplatesOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_TEMPLATES_CLICKED() {
+			return cmdtyViewWebExcelTemplatesClicked;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_HELP_OPENED() {
+			return cmdtyViewWebExcelHelpOpened;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_USER_GUIDE_CLICKED() {
+			return cmdtyViewWebExcelUserGuideClicked;
+		}
+
+		static get CMDTYVIEW_WEB_EXCEL_UPGRADE_CLICKED() {
+			return cmdtyViewWebExcelUpgradeClicked;
+		}
+
 		// ENTITLEMENTS
 
 		static get ENTITLEMWENTS_AUTHORIZATION_FAILED() {
@@ -556,6 +650,76 @@ module.exports = (() => {
 
 		static get MARKETPLACE_CONTRACT_SIGNED() {
 			return marketplaceContractSigned;
+		}
+
+		// BARCHART WEB EXCEL
+
+		static get BARCHART_WEB_EXCEL_LOGIN() {
+			return barchartWebExcelLogin;
+		}
+
+		static get BARCHART_WEB_EXCEL_LOGOUT() {
+			return barchartWebExcelLogout;
+		}
+
+		static get BARCHART_WEB_EXCEL_QUOTES_OPENED() {
+			return barchartWebExcelQuotesOpened;
+		}
+
+		static get BARCHART_WEB_EXCEL_QUOTES_INSERTED() {
+			return barchartWebExcelQuotesInserted;
+		}
+
+		static get BARCHART_WEB_EXCEL_HISTORY_OPENED() {
+			return barchartWebExcelHistoryOpened;
+		}
+
+		static get BARCHART_WEB_EXCEL_HISTORY_INSERTED() {
+			return barchartWebExcelHistoryInserted;
+		}
+
+		static get BARCHART_WEB_EXCEL_OPTIONS_OPENED() {
+			return barchartWebExcelOptionsOpened;
+		}
+
+		static get BARCHART_WEB_EXCEL_OPTIONS_INSERTED() {
+			return barchartWebExcelOptionsInserted;
+		}
+
+		static get BARCHART_WEB_EXCEL_REFRESH_SELECTED() {
+			return barchartWebExcelRefreshSelected;
+		}
+
+		static get BARCHART_WEB_EXCEL_REFRESH_ALL() {
+			return barchartWebExcelRefreshAll;
+		}
+
+		static get BARCHART_WEB_EXCEL_ABOUT_OPENED() {
+			return barchartWebExcelAboutOpened;
+		}
+
+		static get BARCHART_WEB_EXCEL_PREFERENCES_OPENED() {
+			return barchartWebExcelPreferencesOpened;
+		}
+
+		static get BARCHART_WEB_EXCEL_TEMPLATES_OPENED() {
+			return barchartWebExcelTemplatesOpened;
+		}
+
+		static get BARCHART_WEB_EXCEL_TEMPLATES_CLICKED() {
+			return barchartWebExcelTemplatesClicked;
+		}
+
+		static get BARCHART_WEB_EXCEL_HELP_OPENED() {
+			return barchartWebExcelHelpOpened;
+		}
+
+		static get BARCHART_WEB_EXCEL_USER_GUIDE_CLICKED() {
+			return barchartWebExcelUserGuideClicked;
+		}
+
+		static get BARCHART_WEB_EXCEL_UPGRADE_CLICKED() {
+			return barchartWebExcelUpgradeClicked;
 		}
 
         // BARCHART EXCEL
@@ -1005,6 +1169,65 @@ module.exports = (() => {
 	const marketplaceCustomerOfferAccessApproved = new EventType('CUSTOMER-OFFER-ACCESS-APPROVED', 'Offer Access Approved', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 	const marketplaceOfferCreated = new EventType('OFFER-CREATED', 'Offer Created', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
 	const marketplaceContractSigned = new EventType('CONTRACT-SIGNED', 'Contract Signed', ProductType.MARKETPLACE, ['userId', 'userType', 'companyId', 'companyName', 'entityId']);
+
+	// CmdtyView Web Excel
+
+	const cmdtyViewWebExcelLogin = new EventType('CMDTYVIEW-WEB-EXCEL-LOGIN', 'User Logged In', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelLogout = new EventType('CMDTYVIEW-WEB-EXCEL-LOGOUT', 'User Logged Out', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+
+	const cmdtyViewWebExcelQuotesOpened = new EventType('CMDTYVIEW-WEB-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelQuotesInserted = new EventType('CMDTYVIEW-WEB-EXCEL-QUOTES-INSERTED', 'Quotes Inserted', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'symbolsCount', 'fieldsCount', 'symbolsConversionCount']);
+
+	const cmdtyViewWebExcelHistoryOpened = new EventType('CMDTYVIEW-WEB-EXCEL-HISTORY-OPENED', 'History Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelHistoryInserted = new EventType('CMDTYVIEW-WEB-EXCEL-HISTORY-INSERTED', 'History Inserted', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'symbolsCount', 'fieldsCount', 'aggregationType']);
+
+	const cmdtyViewWebExcelOptionsOpened = new EventType('CMDTYVIEW-WEB-EXCEL-OPTIONS-OPENED', 'Options Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelOptionsInserted = new EventType('CMDTYVIEW-WEB-EXCEL-OPTIONS-INSERTED', 'Options Inserted', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'symbol', 'optionsType', 'strikeType', 'lookBackDate'], {[CustomerType.BARCHART.code]: [null, null, null, null, validators.stringOptional]}, {[CustomerType.BARCHART.code]: [null, null, null, null, transformers.stringOptional]});
+
+	const cmdtyViewWebExcelChartOpened = new EventType('CMDTYVIEW-WEB-EXCEL-CHART-OPENED', 'Chart Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelChartInserted = new EventType('CMDTYVIEW-WEB-EXCEL-CHART-INSERTED', 'Chart Inserted', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'symbolsCount', 'chartType']);
+
+	const cmdtyViewWebExcelForwardCurvesOpened = new EventType('CMDTYVIEW-WEB-EXCEL-FORWARD-CURVES-OPENED', 'Forward Curves Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelForwardCurvesInserted = new EventType('CMDTYVIEW-WEB-EXCEL-FORWARD-CURVES-INSERTED', 'Forward Curves Inserted', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'rootsCount']);
+
+	const cmdtyViewWebExcelOrderBookOpened = new EventType('CMDTYVIEW-WEB-EXCEL-ORDER-BOOK-OPENED', 'Order Book Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelOrderBookInserted = new EventType('CMDTYVIEW-WEB-EXCEL-ORDER-BOOK-INSERTED', 'Order Book Inserted', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'symbolsCount']);
+
+	const cmdtyViewWebExcelRefreshSelected = new EventType('CMDTYVIEW-WEB-EXCEL-REFRESH-SELECTED', 'Refresh Selected', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'refreshModule']);
+	const cmdtyViewWebExcelRefreshAll = new EventType('CMDTYVIEW-WEB-EXCEL-REFRESH-ALL', 'Refresh All', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+
+	const cmdtyViewWebExcelAboutOpened = new EventType('CMDTYVIEW-WEB-EXCEL-ABOUT-OPENED', 'About Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelPreferencesOpened = new EventType('CMDTYVIEW-WEB-EXCEL-PREFERENCES-OPENED', 'Preferences Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelTemplatesOpened = new EventType('CMDTYVIEW-WEB-EXCEL-TEMPLATES-OPENED', 'Templates Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelTemplatesClicked = new EventType('CMDTYVIEW-WEB-EXCEL-TEMPLATES-CLICKED', 'Templates Clicked', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelHelpOpened = new EventType('CMDTYVIEW-WEB-EXCEL-HELP-OPENED', 'Help Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelUserGuideClicked = new EventType('CMDTYVIEW-WEB-EXCEL-USER-GUIDE-CLICKED', 'User Guide Clicked', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelUpgradeClicked = new EventType('CMDTYVIEW-WEB-EXCEL-UPGRADE-CLICKED', 'Upgrade Clicked', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+
+	// Barchart Web Excel
+
+	const barchartWebExcelLogin = new EventType('BARCHART-WEB-EXCEL-LOGIN', 'User Logged In', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelLogout = new EventType('BARCHART-WEB-EXCEL-LOGOUT', 'User Logged Out', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+
+	const barchartWebExcelQuotesOpened = new EventType('BARCHART-WEB-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelQuotesInserted = new EventType('BARCHART-WEB-EXCEL-QUOTES-INSERTED', 'Quotes Inserted', ProductType.BARCHART_WEB_EXCEL, ['userId', 'symbolsCount', 'fieldsCount', 'symbolsConversionCount']);
+
+	const barchartWebExcelHistoryOpened = new EventType('BARCHART-WEB-EXCEL-HISTORY-OPENED', 'History Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelHistoryInserted = new EventType('BARCHART-WEB-EXCEL-HISTORY-INSERTED', 'History Inserted', ProductType.BARCHART_WEB_EXCEL, ['userId', 'symbolsCount', 'fieldsCount', 'aggregationType']);
+
+	const barchartWebExcelOptionsOpened = new EventType('BARCHART-WEB-EXCEL-OPTIONS-OPENED', 'Options Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelOptionsInserted = new EventType('BARCHART-WEB-EXCEL-OPTIONS-INSERTED', 'Options Inserted', ProductType.BARCHART_WEB_EXCEL, ['userId', 'symbol', 'optionsType', 'strikeType', 'lookBackDate'], {[CustomerType.BARCHART.code]: [null, null, null, null, validators.stringOptional]}, {[CustomerType.BARCHART.code]: [null, null, null, null, transformers.stringOptional]});
+
+	const barchartWebExcelRefreshSelected = new EventType('BARCHART-WEB-EXCEL-REFRESH-SELECTED', 'Refresh Selected', ProductType.BARCHART_WEB_EXCEL, ['userId', 'refreshModule']);
+	const barchartWebExcelRefreshAll = new EventType('BARCHART-WEB-EXCEL-REFRESH-ALL', 'Refresh All', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+
+	const barchartWebExcelAboutOpened = new EventType('BARCHART-WEB-EXCEL-ABOUT-OPENED', 'About Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelPreferencesOpened = new EventType('BARCHART-WEB-EXCEL-PREFERENCES-OPENED', 'Preferences Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelTemplatesOpened = new EventType('BARCHART-WEB-EXCEL-TEMPLATES-OPENED', 'Templates Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelTemplatesClicked = new EventType('BARCHART-WEB-EXCEL-TEMPLATES-CLICKED', 'Templates Clicked', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelHelpOpened = new EventType('BARCHART-WEB-EXCEL-HELP-OPENED', 'Help Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelUserGuideClicked = new EventType('BARCHART-WEB-EXCEL-USER-GUIDE-CLICKED', 'User Guide Clicked', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelUpgradeClicked = new EventType('BARCHART-WEB-EXCEL-UPGRADE-CLICKED', 'Upgrade Clicked', ProductType.BARCHART_WEB_EXCEL, ['userId']);
 
     // Barchart Excel
 
