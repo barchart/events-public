@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "@barchart/common-js": "^5.0.0",
-    "uuid": "^9.0.1"
+    "uuid": "^14.0.1"
   },
   "license": "MIT"
 }
