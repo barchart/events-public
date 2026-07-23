@@ -1,7 +1,8 @@
 const fs = require('fs'),
 	path = require('path');
 
-const AWS = require('aws-sdk');
+const { PutObjectCommand, S3Client } = require('@aws-sdk/client-s3'),
+	{ fromIni } = require('@aws-sdk/credential-providers');
 
 const CACHE_CONTROL = 'no-cache';
 
@@ -16,13 +17,6 @@ const contentTypes = {
 	'.yaml': 'application/yaml',
 	'.yml': 'application/yaml'
 };
-
-function createS3() {
-	return new AWS.S3({
-		region: 'us-east-1',
-		credentials: new AWS.SharedIniFileCredentials({ profile: 'default' })
-	});
-}
 
 function getContentType(file) {
 	return contentTypes[path.extname(file)] || 'application/octet-stream';
@@ -48,16 +42,19 @@ function listFiles(directory) {
 }
 
 async function uploadFiles(bucket, files) {
-	const s3 = createS3();
+	const s3 = new S3Client({
+		region: 'us-east-1',
+		credentials: fromIni({ profile: 'default' })
+	});
 
 	await Promise.all(files.map((file) => {
-		return s3.upload({
+		return s3.send(new PutObjectCommand({
 			Body: fs.createReadStream(file.source),
 			Bucket: bucket,
 			CacheControl: CACHE_CONTROL,
 			ContentType: getContentType(file.source),
 			Key: toS3Key(file.key)
-		}).promise();
+		}));
 	}));
 }
 

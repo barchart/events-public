@@ -29,11 +29,12 @@
     "watch": "node tools/build-examples.js --watch"
   },
   "dependencies": {
-    "@barchart/common-js": "^5.0.0",
+    "@barchart/common-js": "^5.1.0",
     "@barchart/events-api-common": "^5.10.0"
   },
   "devDependencies": {
-    "aws-sdk": "^2.747.0",
+    "@aws-sdk/client-s3": "^3.1093.0",
+    "@aws-sdk/credential-providers": "^3.1093.0",
     "esbuild": "^0.28.1",
     "jasmine": "^4.5.0",
     "jshint": "^2.12.0"
