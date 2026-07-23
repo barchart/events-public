@@ -1,6 +1,7 @@
 (() => {
   var __defProp = Object.defineProperty;
   var __defProps = Object.defineProperties;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
   var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
   var __getOwnPropNames = Object.getOwnPropertyNames;
   var __getOwnPropSymbols = Object.getOwnPropertySymbols;
@@ -23,6 +24,14 @@
     return a;
   };
   var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+  var __esm = (fn, res, err) => function __init() {
+    if (err) throw err[0];
+    try {
+      return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+    } catch (e) {
+      throw err = [e], e;
+    }
+  };
   var __commonJS = (cb, mod) => function __require() {
     try {
       return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
@@ -30,6 +39,19 @@
       throw mod = 0, e;
     }
   };
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
   var __accessCheck = (obj, member, msg) => member.has(obj) || __typeError("Cannot " + msg);
   var __privateGet = (obj, member, getter) => (__accessCheck(obj, member, "read from private field"), getter ? getter.call(obj) : member.get(obj));
   var __privateAdd = (obj, member, value) => member.has(obj) ? __typeError("Cannot add the same private member more than once") : member instanceof WeakSet ? member.add(obj) : member.set(obj, value);
@@ -84,24 +106,24 @@
   var require_is = __commonJS({
     "../../node_modules/@barchart/common-js/dist/cjs/lang/is.js"(exports, module) {
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var is_exports = {};
-      __export(is_exports, {
+      __export2(is_exports, {
         array: () => array,
         boolean: () => boolean,
         date: () => date,
@@ -121,7 +143,7 @@
         undef: () => undef,
         zeroLengthString: () => zeroLengthString
       });
-      module.exports = __toCommonJS(is_exports);
+      module.exports = __toCommonJS2(is_exports);
       function number(candidate) {
         return typeof candidate === "number" && !isNaN(candidate);
       }
@@ -184,23 +206,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/assert.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -208,9 +230,9 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var assert_exports = {};
-      __export(assert_exports, {
+      __export2(assert_exports, {
         areEqual: () => areEqual,
         areNotEqual: () => areNotEqual,
         argumentIsArray: () => argumentIsArray,
@@ -218,7 +240,7 @@
         argumentIsRequired: () => argumentIsRequired,
         argumentIsValid: () => argumentIsValid
       });
-      module.exports = __toCommonJS(assert_exports);
+      module.exports = __toCommonJS2(assert_exports);
       var is = __toESM(require_is());
       var nativeTypes = [String, Number, Function, Boolean, Date, Array, Object, RegExp];
       function checkArgumentType(variable, variableName, type, typeDescription, index) {
@@ -320,23 +342,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/array.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -344,9 +366,9 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var array_exports = {};
-      __export(array_exports, {
+      __export2(array_exports, {
         batchBy: () => batchBy,
         binarySearch: () => binarySearch,
         difference: () => difference,
@@ -370,7 +392,7 @@
         unique: () => unique,
         uniqueBy: () => uniqueBy
       });
-      module.exports = __toCommonJS(array_exports);
+      module.exports = __toCommonJS2(array_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       function unique(a) {
@@ -617,23 +639,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/object.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -641,16 +663,16 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var object_exports = {};
-      __export(object_exports, {
+      __export2(object_exports, {
         clone: () => clone,
         empty: () => empty,
         equals: () => equals,
         keys: () => keys,
         merge: () => merge
       });
-      module.exports = __toCommonJS(object_exports);
+      module.exports = __toCommonJS2(object_exports);
       var array = __toESM(require_array());
       var is = __toESM(require_is());
       function equals(a, b) {
@@ -744,23 +766,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/promise.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -768,16 +790,16 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var promise_exports = {};
-      __export(promise_exports, {
+      __export2(promise_exports, {
         build: () => build,
         first: () => first,
         map: () => map,
         pipeline: () => pipeline,
         timeout: () => timeout
       });
-      module.exports = __toCommonJS(promise_exports);
+      module.exports = __toCommonJS2(promise_exports);
       var assert = __toESM(require_assert());
       async function timeout(promise, milliseconds, description) {
         assert.argumentIsRequired(promise, "promise", Promise, "Promise");
@@ -897,23 +919,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/Disposable.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -921,12 +943,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Disposable_exports = {};
-      __export(Disposable_exports, {
+      __export2(Disposable_exports, {
         default: () => Disposable
       });
-      module.exports = __toCommonJS(Disposable_exports);
+      module.exports = __toCommonJS2(Disposable_exports);
       var assert = __toESM(require_assert());
       var _disposed;
       var _Disposable = class _Disposable {
@@ -1054,23 +1076,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/timing/Scheduler.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -1078,12 +1100,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Scheduler_exports = {};
-      __export(Scheduler_exports, {
+      __export2(Scheduler_exports, {
         default: () => Scheduler
       });
-      module.exports = __toCommonJS(Scheduler_exports);
+      module.exports = __toCommonJS2(Scheduler_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var object = __toESM(require_object());
@@ -1323,23 +1345,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/Enum.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -1347,12 +1369,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Enum_exports = {};
-      __export(Enum_exports, {
+      __export2(Enum_exports, {
         default: () => Enum
       });
-      module.exports = __toCommonJS(Enum_exports);
+      module.exports = __toCommonJS2(Enum_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var types = /* @__PURE__ */ new Map();
@@ -1511,23 +1533,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/definitions/Credentials.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -1535,12 +1557,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Credentials_exports = {};
-      __export(Credentials_exports, {
+      __export2(Credentials_exports, {
         default: () => Credentials
       });
-      module.exports = __toCommonJS(Credentials_exports);
+      module.exports = __toCommonJS2(Credentials_exports);
       var is = __toESM(require_is());
       var _usernameExtractor, _passwordExtractor;
       var Credentials = class {
@@ -1617,23 +1639,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/builders/CredentialsBuilder.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -1641,12 +1663,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var CredentialsBuilder_exports = {};
-      __export(CredentialsBuilder_exports, {
+      __export2(CredentialsBuilder_exports, {
         default: () => CredentialsBuilder
       });
-      module.exports = __toCommonJS(CredentialsBuilder_exports);
+      module.exports = __toCommonJS2(CredentialsBuilder_exports);
       var assert = __toESM(require_assert());
       var import_Credentials = __toESM(require_Credentials());
       var _credentials;
@@ -1739,23 +1761,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/attributes.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -1763,15 +1785,15 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var attributes_exports = {};
-      __export(attributes_exports, {
+      __export2(attributes_exports, {
         erase: () => erase,
         has: () => has,
         read: () => read,
         write: () => write
       });
-      module.exports = __toCommonJS(attributes_exports);
+      module.exports = __toCommonJS2(attributes_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       function getPropertyNameArray(propertyNames, separator = ".") {
@@ -1863,23 +1885,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/definitions/Parameter.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -1887,12 +1909,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Parameter_exports = {};
-      __export(Parameter_exports, {
+      __export2(Parameter_exports, {
         default: () => Parameter
       });
-      module.exports = __toCommonJS(Parameter_exports);
+      module.exports = __toCommonJS2(Parameter_exports);
       var is = __toESM(require_is());
       var _description, _key, _extractor, _optional;
       var Parameter = class {
@@ -1995,23 +2017,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/definitions/Parameters.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -2019,12 +2041,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Parameters_exports = {};
-      __export(Parameters_exports, {
+      __export2(Parameters_exports, {
         default: () => Parameters
       });
-      module.exports = __toCommonJS(Parameters_exports);
+      module.exports = __toCommonJS2(Parameters_exports);
       var is = __toESM(require_is());
       var import_Parameter = __toESM(require_Parameter());
       var _parameters;
@@ -2103,23 +2125,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/builders/ParametersBuilder.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -2127,12 +2149,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var ParametersBuilder_exports = {};
-      __export(ParametersBuilder_exports, {
+      __export2(ParametersBuilder_exports, {
         default: () => ParametersBuilder
       });
-      module.exports = __toCommonJS(ParametersBuilder_exports);
+      module.exports = __toCommonJS2(ParametersBuilder_exports);
       var assert = __toESM(require_assert());
       var attributes = __toESM(require_attributes());
       var is = __toESM(require_is());
@@ -2268,23 +2290,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/definitions/ProtocolType.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -2292,12 +2314,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var ProtocolType_exports = {};
-      __export(ProtocolType_exports, {
+      __export2(ProtocolType_exports, {
         default: () => ProtocolType
       });
-      module.exports = __toCommonJS(ProtocolType_exports);
+      module.exports = __toCommonJS2(ProtocolType_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_Enum = __toESM(require_Enum());
@@ -2400,23 +2422,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/definitions/VerbType.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -2424,12 +2446,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var VerbType_exports = {};
-      __export(VerbType_exports, {
+      __export2(VerbType_exports, {
         default: () => VerbType
       });
-      module.exports = __toCommonJS(VerbType_exports);
+      module.exports = __toCommonJS2(VerbType_exports);
       var import_Enum = __toESM(require_Enum());
       var VerbType = class extends import_Enum.default {
         /**
@@ -2518,23 +2540,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/failures/FailureType.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -2542,12 +2564,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var FailureType_exports = {};
-      __export(FailureType_exports, {
+      __export2(FailureType_exports, {
         default: () => FailureType
       });
-      module.exports = __toCommonJS(FailureType_exports);
+      module.exports = __toCommonJS2(FailureType_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_Enum = __toESM(require_Enum());
@@ -2770,23 +2792,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/failures/FailureReasonItem.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -2794,12 +2816,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var FailureReasonItem_exports = {};
-      __export(FailureReasonItem_exports, {
+      __export2(FailureReasonItem_exports, {
         default: () => FailureReasonItem
       });
-      module.exports = __toCommonJS(FailureReasonItem_exports);
+      module.exports = __toCommonJS2(FailureReasonItem_exports);
       var assert = __toESM(require_assert());
       var attributes = __toESM(require_attributes());
       var import_FailureType = __toESM(require_FailureType());
@@ -2901,28 +2923,28 @@
   var require_functions = __commonJS({
     "../../node_modules/@barchart/common-js/dist/cjs/lang/functions.js"(exports, module) {
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var functions_exports = {};
-      __export(functions_exports, {
+      __export2(functions_exports, {
         getEmpty: () => getEmpty,
         getTautology: () => getTautology
       });
-      module.exports = __toCommonJS(functions_exports);
+      module.exports = __toCommonJS2(functions_exports);
       function tautology(x) {
         return x;
       }
@@ -2942,27 +2964,27 @@
   var require_LinkedList = __commonJS({
     "../../node_modules/@barchart/common-js/dist/cjs/collections/LinkedList.js"(exports, module) {
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var LinkedList_exports = {};
-      __export(LinkedList_exports, {
+      __export2(LinkedList_exports, {
         default: () => LinkedList
       });
-      module.exports = __toCommonJS(LinkedList_exports);
+      module.exports = __toCommonJS2(LinkedList_exports);
       var _value, _next;
       var _LinkedList = class _LinkedList {
         /**
@@ -3050,23 +3072,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/collections/Tree.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -3074,12 +3096,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Tree_exports = {};
-      __export(Tree_exports, {
+      __export2(Tree_exports, {
         default: () => Tree
       });
-      module.exports = __toCommonJS(Tree_exports);
+      module.exports = __toCommonJS2(Tree_exports);
       var is = __toESM(require_is());
       var Tree = class _Tree {
         /**
@@ -3363,23 +3385,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/serialization/json/Schema.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -3387,12 +3409,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Schema_exports = {};
-      __export(Schema_exports, {
+      __export2(Schema_exports, {
         default: () => Schema
       });
-      module.exports = __toCommonJS(Schema_exports);
+      module.exports = __toCommonJS2(Schema_exports);
       var attributes = __toESM(require_attributes());
       var functions = __toESM(require_functions());
       var is = __toESM(require_is());
@@ -3495,7 +3517,7 @@
          */
         getInvalidFields(candidate) {
           if (getCandidateIsInvalid(candidate)) {
-            return this.fields.filter((f) => !f.optional);
+            return this.fields.filter((f2) => !f2.optional);
           }
           return this.fields.reduce((problems, field) => {
             let check = !field.optional || attributes.has(candidate, field.name);
@@ -3649,7 +3671,7 @@
               node = child;
             }
           });
-          component.fields.forEach((f) => node.addChild(new ReviverItem(f.name, f.dataType.reviver)));
+          component.fields.forEach((f2) => node.addChild(new ReviverItem(f2.name, f2.dataType.reviver)));
         });
         let head = null;
         let current = null;
@@ -3700,23 +3722,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/failures/FailureReason.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -3724,12 +3746,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var FailureReason_exports = {};
-      __export(FailureReason_exports, {
+      __export2(FailureReason_exports, {
         default: () => FailureReason
       });
-      module.exports = __toCommonJS(FailureReason_exports);
+      module.exports = __toCommonJS2(FailureReason_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_FailureReasonItem = __toESM(require_FailureReasonItem());
@@ -3961,23 +3983,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/interceptors/ErrorInterceptor.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -3985,12 +4007,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var ErrorInterceptor_exports = {};
-      __export(ErrorInterceptor_exports, {
+      __export2(ErrorInterceptor_exports, {
         default: () => ErrorInterceptor
       });
-      module.exports = __toCommonJS(ErrorInterceptor_exports);
+      module.exports = __toCommonJS2(ErrorInterceptor_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_FailureReason = __toESM(require_FailureReason());
@@ -4136,23 +4158,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/interceptors/RequestInterceptor.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -4160,12 +4182,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var RequestInterceptor_exports = {};
-      __export(RequestInterceptor_exports, {
+      __export2(RequestInterceptor_exports, {
         default: () => RequestInterceptor
       });
-      module.exports = __toCommonJS(RequestInterceptor_exports);
+      module.exports = __toCommonJS2(RequestInterceptor_exports);
       var assert = __toESM(require_assert());
       var RequestInterceptor = class {
         constructor() {
@@ -4284,23 +4306,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/interceptors/ResponseInterceptor.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -4308,12 +4330,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var ResponseInterceptor_exports = {};
-      __export(ResponseInterceptor_exports, {
+      __export2(ResponseInterceptor_exports, {
         default: () => ResponseInterceptor
       });
-      module.exports = __toCommonJS(ResponseInterceptor_exports);
+      module.exports = __toCommonJS2(ResponseInterceptor_exports);
       var assert = __toESM(require_assert());
       var ResponseInterceptor = class {
         constructor() {
@@ -4432,23 +4454,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/definitions/Endpoint.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -4456,12 +4478,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Endpoint_exports = {};
-      __export(Endpoint_exports, {
+      __export2(Endpoint_exports, {
         default: () => Endpoint
       });
-      module.exports = __toCommonJS(Endpoint_exports);
+      module.exports = __toCommonJS2(Endpoint_exports);
       var is = __toESM(require_is());
       var import_Parameters = __toESM(require_Parameters());
       var import_ProtocolType = __toESM(require_ProtocolType());
@@ -4731,23 +4753,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/interceptors/CompositeErrorInterceptor.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -4755,12 +4777,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var CompositeErrorInterceptor_exports = {};
-      __export(CompositeErrorInterceptor_exports, {
+      __export2(CompositeErrorInterceptor_exports, {
         default: () => CompositeErrorInterceptor
       });
-      module.exports = __toCommonJS(CompositeErrorInterceptor_exports);
+      module.exports = __toCommonJS2(CompositeErrorInterceptor_exports);
       var assert = __toESM(require_assert());
       var import_ErrorInterceptor = __toESM(require_ErrorInterceptor());
       var _a, _b;
@@ -4826,23 +4848,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/interceptors/CompositeResponseInterceptor.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -4850,12 +4872,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var CompositeResponseInterceptor_exports = {};
-      __export(CompositeResponseInterceptor_exports, {
+      __export2(CompositeResponseInterceptor_exports, {
         default: () => CompositeResponseInterceptor
       });
-      module.exports = __toCommonJS(CompositeResponseInterceptor_exports);
+      module.exports = __toCommonJS2(CompositeResponseInterceptor_exports);
       var assert = __toESM(require_assert());
       var import_ResponseInterceptor = __toESM(require_ResponseInterceptor());
       var _a, _b;
@@ -4917,23 +4939,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/interceptors/CompositeRequestInterceptor.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -4941,12 +4963,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var CompositeRequestInterceptor_exports = {};
-      __export(CompositeRequestInterceptor_exports, {
+      __export2(CompositeRequestInterceptor_exports, {
         default: () => CompositeRequestInterceptor
       });
-      module.exports = __toCommonJS(CompositeRequestInterceptor_exports);
+      module.exports = __toCommonJS2(CompositeRequestInterceptor_exports);
       var assert = __toESM(require_assert());
       var import_RequestInterceptor = __toESM(require_RequestInterceptor());
       var _a, _b;
@@ -5008,23 +5030,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/builders/EndpointBuilder.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -5032,12 +5054,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var EndpointBuilder_exports = {};
-      __export(EndpointBuilder_exports, {
+      __export2(EndpointBuilder_exports, {
         default: () => EndpointBuilder
       });
-      module.exports = __toCommonJS(EndpointBuilder_exports);
+      module.exports = __toCommonJS2(EndpointBuilder_exports);
       var assert = __toESM(require_assert());
       var import_CredentialsBuilder = __toESM(require_CredentialsBuilder());
       var import_ParametersBuilder = __toESM(require_ParametersBuilder());
@@ -8075,23 +8097,23 @@
         };
       });
       var deprecatedWarnings = {};
-      validators$1.transitional = function transitional(validator2, version, message) {
+      validators$1.transitional = function transitional(validator2, version2, message) {
         function formatMessage(opt, desc) {
           return "[Axios v" + VERSION + "] Transitional option '" + opt + "'" + desc + (message ? ". " + message : "");
         }
         return (value, opt, opts) => {
           if (validator2 === false) {
             throw new AxiosError(
-              formatMessage(opt, " has been removed" + (version ? " in " + version : "")),
+              formatMessage(opt, " has been removed" + (version2 ? " in " + version2 : "")),
               AxiosError.ERR_DEPRECATED
             );
           }
-          if (version && !deprecatedWarnings[opt]) {
+          if (version2 && !deprecatedWarnings[opt]) {
             deprecatedWarnings[opt] = true;
             console.warn(
               formatMessage(
                 opt,
-                " has been deprecated since v" + version + " and will be removed in the near future"
+                " has been deprecated since v" + version2 + " and will be removed in the near future"
               )
             );
           }
@@ -8550,23 +8572,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/api/http/Gateway.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -8574,12 +8596,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Gateway_exports = {};
-      __export(Gateway_exports, {
+      __export2(Gateway_exports, {
         default: () => Gateway
       });
-      module.exports = __toCommonJS(Gateway_exports);
+      module.exports = __toCommonJS2(Gateway_exports);
       var import_axios = __toESM(require_axios());
       var array = __toESM(require_array());
       var assert = __toESM(require_assert());
@@ -8753,23 +8775,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/AdHoc.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -8777,12 +8799,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var AdHoc_exports = {};
-      __export(AdHoc_exports, {
+      __export2(AdHoc_exports, {
         default: () => AdHoc
       });
-      module.exports = __toCommonJS(AdHoc_exports);
+      module.exports = __toCommonJS2(AdHoc_exports);
       var assert = __toESM(require_assert());
       var _data;
       var _AdHoc = class _AdHoc {
@@ -8864,23 +8886,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/collections/sorting/comparators.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -8888,9 +8910,9 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var comparators_exports = {};
-      __export(comparators_exports, {
+      __export2(comparators_exports, {
         compareBooleans: () => compareBooleans,
         compareDates: () => compareDates,
         compareNull: () => compareNull,
@@ -8898,7 +8920,7 @@
         compareStrings: () => compareStrings,
         empty: () => empty
       });
-      module.exports = __toCommonJS(comparators_exports);
+      module.exports = __toCommonJS2(comparators_exports);
       var assert = __toESM(require_assert());
       function compareDates(a, b) {
         assert.argumentIsRequired(a, "a", Date);
@@ -8946,23 +8968,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/collections/sorting/ComparatorBuilder.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -8970,12 +8992,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var ComparatorBuilder_exports = {};
-      __export(ComparatorBuilder_exports, {
+      __export2(ComparatorBuilder_exports, {
         default: () => ComparatorBuilder
       });
-      module.exports = __toCommonJS(ComparatorBuilder_exports);
+      module.exports = __toCommonJS2(ComparatorBuilder_exports);
       var assert = __toESM(require_assert());
       var comparators = __toESM(require_comparators());
       var _comparator, _invert, _previous;
@@ -9099,23 +9121,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/DayFormatType.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -9123,12 +9145,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var DayFormatType_exports = {};
-      __export(DayFormatType_exports, {
+      __export2(DayFormatType_exports, {
         default: () => DayFormatType
       });
-      module.exports = __toCommonJS(DayFormatType_exports);
+      module.exports = __toCommonJS2(DayFormatType_exports);
       var import_Enum = __toESM(require_Enum());
       var _regex, _yearIndex, _monthIndex, _dayIndex, _yearShift;
       var DayFormatType = class extends import_Enum.default {
@@ -9271,23 +9293,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/Day.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -9295,12 +9317,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Day_exports = {};
-      __export(Day_exports, {
+      __export2(Day_exports, {
         default: () => Day
       });
-      module.exports = __toCommonJS(Day_exports);
+      module.exports = __toCommonJS2(Day_exports);
       var assert = __toESM(require_assert());
       var comparators = __toESM(require_comparators());
       var is = __toESM(require_is());
@@ -9841,7 +9863,7 @@
                 }
                 n = n === 0 && 1 / n < 0 ? "-0" : String(n);
               }
-              parse(x, n);
+              parse2(x, n);
             }
             x.constructor = Big2;
           }
@@ -9857,7 +9879,7 @@
           Big2.roundUp = 3;
           return Big2;
         }
-        function parse(x, n) {
+        function parse2(x, n) {
           var e, i, nl;
           if (!NUMERIC.test(n)) {
             throw Error(INVALID + "number");
@@ -9915,7 +9937,7 @@
           }
           return x;
         }
-        function stringify(x, doExponential, isNonzero) {
+        function stringify2(x, doExponential, isNonzero) {
           var e = x.e, s = x.c.join(""), n = s.length;
           if (doExponential) {
             s = s.charAt(0) + (n > 1 ? "." + s.slice(1) : "") + (e < 0 ? "e" : "e+") + e;
@@ -10190,7 +10212,7 @@
           if (s < 0) {
             throw Error(NAME + "No square root");
           }
-          s = Math.sqrt(+stringify(x, true, true));
+          s = Math.sqrt(+stringify2(x, true, true));
           if (s === 0 || s === 1 / 0) {
             c = x.c.join("");
             if (!(c.length + e & 1)) c += "0";
@@ -10248,7 +10270,7 @@
             x = round(new x.constructor(x), ++dp, rm);
             for (; x.c.length < dp; ) x.c.push(0);
           }
-          return stringify(x, true, !!n);
+          return stringify2(x, true, !!n);
         };
         P.toFixed = function(dp, rm) {
           var x = this, n = x.c[0];
@@ -10259,14 +10281,14 @@
             x = round(new x.constructor(x), dp + x.e + 1, rm);
             for (dp = dp + x.e + 1; x.c.length < dp; ) x.c.push(0);
           }
-          return stringify(x, false, !!n);
+          return stringify2(x, false, !!n);
         };
         P.toJSON = P.toString = function() {
           var x = this, Big2 = x.constructor;
-          return stringify(x, x.e <= Big2.NE || x.e >= Big2.PE, !!x.c[0]);
+          return stringify2(x, x.e <= Big2.NE || x.e >= Big2.PE, !!x.c[0]);
         };
         P.toNumber = function() {
-          var n = +stringify(this, true, true);
+          var n = +stringify2(this, true, true);
           if (this.constructor.strict === true && !this.eq(n.toString())) {
             throw Error(NAME + "Imprecise conversion");
           }
@@ -10281,14 +10303,14 @@
             x = round(new Big2(x), sd, rm);
             for (; x.c.length < sd; ) x.c.push(0);
           }
-          return stringify(x, sd <= x.e || x.e <= Big2.NE || x.e >= Big2.PE, !!n);
+          return stringify2(x, sd <= x.e || x.e <= Big2.NE || x.e >= Big2.PE, !!n);
         };
         P.valueOf = function() {
           var x = this, Big2 = x.constructor;
           if (Big2.strict === true) {
             throw Error(NAME + "valueOf disallowed");
           }
-          return stringify(x, x.e <= Big2.NE || x.e >= Big2.PE, true);
+          return stringify2(x, x.e <= Big2.NE || x.e >= Big2.PE, true);
         };
         Big = _Big_();
         Big["default"] = Big.Big = Big;
@@ -10310,23 +10332,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/Decimal.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -10334,12 +10356,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Decimal_exports = {};
-      __export(Decimal_exports, {
+      __export2(Decimal_exports, {
         default: () => Decimal
       });
-      module.exports = __toCommonJS(Decimal_exports);
+      module.exports = __toCommonJS2(Decimal_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_Enum = __toESM(require_Enum());
@@ -10914,23 +10936,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/Timestamp.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -10938,12 +10960,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Timestamp_exports = {};
-      __export(Timestamp_exports, {
+      __export2(Timestamp_exports, {
         default: () => Timestamp
       });
-      module.exports = __toCommonJS(Timestamp_exports);
+      module.exports = __toCommonJS2(Timestamp_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var MILLISECONDS_PER_SECOND = 1e3;
@@ -11132,23 +11154,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/serialization/json/DataType.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -11156,12 +11178,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var DataType_exports = {};
-      __export(DataType_exports, {
+      __export2(DataType_exports, {
         default: () => DataType
       });
-      module.exports = __toCommonJS(DataType_exports);
+      module.exports = __toCommonJS2(DataType_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_AdHoc = __toESM(require_AdHoc());
@@ -11457,23 +11479,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/Currency.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -11481,12 +11503,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Currency_exports = {};
-      __export(Currency_exports, {
+      __export2(Currency_exports, {
         default: () => Currency
       });
-      module.exports = __toCommonJS(Currency_exports);
+      module.exports = __toCommonJS2(Currency_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_Enum = __toESM(require_Enum());
@@ -12055,23 +12077,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/lang/Money.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -12079,12 +12101,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Money_exports = {};
-      __export(Money_exports, {
+      __export2(Money_exports, {
         default: () => Money
       });
-      module.exports = __toCommonJS(Money_exports);
+      module.exports = __toCommonJS2(Money_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_Decimal = __toESM(require_Decimal());
@@ -12199,23 +12221,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/serialization/json/Field.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -12223,12 +12245,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Field_exports = {};
-      __export(Field_exports, {
+      __export2(Field_exports, {
         default: () => Field
       });
-      module.exports = __toCommonJS(Field_exports);
+      module.exports = __toCommonJS2(Field_exports);
       var assert = __toESM(require_assert());
       var is = __toESM(require_is());
       var import_DataType = __toESM(require_DataType());
@@ -12324,23 +12346,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/serialization/json/Component.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -12348,12 +12370,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var Component_exports = {};
-      __export(Component_exports, {
+      __export2(Component_exports, {
         default: () => Component
       });
-      module.exports = __toCommonJS(Component_exports);
+      module.exports = __toCommonJS2(Component_exports);
       var import_Currency = __toESM(require_Currency());
       var import_Money = __toESM(require_Money());
       var import_DataType = __toESM(require_DataType());
@@ -12444,23 +12466,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/serialization/json/builders/ComponentBuilder.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -12468,12 +12490,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var ComponentBuilder_exports = {};
-      __export(ComponentBuilder_exports, {
+      __export2(ComponentBuilder_exports, {
         default: () => ComponentBuilder
       });
-      module.exports = __toCommonJS(ComponentBuilder_exports);
+      module.exports = __toCommonJS2(ComponentBuilder_exports);
       var assert = __toESM(require_assert());
       var import_Component = __toESM(require_Component());
       var import_DataType = __toESM(require_DataType());
@@ -12556,23 +12578,23 @@
     "../../node_modules/@barchart/common-js/dist/cjs/serialization/json/builders/SchemaBuilder.js"(exports, module) {
       var __create = Object.create;
       var __defProp2 = Object.defineProperty;
-      var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+      var __getOwnPropDesc2 = Object.getOwnPropertyDescriptor;
       var __getOwnPropNames2 = Object.getOwnPropertyNames;
       var __getProtoOf = Object.getPrototypeOf;
       var __hasOwnProp2 = Object.prototype.hasOwnProperty;
-      var __export = (target, all) => {
+      var __export2 = (target, all) => {
         for (var name in all)
           __defProp2(target, name, { get: all[name], enumerable: true });
       };
-      var __copyProps = (to, from, except, desc) => {
+      var __copyProps2 = (to, from, except, desc) => {
         if (from && typeof from === "object" || typeof from === "function") {
           for (let key of __getOwnPropNames2(from))
             if (!__hasOwnProp2.call(to, key) && key !== except)
-              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+              __defProp2(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc2(from, key)) || desc.enumerable });
         }
         return to;
       };
-      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+      var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps2(
         // If the importer is in node compatibility mode or this is not an ESM
         // file that has been converted to a CommonJS file using a Babel-
         // compatible transform (i.e. "__esModule" has not been set), then set
@@ -12580,12 +12602,12 @@
         isNodeMode || !mod || !mod.__esModule ? __defProp2(target, "default", { value: mod, enumerable: true }) : target,
         mod
       ));
-      var __toCommonJS = (mod) => __copyProps(__defProp2({}, "__esModule", { value: true }), mod);
+      var __toCommonJS2 = (mod) => __copyProps2(__defProp2({}, "__esModule", { value: true }), mod);
       var SchemaBuilder_exports = {};
-      __export(SchemaBuilder_exports, {
+      __export2(SchemaBuilder_exports, {
         default: () => SchemaBuilder
       });
-      module.exports = __toCommonJS(SchemaBuilder_exports);
+      module.exports = __toCommonJS2(SchemaBuilder_exports);
       var assert = __toESM(require_assert());
       var import_Component = __toESM(require_Component());
       var import_DataType = __toESM(require_DataType());
@@ -12766,705 +12788,687 @@
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/rng.js
-  var require_rng = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/rng.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = rng;
-      var getRandomValues;
-      var rnds8 = new Uint8Array(16);
-      function rng() {
-        if (!getRandomValues) {
-          getRandomValues = typeof crypto !== "undefined" && crypto.getRandomValues && crypto.getRandomValues.bind(crypto);
-          if (!getRandomValues) {
-            throw new Error("crypto.getRandomValues() not supported. See https://github.com/uuidjs/uuid#getrandomvalues-not-supported");
-          }
-        }
-        return getRandomValues(rnds8);
-      }
+  // ../common-js/node_modules/uuid/dist/max.js
+  var max_default;
+  var init_max = __esm({
+    "../common-js/node_modules/uuid/dist/max.js"() {
+      max_default = "ffffffff-ffff-ffff-ffff-ffffffffffff";
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/regex.js
-  var require_regex = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/regex.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000)$/i;
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/nil.js
+  var nil_default;
+  var init_nil = __esm({
+    "../common-js/node_modules/uuid/dist/nil.js"() {
+      nil_default = "00000000-0000-0000-0000-000000000000";
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/validate.js
-  var require_validate = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/validate.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _regex = _interopRequireDefault(require_regex());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
-      }
-      function validate(uuid) {
-        return typeof uuid === "string" && _regex.default.test(uuid);
-      }
-      var _default = validate;
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/regex.js
+  var regex_default;
+  var init_regex = __esm({
+    "../common-js/node_modules/uuid/dist/regex.js"() {
+      regex_default = /^(?:[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$/i;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/stringify.js
-  var require_stringify = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/stringify.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      exports.unsafeStringify = unsafeStringify;
-      var _validate = _interopRequireDefault(require_validate());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
-      }
-      var byteToHex = [];
+  // ../common-js/node_modules/uuid/dist/validate.js
+  function validate(uuid) {
+    return typeof uuid === "string" && regex_default.test(uuid);
+  }
+  var validate_default;
+  var init_validate = __esm({
+    "../common-js/node_modules/uuid/dist/validate.js"() {
+      init_regex();
+      validate_default = validate;
+    }
+  });
+
+  // ../common-js/node_modules/uuid/dist/parse.js
+  function parse(uuid) {
+    if (!validate_default(uuid)) {
+      throw TypeError("Invalid UUID");
+    }
+    let v;
+    return Uint8Array.of((v = parseInt(uuid.slice(0, 8), 16)) >>> 24, v >>> 16 & 255, v >>> 8 & 255, v & 255, (v = parseInt(uuid.slice(9, 13), 16)) >>> 8, v & 255, (v = parseInt(uuid.slice(14, 18), 16)) >>> 8, v & 255, (v = parseInt(uuid.slice(19, 23), 16)) >>> 8, v & 255, (v = parseInt(uuid.slice(24, 36), 16)) / 1099511627776 & 255, v / 4294967296 & 255, v >>> 24 & 255, v >>> 16 & 255, v >>> 8 & 255, v & 255);
+  }
+  var parse_default;
+  var init_parse = __esm({
+    "../common-js/node_modules/uuid/dist/parse.js"() {
+      init_validate();
+      parse_default = parse;
+    }
+  });
+
+  // ../common-js/node_modules/uuid/dist/stringify.js
+  function unsafeStringify(arr, offset = 0) {
+    return (byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]]).toLowerCase();
+  }
+  function stringify(arr, offset = 0) {
+    const uuid = unsafeStringify(arr, offset);
+    if (!validate_default(uuid)) {
+      throw TypeError("Stringified UUID is invalid");
+    }
+    return uuid;
+  }
+  var byteToHex, stringify_default;
+  var init_stringify = __esm({
+    "../common-js/node_modules/uuid/dist/stringify.js"() {
+      init_validate();
+      byteToHex = [];
       for (let i = 0; i < 256; ++i) {
         byteToHex.push((i + 256).toString(16).slice(1));
       }
-      function unsafeStringify(arr, offset = 0) {
-        return byteToHex[arr[offset + 0]] + byteToHex[arr[offset + 1]] + byteToHex[arr[offset + 2]] + byteToHex[arr[offset + 3]] + "-" + byteToHex[arr[offset + 4]] + byteToHex[arr[offset + 5]] + "-" + byteToHex[arr[offset + 6]] + byteToHex[arr[offset + 7]] + "-" + byteToHex[arr[offset + 8]] + byteToHex[arr[offset + 9]] + "-" + byteToHex[arr[offset + 10]] + byteToHex[arr[offset + 11]] + byteToHex[arr[offset + 12]] + byteToHex[arr[offset + 13]] + byteToHex[arr[offset + 14]] + byteToHex[arr[offset + 15]];
-      }
-      function stringify(arr, offset = 0) {
-        const uuid = unsafeStringify(arr, offset);
-        if (!(0, _validate.default)(uuid)) {
-          throw TypeError("Stringified UUID is invalid");
-        }
-        return uuid;
-      }
-      var _default = stringify;
-      exports.default = _default;
+      stringify_default = stringify;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/v1.js
-  var require_v1 = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/v1.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _rng = _interopRequireDefault(require_rng());
-      var _stringify = require_stringify();
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
-      }
-      var _nodeId;
-      var _clockseq;
-      var _lastMSecs = 0;
-      var _lastNSecs = 0;
-      function v1(options, buf, offset) {
-        let i = buf && offset || 0;
-        const b = buf || new Array(16);
-        options = options || {};
-        let node = options.node || _nodeId;
-        let clockseq = options.clockseq !== void 0 ? options.clockseq : _clockseq;
-        if (node == null || clockseq == null) {
-          const seedBytes = options.random || (options.rng || _rng.default)();
-          if (node == null) {
-            node = _nodeId = [seedBytes[0] | 1, seedBytes[1], seedBytes[2], seedBytes[3], seedBytes[4], seedBytes[5]];
-          }
-          if (clockseq == null) {
-            clockseq = _clockseq = (seedBytes[6] << 8 | seedBytes[7]) & 16383;
-          }
-        }
-        let msecs = options.msecs !== void 0 ? options.msecs : Date.now();
-        let nsecs = options.nsecs !== void 0 ? options.nsecs : _lastNSecs + 1;
-        const dt = msecs - _lastMSecs + (nsecs - _lastNSecs) / 1e4;
-        if (dt < 0 && options.clockseq === void 0) {
-          clockseq = clockseq + 1 & 16383;
-        }
-        if ((dt < 0 || msecs > _lastMSecs) && options.nsecs === void 0) {
-          nsecs = 0;
-        }
-        if (nsecs >= 1e4) {
-          throw new Error("uuid.v1(): Can't create more than 10M uuids/sec");
-        }
-        _lastMSecs = msecs;
-        _lastNSecs = nsecs;
-        _clockseq = clockseq;
-        msecs += 122192928e5;
-        const tl = ((msecs & 268435455) * 1e4 + nsecs) % 4294967296;
-        b[i++] = tl >>> 24 & 255;
-        b[i++] = tl >>> 16 & 255;
-        b[i++] = tl >>> 8 & 255;
-        b[i++] = tl & 255;
-        const tmh = msecs / 4294967296 * 1e4 & 268435455;
-        b[i++] = tmh >>> 8 & 255;
-        b[i++] = tmh & 255;
-        b[i++] = tmh >>> 24 & 15 | 16;
-        b[i++] = tmh >>> 16 & 255;
-        b[i++] = clockseq >>> 8 | 128;
-        b[i++] = clockseq & 255;
-        for (let n = 0; n < 6; ++n) {
-          b[i + n] = node[n];
-        }
-        return buf || (0, _stringify.unsafeStringify)(b);
-      }
-      var _default = v1;
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/rng.js
+  function rng() {
+    return crypto.getRandomValues(rnds8);
+  }
+  var rnds8;
+  var init_rng = __esm({
+    "../common-js/node_modules/uuid/dist/rng.js"() {
+      rnds8 = new Uint8Array(16);
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/parse.js
-  var require_parse = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/parse.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _validate = _interopRequireDefault(require_validate());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
+  // ../common-js/node_modules/uuid/dist/v1.js
+  function v1(options, buf, offset) {
+    var _a, _b, _c, _d;
+    let bytes;
+    const isV6 = (_a = options == null ? void 0 : options._v6) != null ? _a : false;
+    if (options) {
+      const optionsKeys = Object.keys(options);
+      if (optionsKeys.length === 1 && optionsKeys[0] === "_v6") {
+        options = void 0;
       }
-      function parse(uuid) {
-        if (!(0, _validate.default)(uuid)) {
-          throw TypeError("Invalid UUID");
-        }
-        let v;
-        const arr = new Uint8Array(16);
-        arr[0] = (v = parseInt(uuid.slice(0, 8), 16)) >>> 24;
-        arr[1] = v >>> 16 & 255;
-        arr[2] = v >>> 8 & 255;
-        arr[3] = v & 255;
-        arr[4] = (v = parseInt(uuid.slice(9, 13), 16)) >>> 8;
-        arr[5] = v & 255;
-        arr[6] = (v = parseInt(uuid.slice(14, 18), 16)) >>> 8;
-        arr[7] = v & 255;
-        arr[8] = (v = parseInt(uuid.slice(19, 23), 16)) >>> 8;
-        arr[9] = v & 255;
-        arr[10] = (v = parseInt(uuid.slice(24, 36), 16)) / 1099511627776 & 255;
-        arr[11] = v / 4294967296 & 255;
-        arr[12] = v >>> 24 & 255;
-        arr[13] = v >>> 16 & 255;
-        arr[14] = v >>> 8 & 255;
-        arr[15] = v & 255;
-        return arr;
+    }
+    if (options) {
+      bytes = v1Bytes((_d = (_c = options.random) != null ? _c : (_b = options.rng) == null ? void 0 : _b.call(options)) != null ? _d : rng(), options.msecs, options.nsecs, options.clockseq, options.node, buf, offset);
+    } else {
+      const now = Date.now();
+      const rnds = rng();
+      updateV1State(_state, now, rnds);
+      bytes = v1Bytes(rnds, _state.msecs, _state.nsecs, isV6 ? void 0 : _state.clockseq, isV6 ? void 0 : _state.node, buf, offset);
+    }
+    return buf != null ? buf : unsafeStringify(bytes);
+  }
+  function updateV1State(state, now, rnds) {
+    var _a, _b;
+    (_a = state.msecs) != null ? _a : state.msecs = -Infinity;
+    (_b = state.nsecs) != null ? _b : state.nsecs = 0;
+    if (now === state.msecs) {
+      state.nsecs++;
+      if (state.nsecs >= 1e4) {
+        state.node = void 0;
+        state.nsecs = 0;
       }
-      var _default = parse;
-      exports.default = _default;
+    } else if (now > state.msecs) {
+      state.nsecs = 0;
+    } else if (now < state.msecs) {
+      state.node = void 0;
+    }
+    if (!state.node) {
+      state.node = rnds.slice(10, 16);
+      state.node[0] |= 1;
+      state.clockseq = (rnds[8] << 8 | rnds[9]) & 16383;
+    }
+    state.msecs = now;
+    return state;
+  }
+  function v1Bytes(rnds, msecs, nsecs, clockseq, node, buf, offset = 0) {
+    if (rnds.length < 16) {
+      throw new Error("Random bytes length must be >= 16");
+    }
+    if (!buf) {
+      buf = new Uint8Array(16);
+      offset = 0;
+    } else {
+      if (offset < 0 || offset + 16 > buf.length) {
+        throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);
+      }
+    }
+    msecs != null ? msecs : msecs = Date.now();
+    nsecs != null ? nsecs : nsecs = 0;
+    clockseq != null ? clockseq : clockseq = (rnds[8] << 8 | rnds[9]) & 16383;
+    node != null ? node : node = rnds.slice(10, 16);
+    msecs += 122192928e5;
+    const tl = ((msecs & 268435455) * 1e4 + nsecs) % 4294967296;
+    buf[offset++] = tl >>> 24 & 255;
+    buf[offset++] = tl >>> 16 & 255;
+    buf[offset++] = tl >>> 8 & 255;
+    buf[offset++] = tl & 255;
+    const tmh = msecs / 4294967296 * 1e4 & 268435455;
+    buf[offset++] = tmh >>> 8 & 255;
+    buf[offset++] = tmh & 255;
+    buf[offset++] = tmh >>> 24 & 15 | 16;
+    buf[offset++] = tmh >>> 16 & 255;
+    buf[offset++] = clockseq >>> 8 | 128;
+    buf[offset++] = clockseq & 255;
+    for (let n = 0; n < 6; ++n) {
+      buf[offset++] = node[n];
+    }
+    return buf;
+  }
+  var _state, v1_default;
+  var init_v1 = __esm({
+    "../common-js/node_modules/uuid/dist/v1.js"() {
+      init_rng();
+      init_stringify();
+      _state = {};
+      v1_default = v1;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/v35.js
-  var require_v35 = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/v35.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.URL = exports.DNS = void 0;
-      exports.default = v35;
-      var _stringify = require_stringify();
-      var _parse = _interopRequireDefault(require_parse());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
-      }
-      function stringToBytes(str) {
-        str = unescape(encodeURIComponent(str));
-        const bytes = [];
-        for (let i = 0; i < str.length; ++i) {
-          bytes.push(str.charCodeAt(i));
-        }
-        return bytes;
-      }
-      var DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
-      exports.DNS = DNS;
-      var URL2 = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
-      exports.URL = URL2;
-      function v35(name, version, hashfunc) {
-        function generateUUID(value, namespace, buf, offset) {
-          var _namespace;
-          if (typeof value === "string") {
-            value = stringToBytes(value);
-          }
-          if (typeof namespace === "string") {
-            namespace = (0, _parse.default)(namespace);
-          }
-          if (((_namespace = namespace) === null || _namespace === void 0 ? void 0 : _namespace.length) !== 16) {
-            throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");
-          }
-          let bytes = new Uint8Array(16 + value.length);
-          bytes.set(namespace);
-          bytes.set(value, namespace.length);
-          bytes = hashfunc(bytes);
-          bytes[6] = bytes[6] & 15 | version;
-          bytes[8] = bytes[8] & 63 | 128;
-          if (buf) {
-            offset = offset || 0;
-            for (let i = 0; i < 16; ++i) {
-              buf[offset + i] = bytes[i];
-            }
-            return buf;
-          }
-          return (0, _stringify.unsafeStringify)(bytes);
-        }
-        try {
-          generateUUID.name = name;
-        } catch (err) {
-        }
-        generateUUID.DNS = DNS;
-        generateUUID.URL = URL2;
-        return generateUUID;
-      }
+  // ../common-js/node_modules/uuid/dist/v1ToV6.js
+  function v1ToV6(uuid) {
+    const v1Bytes2 = typeof uuid === "string" ? parse_default(uuid) : uuid;
+    const v6Bytes = _v1ToV6(v1Bytes2);
+    return typeof uuid === "string" ? unsafeStringify(v6Bytes) : v6Bytes;
+  }
+  function _v1ToV6(v1Bytes2) {
+    return Uint8Array.of((v1Bytes2[6] & 15) << 4 | v1Bytes2[7] >> 4 & 15, (v1Bytes2[7] & 15) << 4 | (v1Bytes2[4] & 240) >> 4, (v1Bytes2[4] & 15) << 4 | (v1Bytes2[5] & 240) >> 4, (v1Bytes2[5] & 15) << 4 | (v1Bytes2[0] & 240) >> 4, (v1Bytes2[0] & 15) << 4 | (v1Bytes2[1] & 240) >> 4, (v1Bytes2[1] & 15) << 4 | (v1Bytes2[2] & 240) >> 4, 96 | v1Bytes2[2] & 15, v1Bytes2[3], v1Bytes2[8], v1Bytes2[9], v1Bytes2[10], v1Bytes2[11], v1Bytes2[12], v1Bytes2[13], v1Bytes2[14], v1Bytes2[15]);
+  }
+  var init_v1ToV6 = __esm({
+    "../common-js/node_modules/uuid/dist/v1ToV6.js"() {
+      init_parse();
+      init_stringify();
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/md5.js
-  var require_md5 = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/md5.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      function md5(bytes) {
-        if (typeof bytes === "string") {
-          const msg = unescape(encodeURIComponent(bytes));
-          bytes = new Uint8Array(msg.length);
-          for (let i = 0; i < msg.length; ++i) {
-            bytes[i] = msg.charCodeAt(i);
-          }
-        }
-        return md5ToHexEncodedArray(wordsToMd5(bytesToWords(bytes), bytes.length * 8));
-      }
-      function md5ToHexEncodedArray(input) {
-        const output = [];
-        const length32 = input.length * 32;
-        const hexTab = "0123456789abcdef";
-        for (let i = 0; i < length32; i += 8) {
-          const x = input[i >> 5] >>> i % 32 & 255;
-          const hex = parseInt(hexTab.charAt(x >>> 4 & 15) + hexTab.charAt(x & 15), 16);
-          output.push(hex);
-        }
-        return output;
-      }
-      function getOutputLength(inputLength8) {
-        return (inputLength8 + 64 >>> 9 << 4) + 14 + 1;
-      }
-      function wordsToMd5(x, len) {
-        x[len >> 5] |= 128 << len % 32;
-        x[getOutputLength(len) - 1] = len;
-        let a = 1732584193;
-        let b = -271733879;
-        let c = -1732584194;
-        let d = 271733878;
-        for (let i = 0; i < x.length; i += 16) {
-          const olda = a;
-          const oldb = b;
-          const oldc = c;
-          const oldd = d;
-          a = md5ff(a, b, c, d, x[i], 7, -680876936);
-          d = md5ff(d, a, b, c, x[i + 1], 12, -389564586);
-          c = md5ff(c, d, a, b, x[i + 2], 17, 606105819);
-          b = md5ff(b, c, d, a, x[i + 3], 22, -1044525330);
-          a = md5ff(a, b, c, d, x[i + 4], 7, -176418897);
-          d = md5ff(d, a, b, c, x[i + 5], 12, 1200080426);
-          c = md5ff(c, d, a, b, x[i + 6], 17, -1473231341);
-          b = md5ff(b, c, d, a, x[i + 7], 22, -45705983);
-          a = md5ff(a, b, c, d, x[i + 8], 7, 1770035416);
-          d = md5ff(d, a, b, c, x[i + 9], 12, -1958414417);
-          c = md5ff(c, d, a, b, x[i + 10], 17, -42063);
-          b = md5ff(b, c, d, a, x[i + 11], 22, -1990404162);
-          a = md5ff(a, b, c, d, x[i + 12], 7, 1804603682);
-          d = md5ff(d, a, b, c, x[i + 13], 12, -40341101);
-          c = md5ff(c, d, a, b, x[i + 14], 17, -1502002290);
-          b = md5ff(b, c, d, a, x[i + 15], 22, 1236535329);
-          a = md5gg(a, b, c, d, x[i + 1], 5, -165796510);
-          d = md5gg(d, a, b, c, x[i + 6], 9, -1069501632);
-          c = md5gg(c, d, a, b, x[i + 11], 14, 643717713);
-          b = md5gg(b, c, d, a, x[i], 20, -373897302);
-          a = md5gg(a, b, c, d, x[i + 5], 5, -701558691);
-          d = md5gg(d, a, b, c, x[i + 10], 9, 38016083);
-          c = md5gg(c, d, a, b, x[i + 15], 14, -660478335);
-          b = md5gg(b, c, d, a, x[i + 4], 20, -405537848);
-          a = md5gg(a, b, c, d, x[i + 9], 5, 568446438);
-          d = md5gg(d, a, b, c, x[i + 14], 9, -1019803690);
-          c = md5gg(c, d, a, b, x[i + 3], 14, -187363961);
-          b = md5gg(b, c, d, a, x[i + 8], 20, 1163531501);
-          a = md5gg(a, b, c, d, x[i + 13], 5, -1444681467);
-          d = md5gg(d, a, b, c, x[i + 2], 9, -51403784);
-          c = md5gg(c, d, a, b, x[i + 7], 14, 1735328473);
-          b = md5gg(b, c, d, a, x[i + 12], 20, -1926607734);
-          a = md5hh(a, b, c, d, x[i + 5], 4, -378558);
-          d = md5hh(d, a, b, c, x[i + 8], 11, -2022574463);
-          c = md5hh(c, d, a, b, x[i + 11], 16, 1839030562);
-          b = md5hh(b, c, d, a, x[i + 14], 23, -35309556);
-          a = md5hh(a, b, c, d, x[i + 1], 4, -1530992060);
-          d = md5hh(d, a, b, c, x[i + 4], 11, 1272893353);
-          c = md5hh(c, d, a, b, x[i + 7], 16, -155497632);
-          b = md5hh(b, c, d, a, x[i + 10], 23, -1094730640);
-          a = md5hh(a, b, c, d, x[i + 13], 4, 681279174);
-          d = md5hh(d, a, b, c, x[i], 11, -358537222);
-          c = md5hh(c, d, a, b, x[i + 3], 16, -722521979);
-          b = md5hh(b, c, d, a, x[i + 6], 23, 76029189);
-          a = md5hh(a, b, c, d, x[i + 9], 4, -640364487);
-          d = md5hh(d, a, b, c, x[i + 12], 11, -421815835);
-          c = md5hh(c, d, a, b, x[i + 15], 16, 530742520);
-          b = md5hh(b, c, d, a, x[i + 2], 23, -995338651);
-          a = md5ii(a, b, c, d, x[i], 6, -198630844);
-          d = md5ii(d, a, b, c, x[i + 7], 10, 1126891415);
-          c = md5ii(c, d, a, b, x[i + 14], 15, -1416354905);
-          b = md5ii(b, c, d, a, x[i + 5], 21, -57434055);
-          a = md5ii(a, b, c, d, x[i + 12], 6, 1700485571);
-          d = md5ii(d, a, b, c, x[i + 3], 10, -1894986606);
-          c = md5ii(c, d, a, b, x[i + 10], 15, -1051523);
-          b = md5ii(b, c, d, a, x[i + 1], 21, -2054922799);
-          a = md5ii(a, b, c, d, x[i + 8], 6, 1873313359);
-          d = md5ii(d, a, b, c, x[i + 15], 10, -30611744);
-          c = md5ii(c, d, a, b, x[i + 6], 15, -1560198380);
-          b = md5ii(b, c, d, a, x[i + 13], 21, 1309151649);
-          a = md5ii(a, b, c, d, x[i + 4], 6, -145523070);
-          d = md5ii(d, a, b, c, x[i + 11], 10, -1120210379);
-          c = md5ii(c, d, a, b, x[i + 2], 15, 718787259);
-          b = md5ii(b, c, d, a, x[i + 9], 21, -343485551);
-          a = safeAdd(a, olda);
-          b = safeAdd(b, oldb);
-          c = safeAdd(c, oldc);
-          d = safeAdd(d, oldd);
-        }
-        return [a, b, c, d];
-      }
-      function bytesToWords(input) {
-        if (input.length === 0) {
-          return [];
-        }
-        const length8 = input.length * 8;
-        const output = new Uint32Array(getOutputLength(length8));
-        for (let i = 0; i < length8; i += 8) {
-          output[i >> 5] |= (input[i / 8] & 255) << i % 32;
-        }
-        return output;
-      }
-      function safeAdd(x, y) {
-        const lsw = (x & 65535) + (y & 65535);
-        const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
-        return msw << 16 | lsw & 65535;
-      }
-      function bitRotateLeft(num, cnt) {
-        return num << cnt | num >>> 32 - cnt;
-      }
-      function md5cmn(q, a, b, x, s, t) {
-        return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
-      }
-      function md5ff(a, b, c, d, x, s, t) {
-        return md5cmn(b & c | ~b & d, a, b, x, s, t);
-      }
-      function md5gg(a, b, c, d, x, s, t) {
-        return md5cmn(b & d | c & ~d, a, b, x, s, t);
-      }
-      function md5hh(a, b, c, d, x, s, t) {
-        return md5cmn(b ^ c ^ d, a, b, x, s, t);
-      }
-      function md5ii(a, b, c, d, x, s, t) {
-        return md5cmn(c ^ (b | ~d), a, b, x, s, t);
-      }
-      var _default = md5;
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/md5.js
+  function md5(bytes) {
+    const words = uint8ToUint32(bytes);
+    const md5Bytes = wordsToMd5(words, bytes.length * 8);
+    return uint32ToUint8(md5Bytes);
+  }
+  function uint32ToUint8(input) {
+    const bytes = new Uint8Array(input.length * 4);
+    for (let i = 0; i < input.length * 4; i++) {
+      bytes[i] = input[i >> 2] >>> i % 4 * 8 & 255;
+    }
+    return bytes;
+  }
+  function getOutputLength(inputLength8) {
+    return (inputLength8 + 64 >>> 9 << 4) + 14 + 1;
+  }
+  function wordsToMd5(x, len) {
+    const xpad = new Uint32Array(getOutputLength(len)).fill(0);
+    xpad.set(x);
+    xpad[len >> 5] |= 128 << len % 32;
+    xpad[xpad.length - 1] = len;
+    x = xpad;
+    let a = 1732584193;
+    let b = -271733879;
+    let c = -1732584194;
+    let d = 271733878;
+    for (let i = 0; i < x.length; i += 16) {
+      const olda = a;
+      const oldb = b;
+      const oldc = c;
+      const oldd = d;
+      a = md5ff(a, b, c, d, x[i], 7, -680876936);
+      d = md5ff(d, a, b, c, x[i + 1], 12, -389564586);
+      c = md5ff(c, d, a, b, x[i + 2], 17, 606105819);
+      b = md5ff(b, c, d, a, x[i + 3], 22, -1044525330);
+      a = md5ff(a, b, c, d, x[i + 4], 7, -176418897);
+      d = md5ff(d, a, b, c, x[i + 5], 12, 1200080426);
+      c = md5ff(c, d, a, b, x[i + 6], 17, -1473231341);
+      b = md5ff(b, c, d, a, x[i + 7], 22, -45705983);
+      a = md5ff(a, b, c, d, x[i + 8], 7, 1770035416);
+      d = md5ff(d, a, b, c, x[i + 9], 12, -1958414417);
+      c = md5ff(c, d, a, b, x[i + 10], 17, -42063);
+      b = md5ff(b, c, d, a, x[i + 11], 22, -1990404162);
+      a = md5ff(a, b, c, d, x[i + 12], 7, 1804603682);
+      d = md5ff(d, a, b, c, x[i + 13], 12, -40341101);
+      c = md5ff(c, d, a, b, x[i + 14], 17, -1502002290);
+      b = md5ff(b, c, d, a, x[i + 15], 22, 1236535329);
+      a = md5gg(a, b, c, d, x[i + 1], 5, -165796510);
+      d = md5gg(d, a, b, c, x[i + 6], 9, -1069501632);
+      c = md5gg(c, d, a, b, x[i + 11], 14, 643717713);
+      b = md5gg(b, c, d, a, x[i], 20, -373897302);
+      a = md5gg(a, b, c, d, x[i + 5], 5, -701558691);
+      d = md5gg(d, a, b, c, x[i + 10], 9, 38016083);
+      c = md5gg(c, d, a, b, x[i + 15], 14, -660478335);
+      b = md5gg(b, c, d, a, x[i + 4], 20, -405537848);
+      a = md5gg(a, b, c, d, x[i + 9], 5, 568446438);
+      d = md5gg(d, a, b, c, x[i + 14], 9, -1019803690);
+      c = md5gg(c, d, a, b, x[i + 3], 14, -187363961);
+      b = md5gg(b, c, d, a, x[i + 8], 20, 1163531501);
+      a = md5gg(a, b, c, d, x[i + 13], 5, -1444681467);
+      d = md5gg(d, a, b, c, x[i + 2], 9, -51403784);
+      c = md5gg(c, d, a, b, x[i + 7], 14, 1735328473);
+      b = md5gg(b, c, d, a, x[i + 12], 20, -1926607734);
+      a = md5hh(a, b, c, d, x[i + 5], 4, -378558);
+      d = md5hh(d, a, b, c, x[i + 8], 11, -2022574463);
+      c = md5hh(c, d, a, b, x[i + 11], 16, 1839030562);
+      b = md5hh(b, c, d, a, x[i + 14], 23, -35309556);
+      a = md5hh(a, b, c, d, x[i + 1], 4, -1530992060);
+      d = md5hh(d, a, b, c, x[i + 4], 11, 1272893353);
+      c = md5hh(c, d, a, b, x[i + 7], 16, -155497632);
+      b = md5hh(b, c, d, a, x[i + 10], 23, -1094730640);
+      a = md5hh(a, b, c, d, x[i + 13], 4, 681279174);
+      d = md5hh(d, a, b, c, x[i], 11, -358537222);
+      c = md5hh(c, d, a, b, x[i + 3], 16, -722521979);
+      b = md5hh(b, c, d, a, x[i + 6], 23, 76029189);
+      a = md5hh(a, b, c, d, x[i + 9], 4, -640364487);
+      d = md5hh(d, a, b, c, x[i + 12], 11, -421815835);
+      c = md5hh(c, d, a, b, x[i + 15], 16, 530742520);
+      b = md5hh(b, c, d, a, x[i + 2], 23, -995338651);
+      a = md5ii(a, b, c, d, x[i], 6, -198630844);
+      d = md5ii(d, a, b, c, x[i + 7], 10, 1126891415);
+      c = md5ii(c, d, a, b, x[i + 14], 15, -1416354905);
+      b = md5ii(b, c, d, a, x[i + 5], 21, -57434055);
+      a = md5ii(a, b, c, d, x[i + 12], 6, 1700485571);
+      d = md5ii(d, a, b, c, x[i + 3], 10, -1894986606);
+      c = md5ii(c, d, a, b, x[i + 10], 15, -1051523);
+      b = md5ii(b, c, d, a, x[i + 1], 21, -2054922799);
+      a = md5ii(a, b, c, d, x[i + 8], 6, 1873313359);
+      d = md5ii(d, a, b, c, x[i + 15], 10, -30611744);
+      c = md5ii(c, d, a, b, x[i + 6], 15, -1560198380);
+      b = md5ii(b, c, d, a, x[i + 13], 21, 1309151649);
+      a = md5ii(a, b, c, d, x[i + 4], 6, -145523070);
+      d = md5ii(d, a, b, c, x[i + 11], 10, -1120210379);
+      c = md5ii(c, d, a, b, x[i + 2], 15, 718787259);
+      b = md5ii(b, c, d, a, x[i + 9], 21, -343485551);
+      a = safeAdd(a, olda);
+      b = safeAdd(b, oldb);
+      c = safeAdd(c, oldc);
+      d = safeAdd(d, oldd);
+    }
+    return Uint32Array.of(a, b, c, d);
+  }
+  function uint8ToUint32(input) {
+    if (input.length === 0) {
+      return new Uint32Array();
+    }
+    const output = new Uint32Array(getOutputLength(input.length * 8)).fill(0);
+    for (let i = 0; i < input.length; i++) {
+      output[i >> 2] |= (input[i] & 255) << i % 4 * 8;
+    }
+    return output;
+  }
+  function safeAdd(x, y) {
+    const lsw = (x & 65535) + (y & 65535);
+    const msw = (x >> 16) + (y >> 16) + (lsw >> 16);
+    return msw << 16 | lsw & 65535;
+  }
+  function bitRotateLeft(num, cnt) {
+    return num << cnt | num >>> 32 - cnt;
+  }
+  function md5cmn(q, a, b, x, s, t) {
+    return safeAdd(bitRotateLeft(safeAdd(safeAdd(a, q), safeAdd(x, t)), s), b);
+  }
+  function md5ff(a, b, c, d, x, s, t) {
+    return md5cmn(b & c | ~b & d, a, b, x, s, t);
+  }
+  function md5gg(a, b, c, d, x, s, t) {
+    return md5cmn(b & d | c & ~d, a, b, x, s, t);
+  }
+  function md5hh(a, b, c, d, x, s, t) {
+    return md5cmn(b ^ c ^ d, a, b, x, s, t);
+  }
+  function md5ii(a, b, c, d, x, s, t) {
+    return md5cmn(c ^ (b | ~d), a, b, x, s, t);
+  }
+  var md5_default;
+  var init_md5 = __esm({
+    "../common-js/node_modules/uuid/dist/md5.js"() {
+      md5_default = md5;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/v3.js
-  var require_v3 = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/v3.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _v = _interopRequireDefault(require_v35());
-      var _md = _interopRequireDefault(require_md5());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
+  // ../common-js/node_modules/uuid/dist/v35.js
+  function stringToBytes(str) {
+    str = unescape(encodeURIComponent(str));
+    const bytes = new Uint8Array(str.length);
+    for (let i = 0; i < str.length; ++i) {
+      bytes[i] = str.charCodeAt(i);
+    }
+    return bytes;
+  }
+  function v35(version2, hash, value, namespace, buf, offset) {
+    const valueBytes = typeof value === "string" ? stringToBytes(value) : value;
+    const namespaceBytes = typeof namespace === "string" ? parse_default(namespace) : namespace;
+    if (typeof namespace === "string") {
+      namespace = parse_default(namespace);
+    }
+    if ((namespace == null ? void 0 : namespace.length) !== 16) {
+      throw TypeError("Namespace must be array-like (16 iterable integer values, 0-255)");
+    }
+    let bytes = new Uint8Array(16 + valueBytes.length);
+    bytes.set(namespaceBytes);
+    bytes.set(valueBytes, namespaceBytes.length);
+    bytes = hash(bytes);
+    bytes[6] = bytes[6] & 15 | version2;
+    bytes[8] = bytes[8] & 63 | 128;
+    if (buf) {
+      offset != null ? offset : offset = 0;
+      if (offset < 0 || offset + 16 > buf.length) {
+        throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);
       }
-      var v3 = (0, _v.default)("v3", 48, _md.default);
-      var _default = v3;
-      exports.default = _default;
+      for (let i = 0; i < 16; ++i) {
+        buf[offset + i] = bytes[i];
+      }
+      return buf;
+    }
+    return unsafeStringify(bytes);
+  }
+  var DNS, URL2;
+  var init_v35 = __esm({
+    "../common-js/node_modules/uuid/dist/v35.js"() {
+      init_parse();
+      init_stringify();
+      DNS = "6ba7b810-9dad-11d1-80b4-00c04fd430c8";
+      URL2 = "6ba7b811-9dad-11d1-80b4-00c04fd430c8";
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/native.js
-  var require_native = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/native.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var randomUUID = typeof crypto !== "undefined" && crypto.randomUUID && crypto.randomUUID.bind(crypto);
-      var _default = {
-        randomUUID
-      };
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/v3.js
+  function v3(value, namespace, buf, offset) {
+    return v35(48, md5_default, value, namespace, buf, offset);
+  }
+  var v3_default;
+  var init_v3 = __esm({
+    "../common-js/node_modules/uuid/dist/v3.js"() {
+      init_md5();
+      init_v35();
+      v3.DNS = DNS;
+      v3.URL = URL2;
+      v3_default = v3;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/v4.js
-  var require_v4 = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/v4.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _native = _interopRequireDefault(require_native());
-      var _rng = _interopRequireDefault(require_rng());
-      var _stringify = require_stringify();
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
+  // ../common-js/node_modules/uuid/dist/v4.js
+  function v4(options, buf, offset) {
+    if (!buf && !options && crypto.randomUUID) {
+      return crypto.randomUUID();
+    }
+    return _v4(options, buf, offset);
+  }
+  function _v4(options, buf, offset) {
+    var _a, _b, _c;
+    options = options || {};
+    const rnds = (_c = (_b = options.random) != null ? _b : (_a = options.rng) == null ? void 0 : _a.call(options)) != null ? _c : rng();
+    if (rnds.length < 16) {
+      throw new Error("Random bytes length must be >= 16");
+    }
+    rnds[6] = rnds[6] & 15 | 64;
+    rnds[8] = rnds[8] & 63 | 128;
+    if (buf) {
+      offset = offset || 0;
+      if (offset < 0 || offset + 16 > buf.length) {
+        throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);
       }
-      function v4(options, buf, offset) {
-        if (_native.default.randomUUID && !buf && !options) {
-          return _native.default.randomUUID();
-        }
-        options = options || {};
-        const rnds = options.random || (options.rng || _rng.default)();
-        rnds[6] = rnds[6] & 15 | 64;
-        rnds[8] = rnds[8] & 63 | 128;
-        if (buf) {
-          offset = offset || 0;
-          for (let i = 0; i < 16; ++i) {
-            buf[offset + i] = rnds[i];
-          }
-          return buf;
-        }
-        return (0, _stringify.unsafeStringify)(rnds);
+      for (let i = 0; i < 16; ++i) {
+        buf[offset + i] = rnds[i];
       }
-      var _default = v4;
-      exports.default = _default;
+      return buf;
+    }
+    return unsafeStringify(rnds);
+  }
+  var v4_default;
+  var init_v4 = __esm({
+    "../common-js/node_modules/uuid/dist/v4.js"() {
+      init_rng();
+      init_stringify();
+      v4_default = v4;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/sha1.js
-  var require_sha1 = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/sha1.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      function f(s, x, y, z) {
-        switch (s) {
-          case 0:
-            return x & y ^ ~x & z;
-          case 1:
-            return x ^ y ^ z;
-          case 2:
-            return x & y ^ x & z ^ y & z;
-          case 3:
-            return x ^ y ^ z;
-        }
+  // ../common-js/node_modules/uuid/dist/sha1.js
+  function f(s, x, y, z) {
+    switch (s) {
+      case 0:
+        return x & y ^ ~x & z;
+      case 1:
+        return x ^ y ^ z;
+      case 2:
+        return x & y ^ x & z ^ y & z;
+      case 3:
+        return x ^ y ^ z;
+    }
+  }
+  function ROTL(x, n) {
+    return x << n | x >>> 32 - n;
+  }
+  function sha1(bytes) {
+    const K = [1518500249, 1859775393, 2400959708, 3395469782];
+    const H = [1732584193, 4023233417, 2562383102, 271733878, 3285377520];
+    const newBytes = new Uint8Array(bytes.length + 1);
+    newBytes.set(bytes);
+    newBytes[bytes.length] = 128;
+    bytes = newBytes;
+    const l = bytes.length / 4 + 2;
+    const N = Math.ceil(l / 16);
+    const M = new Array(N);
+    for (let i = 0; i < N; ++i) {
+      const arr = new Uint32Array(16);
+      for (let j = 0; j < 16; ++j) {
+        arr[j] = bytes[i * 64 + j * 4] << 24 | bytes[i * 64 + j * 4 + 1] << 16 | bytes[i * 64 + j * 4 + 2] << 8 | bytes[i * 64 + j * 4 + 3];
       }
-      function ROTL(x, n) {
-        return x << n | x >>> 32 - n;
+      M[i] = arr;
+    }
+    M[N - 1][14] = (bytes.length - 1) * 8 / 2 ** 32;
+    M[N - 1][14] = Math.floor(M[N - 1][14]);
+    M[N - 1][15] = (bytes.length - 1) * 8 & 4294967295;
+    for (let i = 0; i < N; ++i) {
+      const W = new Uint32Array(80);
+      for (let t = 0; t < 16; ++t) {
+        W[t] = M[i][t];
       }
-      function sha1(bytes) {
-        const K = [1518500249, 1859775393, 2400959708, 3395469782];
-        const H = [1732584193, 4023233417, 2562383102, 271733878, 3285377520];
-        if (typeof bytes === "string") {
-          const msg = unescape(encodeURIComponent(bytes));
-          bytes = [];
-          for (let i = 0; i < msg.length; ++i) {
-            bytes.push(msg.charCodeAt(i));
-          }
-        } else if (!Array.isArray(bytes)) {
-          bytes = Array.prototype.slice.call(bytes);
-        }
-        bytes.push(128);
-        const l = bytes.length / 4 + 2;
-        const N = Math.ceil(l / 16);
-        const M = new Array(N);
-        for (let i = 0; i < N; ++i) {
-          const arr = new Uint32Array(16);
-          for (let j = 0; j < 16; ++j) {
-            arr[j] = bytes[i * 64 + j * 4] << 24 | bytes[i * 64 + j * 4 + 1] << 16 | bytes[i * 64 + j * 4 + 2] << 8 | bytes[i * 64 + j * 4 + 3];
-          }
-          M[i] = arr;
-        }
-        M[N - 1][14] = (bytes.length - 1) * 8 / Math.pow(2, 32);
-        M[N - 1][14] = Math.floor(M[N - 1][14]);
-        M[N - 1][15] = (bytes.length - 1) * 8 & 4294967295;
-        for (let i = 0; i < N; ++i) {
-          const W = new Uint32Array(80);
-          for (let t = 0; t < 16; ++t) {
-            W[t] = M[i][t];
-          }
-          for (let t = 16; t < 80; ++t) {
-            W[t] = ROTL(W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16], 1);
-          }
-          let a = H[0];
-          let b = H[1];
-          let c = H[2];
-          let d = H[3];
-          let e = H[4];
-          for (let t = 0; t < 80; ++t) {
-            const s = Math.floor(t / 20);
-            const T = ROTL(a, 5) + f(s, b, c, d) + e + K[s] + W[t] >>> 0;
-            e = d;
-            d = c;
-            c = ROTL(b, 30) >>> 0;
-            b = a;
-            a = T;
-          }
-          H[0] = H[0] + a >>> 0;
-          H[1] = H[1] + b >>> 0;
-          H[2] = H[2] + c >>> 0;
-          H[3] = H[3] + d >>> 0;
-          H[4] = H[4] + e >>> 0;
-        }
-        return [H[0] >> 24 & 255, H[0] >> 16 & 255, H[0] >> 8 & 255, H[0] & 255, H[1] >> 24 & 255, H[1] >> 16 & 255, H[1] >> 8 & 255, H[1] & 255, H[2] >> 24 & 255, H[2] >> 16 & 255, H[2] >> 8 & 255, H[2] & 255, H[3] >> 24 & 255, H[3] >> 16 & 255, H[3] >> 8 & 255, H[3] & 255, H[4] >> 24 & 255, H[4] >> 16 & 255, H[4] >> 8 & 255, H[4] & 255];
+      for (let t = 16; t < 80; ++t) {
+        W[t] = ROTL(W[t - 3] ^ W[t - 8] ^ W[t - 14] ^ W[t - 16], 1);
       }
-      var _default = sha1;
-      exports.default = _default;
+      let a = H[0];
+      let b = H[1];
+      let c = H[2];
+      let d = H[3];
+      let e = H[4];
+      for (let t = 0; t < 80; ++t) {
+        const s = Math.floor(t / 20);
+        const T = ROTL(a, 5) + f(s, b, c, d) + e + K[s] + W[t] >>> 0;
+        e = d;
+        d = c;
+        c = ROTL(b, 30) >>> 0;
+        b = a;
+        a = T;
+      }
+      H[0] = H[0] + a >>> 0;
+      H[1] = H[1] + b >>> 0;
+      H[2] = H[2] + c >>> 0;
+      H[3] = H[3] + d >>> 0;
+      H[4] = H[4] + e >>> 0;
+    }
+    return Uint8Array.of(H[0] >> 24, H[0] >> 16, H[0] >> 8, H[0], H[1] >> 24, H[1] >> 16, H[1] >> 8, H[1], H[2] >> 24, H[2] >> 16, H[2] >> 8, H[2], H[3] >> 24, H[3] >> 16, H[3] >> 8, H[3], H[4] >> 24, H[4] >> 16, H[4] >> 8, H[4]);
+  }
+  var sha1_default;
+  var init_sha1 = __esm({
+    "../common-js/node_modules/uuid/dist/sha1.js"() {
+      sha1_default = sha1;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/v5.js
-  var require_v5 = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/v5.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _v = _interopRequireDefault(require_v35());
-      var _sha = _interopRequireDefault(require_sha1());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
-      }
-      var v5 = (0, _v.default)("v5", 80, _sha.default);
-      var _default = v5;
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/v5.js
+  function v5(value, namespace, buf, offset) {
+    return v35(80, sha1_default, value, namespace, buf, offset);
+  }
+  var v5_default;
+  var init_v5 = __esm({
+    "../common-js/node_modules/uuid/dist/v5.js"() {
+      init_sha1();
+      init_v35();
+      v5.DNS = DNS;
+      v5.URL = URL2;
+      v5_default = v5;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/nil.js
-  var require_nil = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/nil.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _default = "00000000-0000-0000-0000-000000000000";
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/v6.js
+  function v6(options, buf, offset) {
+    options != null ? options : options = {};
+    offset != null ? offset : offset = 0;
+    let bytes = v1_default(__spreadProps(__spreadValues({}, options), { _v6: true }), new Uint8Array(16));
+    bytes = v1ToV6(bytes);
+    if (buf) {
+      if (offset < 0 || offset + 16 > buf.length) {
+        throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);
+      }
+      for (let i = 0; i < 16; i++) {
+        buf[offset + i] = bytes[i];
+      }
+      return buf;
+    }
+    return unsafeStringify(bytes);
+  }
+  var v6_default;
+  var init_v6 = __esm({
+    "../common-js/node_modules/uuid/dist/v6.js"() {
+      init_stringify();
+      init_v1();
+      init_v1ToV6();
+      v6_default = v6;
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/version.js
-  var require_version = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/version.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      exports.default = void 0;
-      var _validate = _interopRequireDefault(require_validate());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
-      }
-      function version(uuid) {
-        if (!(0, _validate.default)(uuid)) {
-          throw TypeError("Invalid UUID");
-        }
-        return parseInt(uuid.slice(14, 15), 16);
-      }
-      var _default = version;
-      exports.default = _default;
+  // ../common-js/node_modules/uuid/dist/v6ToV1.js
+  function v6ToV1(uuid) {
+    const v6Bytes = typeof uuid === "string" ? parse_default(uuid) : uuid;
+    const v1Bytes2 = _v6ToV1(v6Bytes);
+    return typeof uuid === "string" ? unsafeStringify(v1Bytes2) : v1Bytes2;
+  }
+  function _v6ToV1(v6Bytes) {
+    return Uint8Array.of((v6Bytes[3] & 15) << 4 | v6Bytes[4] >> 4 & 15, (v6Bytes[4] & 15) << 4 | (v6Bytes[5] & 240) >> 4, (v6Bytes[5] & 15) << 4 | v6Bytes[6] & 15, v6Bytes[7], (v6Bytes[1] & 15) << 4 | (v6Bytes[2] & 240) >> 4, (v6Bytes[2] & 15) << 4 | (v6Bytes[3] & 240) >> 4, 16 | (v6Bytes[0] & 240) >> 4, (v6Bytes[0] & 15) << 4 | (v6Bytes[1] & 240) >> 4, v6Bytes[8], v6Bytes[9], v6Bytes[10], v6Bytes[11], v6Bytes[12], v6Bytes[13], v6Bytes[14], v6Bytes[15]);
+  }
+  var init_v6ToV1 = __esm({
+    "../common-js/node_modules/uuid/dist/v6ToV1.js"() {
+      init_parse();
+      init_stringify();
     }
   });
 
-  // ../common-js/node_modules/uuid/dist/commonjs-browser/index.js
-  var require_commonjs_browser = __commonJS({
-    "../common-js/node_modules/uuid/dist/commonjs-browser/index.js"(exports) {
-      "use strict";
-      Object.defineProperty(exports, "__esModule", {
-        value: true
-      });
-      Object.defineProperty(exports, "NIL", {
-        enumerable: true,
-        get: function get() {
-          return _nil.default;
-        }
-      });
-      Object.defineProperty(exports, "parse", {
-        enumerable: true,
-        get: function get() {
-          return _parse.default;
-        }
-      });
-      Object.defineProperty(exports, "stringify", {
-        enumerable: true,
-        get: function get() {
-          return _stringify.default;
-        }
-      });
-      Object.defineProperty(exports, "v1", {
-        enumerable: true,
-        get: function get() {
-          return _v.default;
-        }
-      });
-      Object.defineProperty(exports, "v3", {
-        enumerable: true,
-        get: function get() {
-          return _v2.default;
-        }
-      });
-      Object.defineProperty(exports, "v4", {
-        enumerable: true,
-        get: function get() {
-          return _v3.default;
-        }
-      });
-      Object.defineProperty(exports, "v5", {
-        enumerable: true,
-        get: function get() {
-          return _v4.default;
-        }
-      });
-      Object.defineProperty(exports, "validate", {
-        enumerable: true,
-        get: function get() {
-          return _validate.default;
-        }
-      });
-      Object.defineProperty(exports, "version", {
-        enumerable: true,
-        get: function get() {
-          return _version.default;
-        }
-      });
-      var _v = _interopRequireDefault(require_v1());
-      var _v2 = _interopRequireDefault(require_v3());
-      var _v3 = _interopRequireDefault(require_v4());
-      var _v4 = _interopRequireDefault(require_v5());
-      var _nil = _interopRequireDefault(require_nil());
-      var _version = _interopRequireDefault(require_version());
-      var _validate = _interopRequireDefault(require_validate());
-      var _stringify = _interopRequireDefault(require_stringify());
-      var _parse = _interopRequireDefault(require_parse());
-      function _interopRequireDefault(obj) {
-        return obj && obj.__esModule ? obj : { default: obj };
+  // ../common-js/node_modules/uuid/dist/v7.js
+  function v7(options, buf, offset) {
+    var _a, _b, _c;
+    let bytes;
+    if (options) {
+      bytes = v7Bytes((_c = (_b = options.random) != null ? _b : (_a = options.rng) == null ? void 0 : _a.call(options)) != null ? _c : rng(), options.msecs, options.seq, buf, offset);
+    } else {
+      const now = Date.now();
+      const rnds = rng();
+      updateV7State(_state2, now, rnds);
+      bytes = v7Bytes(rnds, _state2.msecs, _state2.seq, buf, offset);
+    }
+    return buf != null ? buf : unsafeStringify(bytes);
+  }
+  function updateV7State(state, now, rnds) {
+    var _a, _b;
+    (_a = state.msecs) != null ? _a : state.msecs = -Infinity;
+    (_b = state.seq) != null ? _b : state.seq = 0;
+    if (now > state.msecs) {
+      state.seq = rnds[6] << 23 | rnds[7] << 16 | rnds[8] << 8 | rnds[9];
+      state.msecs = now;
+    } else {
+      state.seq = state.seq + 1 | 0;
+      if (state.seq === 0) {
+        state.msecs++;
       }
+    }
+    return state;
+  }
+  function v7Bytes(rnds, msecs, seq, buf, offset = 0) {
+    if (rnds.length < 16) {
+      throw new Error("Random bytes length must be >= 16");
+    }
+    if (!buf) {
+      buf = new Uint8Array(16);
+      offset = 0;
+    } else {
+      if (offset < 0 || offset + 16 > buf.length) {
+        throw new RangeError(`UUID byte range ${offset}:${offset + 15} is out of buffer bounds`);
+      }
+    }
+    msecs != null ? msecs : msecs = Date.now();
+    seq != null ? seq : seq = rnds[6] * 127 << 24 | rnds[7] << 16 | rnds[8] << 8 | rnds[9];
+    buf[offset++] = msecs / 1099511627776 & 255;
+    buf[offset++] = msecs / 4294967296 & 255;
+    buf[offset++] = msecs / 16777216 & 255;
+    buf[offset++] = msecs / 65536 & 255;
+    buf[offset++] = msecs / 256 & 255;
+    buf[offset++] = msecs & 255;
+    buf[offset++] = 112 | seq >>> 28 & 15;
+    buf[offset++] = seq >>> 20 & 255;
+    buf[offset++] = 128 | seq >>> 14 & 63;
+    buf[offset++] = seq >>> 6 & 255;
+    buf[offset++] = seq << 2 & 255 | rnds[10] & 3;
+    buf[offset++] = rnds[11];
+    buf[offset++] = rnds[12];
+    buf[offset++] = rnds[13];
+    buf[offset++] = rnds[14];
+    buf[offset++] = rnds[15];
+    return buf;
+  }
+  var _state2, v7_default;
+  var init_v7 = __esm({
+    "../common-js/node_modules/uuid/dist/v7.js"() {
+      init_rng();
+      init_stringify();
+      _state2 = {};
+      v7_default = v7;
+    }
+  });
+
+  // ../common-js/node_modules/uuid/dist/version.js
+  function version(uuid) {
+    if (!validate_default(uuid)) {
+      throw TypeError("Invalid UUID");
+    }
+    return parseInt(uuid.slice(14, 15), 16);
+  }
+  var version_default;
+  var init_version = __esm({
+    "../common-js/node_modules/uuid/dist/version.js"() {
+      init_validate();
+      version_default = version;
+    }
+  });
+
+  // ../common-js/node_modules/uuid/dist/index.js
+  var dist_exports = {};
+  __export(dist_exports, {
+    MAX: () => max_default,
+    NIL: () => nil_default,
+    parse: () => parse_default,
+    stringify: () => stringify_default,
+    v1: () => v1_default,
+    v1ToV6: () => v1ToV6,
+    v3: () => v3_default,
+    v4: () => v4_default,
+    v5: () => v5_default,
+    v6: () => v6_default,
+    v6ToV1: () => v6ToV1,
+    v7: () => v7_default,
+    validate: () => validate_default,
+    version: () => version_default
+  });
+  var init_dist = __esm({
+    "../common-js/node_modules/uuid/dist/index.js"() {
+      init_max();
+      init_nil();
+      init_parse();
+      init_stringify();
+      init_v1();
+      init_v1ToV6();
+      init_v3();
+      init_v4();
+      init_v5();
+      init_v6();
+      init_v6ToV1();
+      init_v7();
+      init_validate();
+      init_version();
     }
   });
 
@@ -13604,7 +13608,7 @@
       var array = require_array();
       var Enum = require_Enum();
       var is = require_is();
-      var uuid = require_commonjs_browser();
+      var uuid = (init_dist(), __toCommonJS(dist_exports));
       var CustomerType = require_CustomerType();
       var ProductType = require_ProductType();
       module.exports = (() => {
@@ -14987,11 +14991,11 @@
       var CustomerType = require_CustomerType();
       var EventType = require_EventType();
       var ProductType = require_ProductType();
-      var version = require_lib().version;
+      var version2 = require_lib().version;
       module.exports = (() => {
         "use strict";
         return {
-          version,
+          version: version2,
           stages: [
             "staging",
             "production"
