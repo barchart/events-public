@@ -14643,7 +14643,7 @@
       module.exports = (() => {
         "use strict";
         return {
-          version: "5.10.0"
+          version: "6.0.0"
         };
       })();
     }
