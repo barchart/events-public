@@ -72,7 +72,7 @@ module.exports = (() => {
 		}
 
 		toString() {
-			return `[EventJobSchema (code=${this._code})]`;
+			return `[EventJobSchema (code=${this.code})]`;
 		}
 	}
 

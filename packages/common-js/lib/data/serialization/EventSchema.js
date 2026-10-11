@@ -61,7 +61,7 @@ module.exports = (() => {
 		}
 
 		toString() {
-			return `[EventSchema (code=${this._code})]`;
+			return `[EventSchema (code=${this.code})]`;
 		}
 	}
 
