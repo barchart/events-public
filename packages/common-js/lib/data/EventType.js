@@ -339,7 +339,7 @@ module.exports = (() => {
 		}
 
 		static get CMDTYVIEW_SYMBOL_BROWSER_SYMBOL_CONFIRMED() {
-			return cmdtyViewSymbolBrowerSymbolConfirmed;
+			return cmdtyViewSymbolBrowserSymbolConfirmed;
 		}
 
 		static get CMDTYVIEW_SYMBOL_BROWSER_BRANCH_STATE_CHANGED() {
@@ -507,7 +507,7 @@ module.exports = (() => {
 		}
 
 		static get CMDTYVIEW_GRAIN_BID_ZIP_CODE_CHANGED() {
-			return cmdtyViewGraiBidZipCodeChanged;
+			return cmdtyViewGrainBidZipCodeChanged;
 		}
 
 		static get CMDTYVIEW_GRAIN_BID_LOCATIONS_CHANGED() {
@@ -1099,7 +1099,7 @@ module.exports = (() => {
 	
 	const cmdtyViewSymbolBrowserShown = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SHOWN', 'Symbol Browser Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewSymbolBrowserSearch = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SEARCH', 'Symbol Browser Search Performed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'searchString']);
-	const cmdtyViewSymbolBrowerSymbolConfirmed = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SYMBOL-CONFIRMED', 'Symbol Browser Symbol Confirmed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'path']);
+	const cmdtyViewSymbolBrowserSymbolConfirmed = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SYMBOL-CONFIRMED', 'Symbol Browser Symbol Confirmed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbol', 'path']);
 	const cmdtyViewSymbolBrowserBranchStateChanged = new EventType('CMDTYVIEW-SYMBOL-BROWSER-BRANCH-STATE-CHANGED', 'Symbol Browser Branch State Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'path', 'isOpen']);
 	const cmdtyViewSymbolBrowserFilterChanged = new EventType('CMDTYVIEW-SYMBOL-BROWSER-FILTER-CHANGED', 'Symbol Browser Filter Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filter', 'filterSelected', 'activeFilters']);
 	const cmdtyViewSymbolBrowserSymbolsInserted = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SYMBOLS-INSERTED', 'Symbol Browser Symbols Inserted', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'symbols']);
@@ -1152,7 +1152,7 @@ module.exports = (() => {
 	const cmdtyViewNewsOpenChartOnClickChanged = new EventType('CMDTYVIEW-NEWS-OPEN-CHART-ON-CLICK-CHANGED', 'News Open Chart On Click Option Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'value']);
 	const cmdtyViewNewsFilterChanged = new EventType('CMDTYVIEW-NEWS-FILTER-CHANGED', 'News Filter Selection Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'filter']);
 
-	const cmdtyViewGraiBidZipCodeChanged = new EventType('CMDTYVIEW-GRAIN-BID-ZIP-CODE-CHANGED', 'Grain Bid Zip Code Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'zipCode', 'previousZipCode']);
+	const cmdtyViewGrainBidZipCodeChanged = new EventType('CMDTYVIEW-GRAIN-BID-ZIP-CODE-CHANGED', 'Grain Bid Zip Code Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'zipCode', 'previousZipCode']);
 	const cmdtyViewGrainBidLocationsChanged = new EventType('CMDTYVIEW-GRAIN-BID-LOCATIONS-CHANGED', 'Grain Bid Locations Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'locations', 'previousLocations']);
 	const cmdtyViewGrainBidCommoditiesChanged = new EventType('CMDTYVIEW-GRAIN-BID-COMMODITIES-CHANGED', 'Grain Bid Commodities Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'commodities', 'previousCommodities']);
 	const cmdtyViewGrainBidDistanceChanged = new EventType('CMDTYVIEW-GRAIN-BID-DISTANCE-CHANGED', 'Grain Bid Distance Changed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'distance', 'previousDistance']);
