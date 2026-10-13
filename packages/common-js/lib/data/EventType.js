@@ -1094,8 +1094,8 @@ module.exports = (() => {
 	const cmdtyViewWorkspaceCreated = new EventType('CMDTYVIEW-WORKSPACE-CREATED', 'Workspace Created', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title']);
 	const cmdtyViewWorkspaceActivated = new EventType('CMDTYVIEW-WORKSPACE-ACTIVATED', 'Workspace Activated', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'title', 'panels']);
 
-	const cmdtyViewPanelAdded = new EventType('CMDTYVIEW-PANEL-ADDED', 'Panel Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'origin']);
-	const cmdtyViewPanelRemoved = new EventType('CMDTYVIEW-PANEL-REMOVED', 'Panel Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
+	const cmdtyViewPanelAdded = new EventType('CMDTYVIEW-PANEL-ADDED', 'Panel Added', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'panelId', 'title', 'origin']);
+	const cmdtyViewPanelRemoved = new EventType('CMDTYVIEW-PANEL-REMOVED', 'Panel Removed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'workspaceId', 'panelId', 'title']);
 	
 	const cmdtyViewSymbolBrowserShown = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SHOWN', 'Symbol Browser Shown', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title']);
 	const cmdtyViewSymbolBrowserSearch = new EventType('CMDTYVIEW-SYMBOL-BROWSER-SEARCH', 'Symbol Browser Search Performed', ProductType.CMDTYVIEW, ['userId', 'sessionId', 'panelId', 'title', 'searchString']);
