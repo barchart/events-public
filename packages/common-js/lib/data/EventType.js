@@ -5,7 +5,8 @@ const assert = require('@barchart/common-js/lang/assert'),
 
 const uuid = require('uuid');
 
-const CustomerType = require('./CustomerType'),
+const AppType = require('./AppType'),
+	CustomerType = require('./CustomerType'),
 	ProductType = require('./ProductType');
 
 module.exports = (() => {
@@ -1020,10 +1021,12 @@ module.exports = (() => {
 	validators.uuid = x => is.string(x) && x.length > 0 && uuid.validate(x);
 
 	validators.stringOptional = x => is.string(x);
+	validators.appTypeOptional = x => AppType.parse(x) !== null;
 	
 	const transformers = { };
 
 	transformers.stringOptional = x => x || '';
+	transformers.appTypeOptional = x => x === null || x === undefined ? AppType.DESKTOP.code : x;
 	
 	// Alerts
 
@@ -1172,7 +1175,7 @@ module.exports = (() => {
 
 	// CmdtyView Web Excel
 
-	const cmdtyViewWebExcelLogin = new EventType('CMDTYVIEW-WEB-EXCEL-LOGIN', 'User Logged In', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
+	const cmdtyViewWebExcelLogin = new EventType('CMDTYVIEW-WEB-EXCEL-LOGIN', 'User Logged In', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId', 'browser', 'appType'], {[ CustomerType.BARCHART.code ]: [ null, null, validators.appTypeOptional ]}, {[ CustomerType.BARCHART.code ]: [ null, null, transformers.appTypeOptional ]});
 	const cmdtyViewWebExcelLogout = new EventType('CMDTYVIEW-WEB-EXCEL-LOGOUT', 'User Logged Out', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
 
 	const cmdtyViewWebExcelQuotesOpened = new EventType('CMDTYVIEW-WEB-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.CMDTYVIEW_WEB_EXCEL, ['userId']);
@@ -1206,7 +1209,7 @@ module.exports = (() => {
 
 	// Barchart Web Excel
 
-	const barchartWebExcelLogin = new EventType('BARCHART-WEB-EXCEL-LOGIN', 'User Logged In', ProductType.BARCHART_WEB_EXCEL, ['userId']);
+	const barchartWebExcelLogin = new EventType('BARCHART-WEB-EXCEL-LOGIN', 'User Logged In', ProductType.BARCHART_WEB_EXCEL, ['userId', 'browser', 'appType'], {[CustomerType.BARCHART.code]: [null, null, validators.appTypeOptional]}, {[CustomerType.BARCHART.code]: [null, null, transformers.appTypeOptional]});
 	const barchartWebExcelLogout = new EventType('BARCHART-WEB-EXCEL-LOGOUT', 'User Logged Out', ProductType.BARCHART_WEB_EXCEL, ['userId']);
 
 	const barchartWebExcelQuotesOpened = new EventType('BARCHART-WEB-EXCEL-QUOTES-OPENED', 'Quotes Opened', ProductType.BARCHART_WEB_EXCEL, ['userId']);
