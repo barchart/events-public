@@ -4,7 +4,7 @@ module.exports = (() => {
 	'use strict';
 
 	/**
-	 * An enumeration of application environments used to log in.
+	 * An enumeration of application environments for Excel product logins.
 	 *
 	 * @public
 	 * @extends {Enum}
